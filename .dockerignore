@@ -1,0 +1,109 @@
+# SynFinance Docker Ignore File
+# Exclude unnecessary files from Docker image
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Documentation (build artifacts)
+docs/_build/
+site/
+
+# Test outputs
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+nosetests.xml
+test-results/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Output files (generated data)
+output/
+*.csv
+*.json
+*.parquet
+data/generated/
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+
+# Docker
+Dockerfile.dev
+docker-compose.dev.yml
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Large datasets
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Development scripts
+scripts/dev_*
+scripts/test_*
+
+# Documentation source (keep only built docs)
+*.md.bak
+CHANGELOG.draft.md
+
+# Environment files
+.env.local
+.env.development
+.env.test

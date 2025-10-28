@@ -1,0 +1,285 @@
+# Prometheus Alert Rules for SynFinance Fraud Detection
+#
+# This file defines alerting rules for critical and warning conditions.
+# Alerts are sent to Alertmanager for notification routing.
+
+groups:
+  - name: synfinance_critical
+    interval: 30s
+    rules:
+      # System Health Alerts
+      - alert: HighErrorRate
+        expr: rate(synfinance_errors_total[5m]) > 1
+        for: 2m
+        labels:
+          severity: critical
+          component: api
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanize }} errors/sec (threshold: 1/sec) for {{ $labels.endpoint }}"
+          
+      - alert: HighMemoryUsage
+        expr: synfinance_memory_usage > 1000000000
+        for: 5m
+        labels:
+          severity: critical
+          component: system
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value | humanizeBytes }} (threshold: 1GB)"
+          
+      - alert: HighCPUUsage
+        expr: synfinance_cpu_usage > 80
+        for: 5m
+        labels:
+          severity: critical
+          component: system
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value }}% (threshold: 80%)"
+          
+      - alert: HighDiskUsage
+        expr: synfinance_disk_usage > 85
+        for: 10m
+        labels:
+          severity: critical
+          component: system
+        annotations:
+          summary: "High disk usage"
+          description: "Disk usage is {{ $value }}% (threshold: 85%)"
+          
+      # Fraud Detection Alerts
+      - alert: CriticalFraudDetected
+        expr: sum(increase(synfinance_fraud_detections_total{severity="critical"}[5m])) > 0
+        for: 1m
+        labels:
+          severity: critical
+          component: fraud_detection
+        annotations:
+          summary: "Critical fraud detected"
+          description: "{{ $value }} critical fraud cases detected in last 5 minutes ({{ $labels.fraud_type }})"
+          
+      - alert: HighFraudRate
+        expr: synfinance_fraud_rate > 0.05
+        for: 5m
+        labels:
+          severity: critical
+          component: fraud_detection
+        annotations:
+          summary: "High fraud rate"
+          description: "Fraud rate is {{ $value | humanizePercentage }} (threshold: 5%) for {{ $labels.fraud_type }}"
+          
+      # Performance Alerts
+      - alert: HighRequestLatency
+        expr: histogram_quantile(0.99, rate(synfinance_request_latency_bucket[5m])) > 5.0
+        for: 2m
+        labels:
+          severity: critical
+          component: api
+        annotations:
+          summary: "High request latency"
+          description: "p99 latency is {{ $value | humanizeDuration }} (threshold: 5s) for {{ $labels.endpoint }}"
+          
+      - alert: HighPredictionLatency
+        expr: histogram_quantile(0.99, rate(synfinance_prediction_time_bucket[5m])) > 0.1
+        for: 2m
+        labels:
+          severity: critical
+          component: ml_model
+        annotations:
+          summary: "High prediction latency"
+          description: "p99 prediction time is {{ $value | humanizeDuration }} (threshold: 100ms)"
+
+  - name: synfinance_warning
+    interval: 1m
+    rules:
+      # System Health Warnings
+      - alert: ElevatedErrorRate
+        expr: rate(synfinance_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "Elevated error rate"
+          description: "Error rate is {{ $value | humanize }} errors/sec (threshold: 0.1/sec) for {{ $labels.endpoint }}"
+          
+      - alert: ElevatedMemoryUsage
+        expr: synfinance_memory_usage > 700000000
+        for: 10m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "Elevated memory usage"
+          description: "Memory usage is {{ $value | humanizeBytes }} (threshold: 700MB)"
+          
+      - alert: ElevatedCPUUsage
+        expr: synfinance_cpu_usage > 60
+        for: 10m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "Elevated CPU usage"
+          description: "CPU usage is {{ $value }}% (threshold: 60%)"
+          
+      # Fraud Detection Warnings
+      - alert: ElevatedFraudRate
+        expr: synfinance_fraud_rate > 0.02
+        for: 10m
+        labels:
+          severity: warning
+          component: fraud_detection
+        annotations:
+          summary: "Elevated fraud rate"
+          description: "Fraud rate is {{ $value | humanizePercentage }} (threshold: 2%) for {{ $labels.fraud_type }}"
+          
+      - alert: LowFraudConfidence
+        expr: avg(rate(synfinance_fraud_confidence_sum[5m])) / avg(rate(synfinance_fraud_confidence_count[5m])) < 0.6
+        for: 5m
+        labels:
+          severity: warning
+          component: fraud_detection
+        annotations:
+          summary: "Low fraud detection confidence"
+          description: "Average fraud confidence is {{ $value | humanizePercentage }} (threshold: 60%)"
+          
+      - alert: HighAnomalyRate
+        expr: synfinance_anomaly_rate > 0.1
+        for: 10m
+        labels:
+          severity: warning
+          component: anomaly_detection
+        annotations:
+          summary: "High anomaly detection rate"
+          description: "Anomaly rate is {{ $value | humanizePercentage }} (threshold: 10%) for {{ $labels.anomaly_type }}"
+          
+      # Performance Warnings
+      - alert: ElevatedRequestLatency
+        expr: histogram_quantile(0.95, rate(synfinance_request_latency_bucket[5m])) > 1.0
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "Elevated request latency"
+          description: "p95 latency is {{ $value | humanizeDuration }} (threshold: 1s) for {{ $labels.endpoint }}"
+          
+      - alert: ElevatedFeatureEngineeringTime
+        expr: histogram_quantile(0.95, rate(synfinance_feature_engineering_time_bucket[5m])) > 0.5
+        for: 5m
+        labels:
+          severity: warning
+          component: feature_engineering
+        annotations:
+          summary: "Elevated feature engineering time"
+          description: "p95 feature engineering time is {{ $value | humanizeDuration }} (threshold: 500ms)"
+          
+      - alert: LowCacheHitRate
+        expr: synfinance_cache_hit_rate < 0.7
+        for: 10m
+        labels:
+          severity: warning
+          component: cache
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Cache hit rate is {{ $value | humanizePercentage }} (threshold: 70%) for {{ $labels.cache_type }}"
+          
+      - alert: LowGenerationRate
+        expr: synfinance_generation_rate < 1000
+        for: 5m
+        labels:
+          severity: warning
+          component: data_generation
+        annotations:
+          summary: "Low transaction generation rate"
+          description: "Generation rate is {{ $value | humanize }} txn/sec (threshold: 1000 txn/sec)"
+
+  - name: synfinance_data_quality
+    interval: 5m
+    rules:
+      # Data Quality Alerts
+      - alert: HighMissingValueRate
+        expr: synfinance_data_missing_values_rate > 0.1
+        for: 10m
+        labels:
+          severity: warning
+          component: data_quality
+        annotations:
+          summary: "High missing value rate"
+          description: "Missing value rate is {{ $value | humanizePercentage }} (threshold: 10%) for field {{ $labels.field }}"
+          
+      - alert: HighOutlierRate
+        expr: synfinance_data_outliers_rate > 0.05
+        for: 10m
+        labels:
+          severity: warning
+          component: data_quality
+        annotations:
+          summary: "High outlier rate"
+          description: "Outlier rate is {{ $value | humanizePercentage }} (threshold: 5%) for field {{ $labels.field }}"
+          
+      - alert: SchemaValidationFailures
+        expr: rate(synfinance_data_schema_violations_total[5m]) > 0.01
+        for: 5m
+        labels:
+          severity: critical
+          component: data_quality
+        annotations:
+          summary: "Schema validation failures detected"
+          description: "Schema validation failing at {{ $value | humanize }} violations/sec (threshold: 0.01/sec)"
+          
+      - alert: DistributionDriftDetected
+        expr: rate(synfinance_data_distribution_drifts_total[10m]) > 0.005
+        for: 10m
+        labels:
+          severity: warning
+          component: data_quality
+        annotations:
+          summary: "Data distribution drift detected"
+          description: "Distribution drift detected at {{ $value | humanize }} drifts/sec for field {{ $labels.field }}"
+          
+      - alert: LowDataQualityScore
+        expr: 100 - (avg(synfinance_data_missing_values_rate) * 30 + rate(synfinance_data_schema_violations_total[5m]) * 100 * 20) < 70
+        for: 15m
+        labels:
+          severity: warning
+          component: data_quality
+        annotations:
+          summary: "Low overall data quality score"
+          description: "Data quality score is {{ $value }}% (threshold: 70%)"
+
+  - name: synfinance_availability
+    interval: 1m
+    rules:
+      # Availability Alerts
+      - alert: ServiceDown
+        expr: up{job="synfinance"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: availability
+        annotations:
+          summary: "SynFinance service is down"
+          description: "Service has been down for more than 1 minute"
+          
+      - alert: HighActiveRequests
+        expr: sum(synfinance_active_requests) > 100
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "High number of active requests"
+          description: "{{ $value }} active requests (threshold: 100) - possible bottleneck or slow endpoint"
+          
+      - alert: NoTrafficDetected
+        expr: rate(synfinance_requests_total[5m]) == 0
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "No API traffic detected"
+          description: "No requests received in the last 5 minutes - possible connectivity issue"

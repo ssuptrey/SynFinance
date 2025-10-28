@@ -1,0 +1,251 @@
+# SynFinance Performance Benchmark Workflow
+# Runs performance tests on schedule and tracks regression
+
+name: Performance Benchmarks
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM UTC
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/performance/**'
+      - 'src/generators/**'
+      - 'tests/performance/**'
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  # Job 1: Run Performance Benchmarks
+  benchmark:
+    name: Performance Benchmark Suite
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-benchmark memory-profiler psutil
+
+      - name: Run performance benchmarks
+        run: |
+          pytest tests/performance/ -v \
+            --benchmark-only \
+            --benchmark-json=benchmark-results.json \
+            --benchmark-save=benchmark-${{ github.sha }} \
+            --benchmark-compare=0001
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: Python Benchmark
+          tool: 'pytest'
+          output-file-path: benchmark-results.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          alert-threshold: '150%'  # Alert if performance degrades by 50%
+          comment-on-alert: true
+          fail-on-alert: false
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v3
+        with:
+          name: benchmark-results
+          path: |
+            benchmark-results.json
+            .benchmarks/
+
+  # Job 2: Parallel Generation Benchmark
+  parallel-benchmark:
+    name: Parallel Generation Performance
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install memory-profiler psutil
+
+      - name: Run parallel generation benchmarks
+        run: |
+          python -m pytest tests/performance/test_performance.py::TestParallelGenerator -v --tb=short
+
+      - name: Generate performance report
+        run: |
+          python << 'EOF'
+          from src.performance import ParallelGenerator, GenerationConfig
+          import time
+          import psutil
+          import json
+          
+          results = []
+          sizes = [1_000, 10_000, 50_000, 100_000]
+          
+          for size in sizes:
+              config = GenerationConfig(
+                  num_transactions=size,
+                  num_workers=4,
+                  show_progress=False
+              )
+              
+              gen = ParallelGenerator(config)
+              start_time = time.time()
+              df = gen.generate(seed=42)
+              elapsed = time.time() - start_time
+              
+              results.append({
+                  'size': size,
+                  'time': elapsed,
+                  'throughput': size / elapsed,
+                  'memory_mb': gen.stats.peak_memory_mb
+              })
+          
+          with open('parallel-benchmark.json', 'w') as f:
+              json.dump(results, f, indent=2)
+          
+          print("Parallel Generation Benchmark Results:")
+          for r in results:
+              print(f"  {r['size']:,} txns: {r['time']:.2f}s ({r['throughput']:,.0f} txns/sec)")
+          EOF
+
+      - name: Upload parallel benchmark
+        uses: actions/upload-artifact@v3
+        with:
+          name: parallel-benchmark
+          path: parallel-benchmark.json
+
+  # Job 3: Streaming Generation Benchmark
+  streaming-benchmark:
+    name: Streaming Generation Performance
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install memory-profiler psutil
+
+      - name: Run streaming benchmarks
+        run: |
+          python << 'EOF'
+          from src.performance import StreamingGenerator, StreamConfig
+          import time
+          import json
+          
+          results = []
+          sizes = [10_000, 50_000, 100_000, 500_000]
+          
+          for size in sizes:
+              config = StreamConfig(
+                  total_transactions=size,
+                  batch_size=10_000,
+                  num_customers=size // 10
+              )
+              
+              gen = StreamingGenerator(config)
+              start_time = time.time()
+              
+              # Stream to file
+              output_file = f"output/stream_benchmark_{size}.csv"
+              gen.stream_to_file(output_file, format="csv")
+              
+              elapsed = time.time() - start_time
+              
+              results.append({
+                  'size': size,
+                  'time': elapsed,
+                  'throughput': size / elapsed,
+                  'memory_mb': gen.stats.peak_memory_mb
+              })
+          
+          with open('streaming-benchmark.json', 'w') as f:
+              json.dump(results, f, indent=2)
+          
+          print("Streaming Generation Benchmark Results:")
+          for r in results:
+              print(f"  {r['size']:,} txns: {r['time']:.2f}s ({r['memory_mb']:.1f} MB)")
+          EOF
+
+      - name: Upload streaming benchmark
+        uses: actions/upload-artifact@v3
+        with:
+          name: streaming-benchmark
+          path: streaming-benchmark.json
+
+  # Job 4: Cache Performance Benchmark
+  cache-benchmark:
+    name: Cache Performance
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run cache benchmarks
+        run: |
+          python -m pytest tests/performance/test_performance.py::TestCacheManager -v --tb=short
+
+  # Job 5: Summary Report
+  summary:
+    name: Benchmark Summary
+    runs-on: ubuntu-latest
+    needs: [benchmark, parallel-benchmark, streaming-benchmark, cache-benchmark]
+    if: always()
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Generate summary
+        run: |
+          echo "## Performance Benchmark Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Job Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Main Benchmark: ${{ needs.benchmark.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Parallel Benchmark: ${{ needs.parallel-benchmark.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Streaming Benchmark: ${{ needs.streaming-benchmark.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Cache Benchmark: ${{ needs.cache-benchmark.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "View detailed results in the artifacts section." >> $GITHUB_STEP_SUMMARY

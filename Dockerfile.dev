@@ -1,0 +1,69 @@
+# SynFinance Development Dockerfile
+# For local development with Jupyter, dev tools, and debugging
+
+FROM python:3.12
+
+# Set metadata
+LABEL maintainer="SynFinance Team"
+LABEL version="0.6.6-dev"
+LABEL description="SynFinance Development Environment with Jupyter and Dev Tools"
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    SYNFINANCE_ENV=development
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    vim \
+    nano \
+    htop \
+    build-essential \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create application directory
+WORKDIR /app
+
+# Copy requirements files
+COPY requirements.txt requirements-dev.txt* ./
+
+# Install Python dependencies (production + development)
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install -r requirements.txt && \
+    if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi && \
+    pip install \
+        jupyter \
+        jupyterlab \
+        ipython \
+        black \
+        flake8 \
+        pylint \
+        mypy \
+        pytest-cov \
+        pytest-xdist \
+        ipdb \
+        line_profiler \
+        memory_profiler
+
+# Copy application code
+COPY . /app/
+
+# Create data and output directories
+RUN mkdir -p /app/data /app/output /app/logs /app/notebooks
+
+# Expose ports
+EXPOSE 8000 8888
+
+# Set up Jupyter configuration
+RUN jupyter notebook --generate-config && \
+    echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.allow_root = True" >> ~/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py && \
+    echo "c.NotebookApp.password = ''" >> ~/.jupyter/jupyter_notebook_config.py
+
+# Default command: Start Jupyter Lab
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]

@@ -1,0 +1,175 @@
+================================================================================
+COLUMN VARIANCE & DATA QUALITY ANALYSIS REPORT
+================================================================================
+
+Generated: 2025-10-21 12:44:00
+Dataset: 10000 rows, 45 columns
+Fields analyzed: 20
+
+OVERALL QUALITY: 16 PASS, 4 WARNING
+Pass Rate: 80.0%
+
+================================================================================
+NUMERICAL FIELDS SUMMARY
+================================================================================
+
+Amount:
+  Status: PASS
+  Range: [40.00, 601120.00]
+  Mean ± Std: 15685.23 ± 31953.39
+  CV (Coefficient of Variation): 2.037
+  Skewness: 7.18, Kurtosis: 71.92
+  Missing: 0 (0.0%)
+
+Distance_from_Home:
+  Status: PASS
+  Range: [0.00, 2496.74]
+  Mean ± Std: 245.24 ± 583.15
+  CV (Coefficient of Variation): 2.378
+  Skewness: 2.44, Kurtosis: 4.80
+  Missing: 0 (0.0%)
+
+Time_Since_Last_Txn:
+  Status: PASS
+  Range: [-128135.20, 126830.61]
+  Mean ± Std: -0.98 ± 52795.77
+  CV (Coefficient of Variation): 53742.472
+  Skewness: 0.04, Kurtosis: -0.59
+  Missing: 100 (1.0%)
+
+Daily_Transaction_Count:
+  Status: PASS
+  Range: [1.00, 6.00]
+  Mean ± Std: 1.56 ± 0.81
+  CV (Coefficient of Variation): 0.522
+  Skewness: 1.59, Kurtosis: 2.64
+  Missing: 0 (0.0%)
+
+Daily_Transaction_Amount:
+  Status: PASS
+  Range: [40.00, 687050.00]
+  Mean ± Std: 24226.61 ± 42037.19
+  CV (Coefficient of Variation): 1.735
+  Skewness: 5.31, Kurtosis: 41.78
+  Missing: 0 (0.0%)
+
+Merchant_Reputation:
+  Status: PASS
+  Range: [0.40, 0.92]
+  Mean ± Std: 0.70 ± 0.14
+  CV (Coefficient of Variation): 0.198
+  Skewness: -0.41, Kurtosis: -1.03
+  Missing: 0 (0.0%)
+
+Customer_Age:
+  Status: PASS
+  Range: [19.00, 73.00]
+  Mean ± Std: 35.30 ± 9.84
+  CV (Coefficient of Variation): 0.279
+  Skewness: 0.65, Kurtosis: 0.55
+  Missing: 0 (0.0%)
+
+================================================================================
+CATEGORICAL FIELDS SUMMARY
+================================================================================
+
+Payment_Mode:
+  Status: PASS
+  Unique values: 6
+  Entropy: 2.30
+  Mode: Credit Card (36.0%)
+  Missing: 0 (0.0%)
+
+Category:
+  Status: PASS
+  Unique values: 17
+  Entropy: 3.81
+  Mode: Shopping (12.6%)
+  Missing: 0 (0.0%)
+
+Card_Type:
+  Status: WARNING
+  Unique values: 2
+  Entropy: 0.88
+  Mode: Debit (70.3%)
+  Missing: 5101 (51.0%)
+  FLAGS: LOW_DIVERSITY: Only 2 unique values, LOW_ENTROPY: entropy=0.88 < 1.5, HIGH_MISSING: 51.0% missing
+
+Transaction_Status:
+  Status: WARNING
+  Unique values: 3
+  Entropy: 0.26
+  Mode: Approved (96.4%)
+  Missing: 0 (0.0%)
+  FLAGS: LOW_ENTROPY: entropy=0.26 < 1.5, HIGH_CONCENTRATION: 96.4% in mode
+
+Transaction_Channel:
+  Status: WARNING
+  Unique values: 3
+  Entropy: 1.50
+  Mode: POS (42.0%)
+  Missing: 0 (0.0%)
+  FLAGS: LOW_ENTROPY: entropy=1.50 < 1.5
+
+Device_Type:
+  Status: WARNING
+  Unique values: 3
+  Entropy: 1.50
+  Mode: POS (42.0%)
+  Missing: 0 (0.0%)
+  FLAGS: LOW_ENTROPY: entropy=1.50 < 1.5
+
+Customer_Segment:
+  Status: PASS
+  Unique values: 7
+  Entropy: 2.26
+  Mode: Family Oriented (31.0%)
+  Missing: 0 (0.0%)
+
+City:
+  Status: PASS
+  Unique values: 24
+  Entropy: 4.32
+  Mode: Visakhapatnam (9.0%)
+  Missing: 0 (0.0%)
+
+State:
+  Status: PASS
+  Unique values: 12
+  Entropy: 3.29
+  Mode: Unknown (24.4%)
+  Missing: 0 (0.0%)
+
+Region:
+  Status: PASS
+  Unique values: 5
+  Entropy: 2.16
+  Mode: Central (36.6%)
+  Missing: 0 (0.0%)
+
+Merchant_Category:
+  Status: PASS
+  Unique values: 17
+  Entropy: 3.81
+  Mode: Shopping (12.6%)
+  Missing: 0 (0.0%)
+
+================================================================================
+BOOLEAN FIELDS SUMMARY
+================================================================================
+
+Is_Weekend:
+  Status: PASS
+  True: 2844 (28.4%)
+  False: 7156 (71.6%)
+  Missing: 0 (0.0%)
+
+Is_First_Transaction_with_Merchant:
+  Status: PASS
+  True: 4941 (49.4%)
+  False: 5059 (50.6%)
+  Missing: 0 (0.0%)
+
+================================================================================
+END OF REPORT
+================================================================================
