@@ -1,0 +1,92 @@
+# SynFinance Production Environment Configuration
+# Production-ready settings with security and performance optimizations
+
+# Application Settings
+debug: false
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 8  # More workers for production
+  timeout: 120  # Longer timeout for large requests
+  reload: false  # NEVER reload in production
+  log_level: "WARNING"
+  cors_origins:
+    - "https://synfinance.com"
+    - "https://api.synfinance.com"
+    - "https://app.synfinance.com"
+  max_request_size: 52428800  # 50MB for production
+
+# Database Configuration
+database:
+  name: "synfinance_prod"
+  pool_size: 20
+  max_overflow: 50
+  pool_timeout: 60
+  pool_recycle: 1800  # 30 minutes
+  ssl_mode: "require"  # Require SSL in production
+  retry_attempts: 5
+  retry_delay: 2
+
+# Cache Configuration
+cache:
+  backend: "redis"  # Use Redis in production
+  password: "${SYNFINANCE_REDIS_PASSWORD}"  # From environment
+  max_size: 100000
+  ttl: 3600  # 1 hour
+  eviction_policy: "lru"
+
+# Generation Configuration
+generation:
+  num_customers: 10000
+  num_transactions: 100000
+  fraud_rate: 0.02
+  anomaly_rate: 0.05
+  seed: null  # Random seed in production
+  parallel: true
+  batch_size: 5000  # Larger batches for performance
+
+# ML Configuration
+ml:
+  enable_gpu: true  # Enable GPU in production if available
+  num_threads: 8
+  cache_predictions: true
+  model_refresh_interval: 3600  # 1 hour
+  feature_engineering:
+    enabled: true
+    fraud_features: true
+    anomaly_features: true
+    interaction_features: true
+    total_features: 69
+
+# Monitoring Configuration
+monitoring:
+  prometheus_enabled: true
+  grafana_enabled: true
+  export_interval: 60
+  retention_days: 90  # Longer retention in production
+  alerting_enabled: true
+  alert_webhook: "${SYNFINANCE_ALERT_WEBHOOK}"  # From environment
+  log_metrics: true
+  metrics_file: "/var/log/synfinance/metrics.log"
+
+# Security Configuration
+security:
+  api_key_enabled: true
+  api_keys: "${SYNFINANCE_API_KEYS}"  # From environment (comma-separated)
+  jwt_enabled: true
+  jwt_secret: "${SYNFINANCE_JWT_SECRET}"  # From environment
+  jwt_algorithm: "HS256"
+  jwt_expiry: 3600
+  rate_limit_enabled: true
+  rate_limit_requests: 1000  # Higher limit for production
+  rate_limit_window: 60
+  cors_enabled: true
+  allowed_hosts:
+    - "synfinance.com"
+    - "api.synfinance.com"
+    - "app.synfinance.com"
+  ssl_enabled: true
+  ssl_cert_path: "/etc/ssl/certs/synfinance.crt"
+  ssl_key_path: "/etc/ssl/private/synfinance.key"

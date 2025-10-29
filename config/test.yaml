@@ -1,0 +1,60 @@
+# SynFinance Test Environment Configuration
+# Configuration for automated testing
+
+# Application Settings
+debug: true
+
+# Server Configuration
+server:
+  host: "127.0.0.1"
+  port: 8001  # Different port for testing
+  workers: 1  # Single worker for consistent testing
+  reload: false
+  log_level: "ERROR"  # Minimal logging during tests
+  cors_origins:
+    - "http://localhost:8001"
+
+# Database Configuration
+database:
+  name: "synfinance_test"
+  pool_size: 2  # Minimal pool for tests
+  max_overflow: 5
+  echo: false  # No SQL logging in tests
+
+# Cache Configuration
+cache:
+  backend: "memory"  # Always use memory cache for tests
+  max_size: 1000
+  ttl: 300  # 5 minutes
+
+# Generation Configuration
+generation:
+  num_customers: 10  # Minimal data for fast tests
+  num_transactions: 100
+  fraud_rate: 0.10  # Higher fraud rate for testing edge cases
+  anomaly_rate: 0.15
+  start_date: "2024-01-01"
+  end_date: "2024-01-31"
+  seed: 42  # Fixed seed for reproducible tests
+  parallel: false  # Disable parallelism for deterministic tests
+  batch_size: 100
+
+# ML Configuration
+ml:
+  enable_gpu: false  # No GPU in tests
+  num_threads: 1
+  cache_predictions: false  # Fresh predictions for each test
+
+# Monitoring Configuration
+monitoring:
+  prometheus_enabled: false  # Disable monitoring in tests
+  grafana_enabled: false
+  alerting_enabled: false
+  log_metrics: false
+
+# Security Configuration
+security:
+  api_key_enabled: false  # No auth in tests
+  jwt_enabled: false
+  rate_limit_enabled: false  # No rate limiting in tests
+  ssl_enabled: false

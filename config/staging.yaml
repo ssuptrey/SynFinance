@@ -1,0 +1,67 @@
+# SynFinance Staging Environment Configuration
+# Pre-production testing environment
+
+# Application Settings
+debug: false
+
+# Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: false
+  log_level: "INFO"
+  cors_origins:
+    - "https://staging.synfinance.com"
+    - "https://staging-api.synfinance.com"
+
+# Database Configuration
+database:
+  name: "synfinance_staging"
+  pool_size: 15
+  max_overflow: 30
+  ssl_mode: "require"  # Require SSL in staging
+
+# Cache Configuration
+cache:
+  backend: "redis"  # Use Redis in staging
+  max_size: 50000
+  ttl: 1800  # 30 minutes
+
+# Generation Configuration
+generation:
+  num_customers: 5000
+  num_transactions: 50000
+  fraud_rate: 0.02
+  anomaly_rate: 0.05
+  seed: null  # Random seed in staging
+
+# ML Configuration
+ml:
+  enable_gpu: false
+  num_threads: 6
+  cache_predictions: true
+  model_refresh_interval: 1800  # 30 minutes
+
+# Monitoring Configuration
+monitoring:
+  prometheus_enabled: true
+  grafana_enabled: true
+  export_interval: 60
+  retention_days: 30
+  alerting_enabled: true
+  log_metrics: true
+
+# Security Configuration
+security:
+  api_key_enabled: true
+  jwt_enabled: true
+  jwt_secret: "${SYNFINANCE_JWT_SECRET}"  # From environment
+  rate_limit_enabled: true
+  rate_limit_requests: 200
+  rate_limit_window: 60
+  cors_enabled: true
+  allowed_hosts:
+    - "staging.synfinance.com"
+    - "staging-api.synfinance.com"
+  ssl_enabled: false  # SSL handled by load balancer

@@ -1,0 +1,58 @@
+# SynFinance Development Environment Configuration
+# Overrides for local development
+
+# Application Settings
+debug: true
+
+# Server Configuration
+server:
+  host: "127.0.0.1"
+  port: 8000
+  workers: 2  # Fewer workers for dev
+  reload: true  # Auto-reload on code changes
+  log_level: "DEBUG"
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8000"
+    - "http://127.0.0.1:3000"
+    - "http://127.0.0.1:8000"
+
+# Database Configuration
+database:
+  name: "synfinance_dev"
+  pool_size: 5  # Smaller pool for dev
+  echo: true  # Log all SQL queries
+
+# Cache Configuration
+cache:
+  backend: "memory"  # Use in-memory cache for dev
+  max_size: 5000  # Smaller cache
+
+# Generation Configuration
+generation:
+  num_customers: 100  # Smaller dataset for faster testing
+  num_transactions: 1000
+  fraud_rate: 0.05  # Higher fraud rate for testing
+  anomaly_rate: 0.10
+  seed: 42  # Fixed seed for reproducibility
+
+# ML Configuration
+ml:
+  enable_gpu: false  # Disable GPU in dev
+  num_threads: 2
+  cache_predictions: false  # Disable cache for fresh predictions
+
+# Monitoring Configuration
+monitoring:
+  prometheus_enabled: true
+  grafana_enabled: true
+  export_interval: 30  # More frequent exports for dev
+  retention_days: 7  # Shorter retention
+  log_metrics: true
+
+# Security Configuration
+security:
+  api_key_enabled: false  # No auth in dev
+  jwt_enabled: false
+  rate_limit_enabled: false  # No rate limiting in dev
+  ssl_enabled: false
