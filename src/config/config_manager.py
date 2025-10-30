@@ -470,7 +470,11 @@ class ConfigManager:
             raise ValueError("No configuration loaded")
         
         output_path = Path(output_path)
-        config_dict = self._config.model_dump()
+        # Use mode='python' to serialize Enums as values
+        config_dict = self._config.model_dump(mode='python')
+        
+        # Convert Enum values to strings
+        config_dict = self._convert_enums_to_str(config_dict)
         
         if format == "yaml":
             with open(output_path, 'w') as f:
@@ -482,6 +486,19 @@ class ConfigManager:
             raise ValueError(f"Unsupported format: {format}")
         
         logger.info(f"Configuration exported to: {output_path}")
+    
+    def _convert_enums_to_str(self, obj: Any) -> Any:
+        """Recursively convert Enum objects to their values"""
+        from enum import Enum
+        
+        if isinstance(obj, Enum):
+            return obj.value
+        elif isinstance(obj, dict):
+            return {k: self._convert_enums_to_str(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._convert_enums_to_str(item) for item in obj]
+        else:
+            return obj
     
     def get_environment(self) -> Environment:
         """Get current environment"""

@@ -22,7 +22,7 @@ from src.customer_profile import (
     calculate_risk_profile
 )
 
-from src.config import INDIAN_CITIES, TRANSACTION_CATEGORIES, PAYMENT_MODES
+from src.constants import INDIAN_CITIES, TRANSACTION_CATEGORIES, PAYMENT_MODES
 
 
 class CustomerGenerator:

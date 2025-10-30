@@ -1,0 +1,46 @@
+================================================================================
+QA PIPELINE EXECUTION SUMMARY
+================================================================================
+Timestamp: 2025-10-29 19:39:20
+Status: FAILED ✗
+
+QUALITY CHECK RESULTS
+--------------------------------------------------------------------------------
+Quality Score: 93.00/100
+Total Records: 500
+Passed Checks: 2/5
+Total Violations: 3
+Critical Violations: 0
+
+Top Issues:
+  1. ERROR: Address 1 error-level issues to improve data quality
+
+QUALITY GATE RESULTS
+--------------------------------------------------------------------------------
+Overall Result: PASSED ✓
+Total Gates: 9
+Passed: 8
+Failed: 1
+Blocking Failures: 0
+
+Gate Details:
+  [✓] minimum_quality_score: Minimum overall quality score required: 93.00 >= 80.00 ✓
+  [✓] no_critical_violations: No critical violations allowed: 0.00 == 0.00 ✓
+  [✓] max_error_violations: Maximum number of error-level violations: 1.00 <= 5.00 ✓
+  [✓] missing_values_threshold: Maximum percentage of missing values: 0.50 <= 1.00 ✓
+  [✓] fraud_rate_minimum: Minimum fraud rate for realistic data: 0.80 >= 0.50 ✓
+  [✓] fraud_rate_maximum: Maximum fraud rate for realistic data: 0.80 <= 3.00 ✓
+  [✓] anomaly_rate_minimum: Minimum anomaly rate for realistic data: 9.20 >= 5.00 ✓
+  [✓] anomaly_rate_maximum: Maximum anomaly rate for realistic data: 9.20 <= 20.00 ✓
+  [✗] minimum_passed_checks: Minimum percentage of checks that should pass: 40.00 NOT >= 80.00 ✗
+
+WARNINGS
+--------------------------------------------------------------------------------
+  ⚠ 1 gates failed
+
+OUTPUT FILES
+--------------------------------------------------------------------------------
+  • output\qa_demo\medium\quality_report_20251029_193920.json
+  • output\qa_demo\medium\gate_report_20251029_193920.json
+
+================================================================================

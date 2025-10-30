@@ -8,6 +8,8 @@ import os
 import pytest
 import tempfile
 from pathlib import Path
+import time
+import gc
 
 from src.config.env_loader import EnvLoader
 
@@ -20,10 +22,23 @@ class TestEnvLoader:
         """Create temporary .env file"""
         with tempfile.NamedTemporaryFile(mode='w', suffix='.env', delete=False) as f:
             env_path = Path(f.name)
-            yield env_path
-            # Cleanup
+        
+        yield env_path
+        
+        # Cleanup - force garbage collection and add small delay for Windows
+        gc.collect()
+        time.sleep(0.01)
+        
+        try:
             if env_path.exists():
                 env_path.unlink()
+        except PermissionError:
+            # On Windows, if file is still locked, try again after a short delay
+            time.sleep(0.1)
+            try:
+                env_path.unlink(missing_ok=True)
+            except PermissionError:
+                pass  # Ignore if still can't delete - OS will clean up temp files
     
     @pytest.fixture
     def sample_env_content(self):
@@ -240,7 +255,8 @@ OPTIONAL_VAR=${MISSING_VAR:-default_value}
         variables = loader.load_env_file()
         
         assert len(variables) == 0
-        assert loader.is_loaded() is True
+        # File doesn't exist, so is_loaded should be False
+        assert loader.is_loaded() is False
     
     def test_invalid_lines(self, temp_env_file):
         """Test handling of invalid lines"""

@@ -263,8 +263,12 @@ class MetricsRegistry:
         Returns:
             Metric instance or None if not found
         """
-        # Try with namespace
-        full_name = f"{self.namespace}_{name}" if not name.startswith(self.namespace) else name
+        # Try name as-is first (in case it already has namespace)
+        if name in self.metrics:
+            return self.metrics[name]
+        
+        # Try with namespace prefix
+        full_name = f"{self.namespace}_{name}"
         return self.metrics.get(full_name)
     
     def list_metrics(self) -> List[str]:
@@ -286,7 +290,12 @@ class MetricsRegistry:
         Returns:
             MetricDefinition or None if not found
         """
-        full_name = f"{self.namespace}_{name}" if not name.startswith(self.namespace) else name
+        # Try name as-is first (in case it already has namespace)
+        if name in self.definitions:
+            return self.definitions[name]
+        
+        # Try with namespace prefix
+        full_name = f"{self.namespace}_{name}"
         return self.definitions.get(full_name)
     
     def export_metrics(self) -> bytes:
@@ -605,13 +614,13 @@ class PrometheusMetricsExporter:
         return CONTENT_TYPE_LATEST
 
 
-# Global metrics exporter instance
-_metrics_exporter: Optional[PrometheusMetricsExporter] = None
+# Global metrics exporter instances by namespace
+_metrics_exporters: Dict[str, PrometheusMetricsExporter] = {}
 
 
 def get_metrics_exporter(namespace: str = "synfinance") -> PrometheusMetricsExporter:
     """
-    Get or create global metrics exporter instance.
+    Get or create metrics exporter instance for the given namespace.
     
     Args:
         namespace: Metric namespace prefix
@@ -619,10 +628,10 @@ def get_metrics_exporter(namespace: str = "synfinance") -> PrometheusMetricsExpo
     Returns:
         PrometheusMetricsExporter instance
     """
-    global _metrics_exporter
+    global _metrics_exporters
     
-    if _metrics_exporter is None:
-        _metrics_exporter = PrometheusMetricsExporter(namespace)
-        logger.info("Created global PrometheusMetricsExporter instance")
+    if namespace not in _metrics_exporters:
+        _metrics_exporters[namespace] = PrometheusMetricsExporter(namespace)
+        logger.info(f"Created PrometheusMetricsExporter instance for namespace: {namespace}")
     
-    return _metrics_exporter
+    return _metrics_exporters[namespace]

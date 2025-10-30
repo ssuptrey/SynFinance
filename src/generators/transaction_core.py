@@ -14,7 +14,7 @@ from faker import Faker
 
 from src.customer_profile import CustomerProfile
 from src.customer_generator import CustomerGenerator
-from src.config import (
+from src.constants import (
     TRANSACTION_CATEGORIES,
     PAYMENT_MODES,
     AMOUNT_RANGES,

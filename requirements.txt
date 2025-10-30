@@ -18,6 +18,20 @@ pydantic>=2.4.0
 requests>=2.31.0
 python-multipart>=0.0.6
 
+# Observability Dependencies (Week 7 Day 4)
+psutil>=5.9.0
+prometheus-client>=0.18.0
+
+# Database Dependencies (Week 7 Day 5)
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+alembic>=1.12.0
+
+# CLI Dependencies (Week 7 Day 6)
+click>=8.1.0
+rich>=13.6.0
+prompt-toolkit>=3.0.0
+
 # Testing Dependencies
 pytest>=7.4.0
 pytest-cov>=4.1.0

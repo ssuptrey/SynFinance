@@ -21,8 +21,8 @@ from datetime import datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
 from generators.merchant_generator import MerchantGenerator, Merchant
-from customer_profile import CustomerProfile
-from customer_generator import CustomerGenerator
+from src.customer_profile import CustomerProfile
+from src.customer_generator import CustomerGenerator
 from utils.indian_data import (
     CHAIN_MERCHANT_DETAILS,
     MERCHANT_SUBCATEGORIES,

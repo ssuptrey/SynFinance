@@ -20,8 +20,8 @@ from datetime import datetime, date
 from collections import Counter
 
 from generators.temporal_generator import TemporalPatternGenerator
-from customer_profile import CustomerProfile, CustomerSegment, IncomeBracket, DigitalSavviness
-from customer_generator import CustomerGenerator
+from src.customer_profile import CustomerProfile, CustomerSegment, IncomeBracket, DigitalSavviness
+from src.customer_generator import CustomerGenerator
 from utils.indian_data import INDIAN_FESTIVALS
 
 

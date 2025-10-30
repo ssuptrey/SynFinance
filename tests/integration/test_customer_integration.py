@@ -18,8 +18,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from typing import List
 
-from customer_profile import CustomerProfile, CustomerSegment, DigitalSavviness, IncomeBracket
-from customer_generator import CustomerGenerator
+from src.customer_profile import CustomerProfile, CustomerSegment, DigitalSavviness, IncomeBracket
+from src.customer_generator import CustomerGenerator
 from data_generator import TransactionGenerator, generate_realistic_dataset
 
 

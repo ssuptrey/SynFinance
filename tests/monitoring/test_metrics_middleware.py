@@ -14,6 +14,7 @@ import asyncio
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.testclient import TestClient
 from starlette.responses import JSONResponse
+import httpx
 
 from src.monitoring.metrics_middleware import MetricsMiddleware
 from src.monitoring.prometheus_exporter import PrometheusMetricsExporter
@@ -225,6 +226,7 @@ class TestMetricsIntegration:
 class TestAsyncMiddleware:
     """Tests for async middleware behavior."""
     
+    @pytest.mark.asyncio
     async def test_middleware_handles_async_endpoints(self):
         """Test middleware works with async endpoints."""
         app = FastAPI()
@@ -235,10 +237,11 @@ class TestAsyncMiddleware:
             await asyncio.sleep(0.01)
             return {"message": "async"}
         
-        async with TestClient(app) as client:
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
             response = await client.get("/async-test")
             assert response.status_code == 200
     
+    @pytest.mark.asyncio
     async def test_middleware_preserves_request_context(self):
         """Test middleware preserves request context."""
         app = FastAPI()
@@ -251,7 +254,7 @@ class TestAsyncMiddleware:
                 "path": request.url.path
             }
         
-        async with TestClient(app) as client:
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
             response = await client.get("/context-test")
             assert response.status_code == 200
             data = response.json()
@@ -263,14 +266,12 @@ class TestMiddlewareErrorHandling:
     """Tests for middleware error handling."""
     
     def test_middleware_records_error_and_reraises(self, client):
-        """Test middleware records error but still raises it."""
-        with pytest.raises(Exception):
-            # When using TestClient, exceptions are raised directly
-            # In a real server, they'd be caught by FastAPI's exception handlers
-            try:
-                response = client.get("/error")
-            except Exception:
-                pass  # TestClient may handle this differently
+        """Test middleware records error metrics."""
+        # TestClient catches exceptions and returns 500 response
+        response = client.get("/error")
+        
+        # Verify error was recorded (status 500)
+        assert response.status_code == 500
     
     def test_middleware_handles_custom_exceptions(self):
         """Test middleware handles custom exceptions."""

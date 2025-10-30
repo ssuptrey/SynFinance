@@ -69,8 +69,8 @@ class TestMetricsRegistry:
         """Test registry initialization."""
         registry = MetricsRegistry(namespace="test")
         assert registry.namespace == "test"
-        assert len(registry._metrics) == 0
-        assert len(registry._definitions) == 0
+        assert len(registry.metrics) == 0
+        assert len(registry.definitions) == 0
     
     def test_register_counter(self):
         """Test registering a counter metric."""
@@ -81,7 +81,7 @@ class TestMetricsRegistry:
             labels=["status"]
         )
         
-        assert "test_counter" in registry._metrics
+        assert "test_test_counter" in registry.metrics
         assert isinstance(counter, Counter)
         
         # Test increment
@@ -99,7 +99,7 @@ class TestMetricsRegistry:
             labels=["type"]
         )
         
-        assert "test_gauge" in registry._metrics
+        assert "test_test_gauge" in registry.metrics
         assert isinstance(gauge, Gauge)
         
         # Test set and inc/dec
@@ -120,7 +120,7 @@ class TestMetricsRegistry:
             buckets=buckets
         )
         
-        assert "test_histogram" in registry._metrics
+        assert "test_test_histogram" in registry.metrics
         assert isinstance(histogram, Histogram)
         
         # Test observe
@@ -136,7 +136,7 @@ class TestMetricsRegistry:
             labels=["method"]
         )
         
-        assert "test_summary" in registry._metrics
+        assert "test_test_summary" in registry.metrics
         assert isinstance(summary, Summary)
         
         # Test observe
@@ -168,9 +168,9 @@ class TestMetricsRegistry:
         
         metrics = registry.list_metrics()
         assert len(metrics) == 3
-        assert "metric1" in metrics
-        assert "metric2" in metrics
-        assert "metric3" in metrics
+        assert "test_metric1" in metrics
+        assert "test_metric2" in metrics
+        assert "test_metric3" in metrics
     
     def test_get_definition(self):
         """Test retrieving metric definition."""
@@ -183,7 +183,7 @@ class TestMetricsRegistry:
         
         definition = registry.get_definition("test_metric")
         assert definition is not None
-        assert definition.name == "test_metric"
+        assert definition.name == "test_test_metric"
         assert definition.metric_type == "counter"
         assert definition.description == "Test counter"
         assert definition.labels == ["status"]
@@ -194,12 +194,12 @@ class TestMetricsRegistry:
         registry.register_counter("metric1", "Test 1")
         registry.register_gauge("metric2", "Test 2")
         
-        assert len(registry._metrics) == 2
+        assert len(registry.metrics) == 2
         
         registry.clear()
         
-        assert len(registry._metrics) == 0
-        assert len(registry._definitions) == 0
+        assert len(registry.metrics) == 0
+        assert len(registry.definitions) == 0
 
 
 class TestPrometheusMetricsExporter:

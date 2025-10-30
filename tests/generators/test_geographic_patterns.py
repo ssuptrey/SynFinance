@@ -18,8 +18,8 @@ import os
 # Add src to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 
-from customer_profile import CustomerProfile, CustomerSegment, Occupation, IncomeBracket
-from customer_generator import CustomerGenerator
+from src.customer_profile import CustomerProfile, CustomerSegment, Occupation, IncomeBracket
+from src.customer_generator import CustomerGenerator
 from generators.geographic_generator import GeographicPatternGenerator
 from generators.transaction_core import TransactionGenerator
 from utils.indian_data import CITY_TIERS, COST_OF_LIVING_MULTIPLIERS, CITY_PROXIMITY_GROUPS
@@ -198,7 +198,7 @@ class TestGeographicPatternGenerator:
             
             for city in set(nearby_cities):
                 # Get region info
-                from customer_generator import CustomerGenerator
+                from src.customer_generator import CustomerGenerator
                 home_region = CustomerGenerator.CITY_STATE_MAP.get(customer.city, (None, None))[1]
                 city_region = CustomerGenerator.CITY_STATE_MAP.get(city, (None, None))[1]
                 
@@ -224,7 +224,7 @@ class TestGeographicPatternGenerator:
         
         # Check that travel cities are in different regions
         if travel_cities:
-            from customer_generator import CustomerGenerator
+            from src.customer_generator import CustomerGenerator
             home_region = CustomerGenerator.CITY_STATE_MAP.get(customer.city, (None, None))[1]
             
             for city in set(travel_cities):

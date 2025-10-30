@@ -136,10 +136,11 @@ class MetricsMiddleware(BaseHTTPMiddleware):
             flags=re.IGNORECASE
         )
         
-        # Remove numeric IDs
-        path = re.sub(r'/\d+', '/{id}', path)
+        # Remove pure numeric IDs
+        path = re.sub(r'/\d+(?=/|$)', '/{id}', path)
         
-        # Remove alphanumeric IDs (like abc-123)
-        path = re.sub(r'/[a-zA-Z0-9\-_]+(?=/|$)', '/{id}', path)
+        # Remove alphanumeric IDs only if they contain a hyphen (e.g., abc-123)
+        # This preserves static paths like /api/health
+        path = re.sub(r'/[a-zA-Z0-9]+-[a-zA-Z0-9\-_]+(?=/|$)', '/{id}', path)
         
         return path

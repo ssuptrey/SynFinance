@@ -17,21 +17,21 @@ if requirements_file.exists():
 
 setup(
     name="synfinance",
-    version="0.5.0",  # Week 4 Days 3-4 complete - Advanced fraud patterns
+    version="1.0.0",  # Week 7 complete - Production infrastructure
     author="SynFinance Development Team",
     author_email="dev@synfinance.example.com",
-    description="Synthetic financial transaction data generator for Indian market with fraud detection features",
+    description="Production-grade synthetic financial transaction data generator for Indian market with fraud detection, ML features, database integration, and professional CLI tools",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/synfinance",
+    url="https://github.com/ssuptrey/synfinance",
     project_urls={
-        "Bug Tracker": "https://github.com/yourusername/synfinance/issues",
-        "Documentation": "https://github.com/yourusername/synfinance/blob/main/docs/INDEX.md",
-        "Source Code": "https://github.com/yourusername/synfinance",
+        "Bug Tracker": "https://github.com/ssuptrey/synfinance/issues",
+        "Documentation": "https://github.com/ssuptrey/synfinance/blob/main/docs/INDEX.md",
+        "Source Code": "https://github.com/ssuptrey/synfinance",
     },
     packages=find_packages(exclude=["tests", "tests.*", "examples", "docs"]),
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Intended Audience :: Financial and Insurance Industry",
         "Intended Audience :: Science/Research",
@@ -44,6 +44,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.9",
@@ -59,6 +60,7 @@ setup(
         ],
         "ml": [
             "scikit-learn>=1.3.0",
+            "xgboost>=2.0.0",
             "matplotlib>=3.7.0",
             "seaborn>=0.12.0",
         ],
@@ -67,10 +69,20 @@ setup(
             "uvicorn>=0.24.0",
             "pydantic>=2.4.0",
         ],
+        "monitoring": [
+            "prometheus-client>=0.19.0",
+            "grafana-client>=3.5.0",
+        ],
+        "database": [
+            "sqlalchemy>=2.0.0",
+            "psycopg2-binary>=2.9.0",
+            "alembic>=1.12.0",
+        ],
     },
     entry_points={
         "console_scripts": [
-            "synfinance=src.app:main",
+            "synfinance=src.cli:cli",
+            "synfinance-web=src.app:main",
         ],
     },
     include_package_data=True,

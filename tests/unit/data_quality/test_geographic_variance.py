@@ -2,7 +2,7 @@
 import sys
 sys.path.insert(0, 'e:/SynFinance/src')
 
-from customer_generator import CustomerGenerator
+from src.customer_generator import CustomerGenerator
 from generators.transaction_core import TransactionGenerator
 import pandas as pd
 

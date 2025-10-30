@@ -318,7 +318,6 @@ class TestConfigManager:
         """Test production environment validations"""
         # Production config with reload enabled (should raise error)
         prod_config = {
-            "environment": "production",
             "server": {
                 "reload": True  # Not allowed in production
             }
@@ -328,11 +327,31 @@ class TestConfigManager:
         with open(config_file, 'w') as f:
             yaml.dump(prod_config, f)
         
-        manager = ConfigManager()
-        manager._config_dir = temp_config_dir
+        # Set environment to production
+        import os
+        old_env = os.environ.get('SYNFINANCE_ENV')
+        os.environ['SYNFINANCE_ENV'] = 'production'
         
-        with pytest.raises(Exception):
-            manager.load_config(config_path=config_file)
+        try:
+            # Reset singleton to pick up new environment
+            ConfigManager._instance = None
+            ConfigManager._config = None
+            
+            manager = ConfigManager()
+            manager._config_dir = temp_config_dir
+            
+            with pytest.raises(ValueError, match="Server reload must be disabled"):
+                manager.load_config(config_path=config_file)
+        finally:
+            # Restore original environment
+            if old_env:
+                os.environ['SYNFINANCE_ENV'] = old_env
+            else:
+                os.environ.pop('SYNFINANCE_ENV', None)
+            
+            # Reset singleton again to restore original state
+            ConfigManager._instance = None
+            ConfigManager._config = None
     
     def test_get_config(self):
         """Test get_config convenience function"""

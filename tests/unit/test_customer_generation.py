@@ -3,8 +3,11 @@ Test script to validate customer generation with 1000 customers
 Week 1, Day 3-4: Validation
 """
 
-from customer_generator import CustomerGenerator
-from customer_profile import CustomerSegment
+import pytest
+import random
+
+from src.customer_generator import CustomerGenerator
+from src.customer_profile import CustomerSegment
 import json
 
 
