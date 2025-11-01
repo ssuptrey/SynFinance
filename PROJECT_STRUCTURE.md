@@ -2,25 +2,34 @@
 
 Complete directory structure and file organization for the SynFinance synthetic transaction data generator.
 
-**Last Updated**: October 30, 2025
-**Version**: 1.0.0 (Production/Stable)
-**Status**: Week 7 Complete - Production-Grade Enterprise System
+**Last Updated**: November 2, 2025
+**Version**: 2.16.0 (Production/Stable)
+**Status**: Week 9 Complete - Production Infrastructure & DevOps
 
 ## Project Overview
 
-SynFinance is a production-grade Python-based synthetic financial transaction data generator designed for the Indian market. It creates realistic customer profiles and transactions with advanced behavioral patterns, temporal dynamics, geographic consistency, merchant ecosystems, fraud detection, anomaly detection, ML features, database integration, resilience patterns, and professional CLI tools.
+SynFinance is an enterprise-grade, cloud-native Python-based synthetic financial transaction data generator designed for the Indian market. It creates realistic customer profiles and transactions with advanced behavioral patterns, temporal dynamics, geographic consistency, merchant ecosystems, fraud detection, anomaly detection, ML features, database integration, resilience patterns, professional CLI tools, **GraphQL/WebSocket APIs**, **ensemble ML models**, **multi-tenancy**, **comprehensive API versioning**, and **production infrastructure** with Docker, Kubernetes, CI/CD, observability, and Istio service mesh.
 
 **Key Features**:
 - 15 fraud pattern types with ML optimization
-- 69 combined ML features (fraud + anomaly + interaction)
+- 69 combined ML features + Ensemble models (96.9% accuracy)
+- GraphQL API with DataLoader optimization
+- WebSocket real-time updates (10K connections, <10ms latency)
+- Multi-tenancy with RBAC (1000+ tenants)
+- API versioning with migration strategies
 - SQLAlchemy 2.0 database integration with PostgreSQL
 - Professional CLI with 20+ commands (Click + Rich UI)
 - Resilience framework (Circuit Breaker, Retry, Rate Limiter, Health Checker)
+- **Docker containerization (5.16GB optimized image)**
+- **Kubernetes + Helm (multi-environment deployment)**
+- **CI/CD with GitHub Actions + ArgoCD GitOps**
+- **Comprehensive observability (Prometheus, Grafana, Loki, Jaeger, 15+ metrics)**
+- **Istio service mesh (mTLS, canary deployments, circuit breakers)**
 - Prometheus monitoring + Grafana dashboards
 - Multi-environment configuration management
 - Automated quality assurance framework
 - Structured logging and distributed tracing
-- 800+ tests passing (96.9% success rate)
+- 967+ tests passing (97.5% success rate)
 
 ---
 
@@ -28,7 +37,7 @@ SynFinance is a production-grade Python-based synthetic financial transaction da
 
 ```
 SynFinance/
-├── src/                                # Source code (20,000+ lines)
+├── src/                                # Source code (28,000+ lines)
 │   ├── __init__.py
 │   ├── app.py                          # Streamlit application
 │   ├── config.py                       # Configuration settings
@@ -44,11 +53,37 @@ SynFinance/
 │   │   ├── model_performance_analyzer.py   # Model metrics
 │   │   └── statistical_tests.py        # Statistical testing
 │   │
-│   ├── api/                            # FastAPI server (Week 6)
+│   ├── api/                            # FastAPI server & APIs (Week 6, 8)
 │   │   ├── __init__.py
 │   │   ├── app.py                      # API server
 │   │   ├── client.py                   # API client
-│   │   └── schemas.py                  # Pydantic schemas
+│   │   ├── schemas.py                  # Pydantic schemas
+│   │   │
+│   │   ├── graphql/                    # GraphQL API (Week 8 Day 1 - ~1,500 lines)
+│   │   │   ├── __init__.py
+│   │   │   ├── schema.py               # GraphQL schema definition
+│   │   │   ├── types.py                # GraphQL types (Transaction, Customer, etc.)
+│   │   │   ├── dataloaders.py          # DataLoader for N+1 optimization
+│   │   │   └── resolvers/
+│   │   │       ├── __init__.py
+│   │   │       ├── queries.py          # Query resolvers
+│   │   │       ├── mutations.py        # Mutation resolvers
+│   │   │       └── subscriptions.py    # Subscription resolvers
+│   │   │
+│   │   ├── tenants/                    # Multi-tenancy API (Week 8 Day 4)
+│   │   │   ├── __init__.py
+│   │   │   ├── routes.py               # Tenant management endpoints (11)
+│   │   │   └── schemas.py              # Pydantic schemas for tenants
+│   │   │
+│   │   └── versioning/                 # API Versioning (Week 8 Day 5 - ~2,300 lines)
+│   │       ├── __init__.py
+│   │       ├── registry.py             # Version registry (~295 lines)
+│   │       ├── negotiation.py          # Version detection (~213 lines)
+│   │       ├── deprecation.py          # Deprecation management (~250 lines)
+│   │       ├── compatibility.py        # Transformation layer (~328 lines)
+│   │       ├── middleware.py           # Version middleware (~95 lines)
+│   │       ├── router.py               # Versioned routers (~117 lines)
+│   │       └── migration.py            # Migration tools (~435 lines)
 │   │
 │   ├── cli/                            # CLI tools (Week 7 Day 6 - 882 lines)
 │   │   ├── __init__.py
@@ -81,14 +116,24 @@ SynFinance/
 │   │   ├── temporal_generator.py       # Temporal patterns
 │   │   └── transaction_core.py         # Core transaction logic
 │   │
-│   ├── ml/                             # ML framework (Week 5-6)
+│   ├── ml/                             # ML framework (Week 5-6, 8)
 │   │   ├── __init__.py
 │   │   ├── anomaly_features.py         # Anomaly ML features
 │   │   ├── combined_features.py        # Combined features (69 total)
 │   │   ├── dataset_preparation.py      # Dataset prep pipeline
 │   │   ├── feature_generator.py        # Feature engineering
 │   │   ├── fraud_features.py           # Fraud ML features
-│   │   └── model_optimization.py       # Hyperparameter tuning, ensembles
+│   │   ├── model_optimization.py       # Hyperparameter tuning
+│   │   │
+│   │   ├── base_model.py               # Base model interface (Week 8 Day 3)
+│   │   ├── models/                     # ML Models (Week 8 Day 3 - ~800 lines)
+│   │   │   ├── __init__.py
+│   │   │   ├── random_forest.py        # RandomForest (95.40% accuracy)
+│   │   │   └── xgboost_model.py        # XGBoost (96.90% accuracy)
+│   │   │
+│   │   └── ensemble/                   # Ensemble Models (Week 8 Day 3 - ~1,000 lines)
+│   │       ├── __init__.py
+│   │       └── voting.py               # Voting ensemble (soft/hard)
 │   │
 │   ├── models/                         # Data models
 │   │   ├── __init__.py
@@ -129,13 +174,29 @@ SynFinance/
 │   │   ├── rate_limiter.py             # Token bucket rate limiter (330 lines)
 │   │   └── health_checker.py           # Kubernetes-style health probes (390 lines)
 │   │
-│   └── utils/                          # Utility modules
+│   ├── tenancy/                        # Multi-tenancy (Week 8 Day 4 - ~2,500 lines)
+│   │   ├── __init__.py
+│   │   ├── models.py                   # Tenant, TenantUser, TenantQuota models
+│   │   ├── context.py                  # ContextVar-based isolation
+│   │   ├── permissions.py              # 30+ granular permissions
+│   │   ├── rbac.py                     # RBAC manager (5 roles)
+│   │   ├── middleware.py               # Tenant isolation middleware
+│   │   └── quotas.py                   # Resource quota management
+│   │
+│   ├── utils/                          # Utility modules
+│   │   ├── __init__.py
+│   │   ├── geographic_data.py          # City/region data
+│   │   ├── indian_data.py              # Indian market data
+│   │   └── merchant_data.py            # Merchant data
+│   │
+│   └── websocket/                      # WebSocket Real-time (Week 8 Day 2 - ~1,400 lines)
 │       ├── __init__.py
-│       ├── geographic_data.py          # City/region data
-│       ├── indian_data.py              # Indian market data
-│       └── merchant_data.py            # Merchant data
+│       ├── manager.py                  # Connection manager (10K connections)
+│       ├── handlers.py                 # Message handlers
+│       ├── events.py                   # 9 event types
+│       └── subscriptions.py            # Topic subscriptions
 │
-├── tests/                              # Test suite (800+ tests passing)
+├── tests/                              # Test suite (967+ tests passing)
 │   ├── __init__.py
 │   ├── README.md                       # Test documentation
 │   │
@@ -146,11 +207,14 @@ SynFinance/
 │   │   ├── test_model_performance.py   # Model performance tests
 │   │   └── test_statistical_tests.py   # Statistical tests
 │   │
-│   ├── api/                            # API tests (Week 6)
+│   ├── api/                            # API tests (Week 6, 8)
 │   │   ├── __init__.py
 │   │   ├── test_api_endpoints.py
 │   │   ├── test_api_client.py
-│   │   └── test_api_integration.py
+│   │   ├── test_api_integration.py
+│   │   ├── test_graphql.py             # 23 GraphQL tests (Week 8 Day 1)
+│   │   ├── test_websocket.py           # 20 WebSocket tests (Week 8 Day 2)
+│   │   └── test_versioning.py          # 26 API versioning tests (Week 8 Day 5)
 │   │
 │   ├── cli/                            # CLI tests (Week 7 Day 7)
 │   │   ├── __init__.py
@@ -181,12 +245,13 @@ SynFinance/
 │   │   ├── __init__.py
 │   │   └── test_customer_integration.py  # 14 tests
 │   │
-│   ├── ml/                             # ML tests (Week 5)
+│   ├── ml/                             # ML tests (Week 5, 8)
 │   │   ├── __init__.py
 │   │   ├── test_anomaly_features.py    # 23 tests
 │   │   ├── test_combined_features.py   # 21 tests
 │   │   ├── test_fraud_features.py
-│   │   └── test_dataset_preparation.py
+│   │   ├── test_dataset_preparation.py
+│   │   └── test_ml_models.py           # 25 ensemble ML tests (Week 8 Day 3)
 │   │
 │   ├── monitoring/                     # Monitoring tests (Week 7 Day 1)
 │   │   ├── __init__.py
@@ -206,12 +271,29 @@ SynFinance/
 │   │   ├── __init__.py
 │   │   └── test_qa_*.py                # 74 tests
 │   │
+│   ├── tenancy/                        # Multi-tenancy tests (Week 8 Day 4)
+│   │   ├── __init__.py
+│   │   ├── test_middleware.py          # 15 tenant middleware tests
+│   │   ├── test_rbac.py                # 20 RBAC tests
+│   │   ├── test_tenant_context.py      # 19 context tests
+│   │   └── test_tenant_models.py       # 18 model tests
+│   │
 │   ├── test_resilience.py              # Resilience tests (Week 7 Day 7)
 │   │                                   # 33 tests (Circuit Breaker, Retry, Rate Limiter, Health Checker)
+│   │
+│   ├── deployment/                     # Deployment tests (Week 9)
+│   │   ├── __init__.py
+│   │   ├── test_docker.py              # 18 tests (4 passing, 14 require Docker)
+│   │   └── test_kubernetes.py          # Kubernetes manifest tests
 │   │
 │   └── unit/                           # Unit tests
 │       ├── __init__.py
 │       └── test_data_quality.py        # 13 tests
+│
+├── .github/                            # GitHub Actions (Week 9 Day 3)
+│   └── workflows/
+│       ├── ci-build-push.yml           # Docker build, scan, push (186 lines)
+│       └── ci-manifest.yml             # Manifest validation (80 lines)
 │
 ├── migrations/                         # Alembic migrations (Week 7 Day 5)
 │   ├── env.py                          # Migration environment
@@ -227,14 +309,91 @@ SynFinance/
 │   ├── test.yaml                       # Test environment
 │   └── schema.json                     # Config schema validation
 │
-├── monitoring/                         # Monitoring configuration (Week 7 Day 1)
+├── monitoring/                         # Monitoring configuration (Week 7 Day 1, Week 9 Day 4)
 │   ├── grafana/
 │   │   └── dashboards/                 # Grafana dashboard JSON
-│   │       └── synfinance_dashboard.json
+│   │       ├── synfinance_dashboard.json
+│   │       ├── application-overview.json   # Week 9: 6 panels (300 lines)
+│   │       └── fraud-analytics.json        # Week 9: 3 panels (80 lines)
 │   └── prometheus/
 │       └── prometheus.yml              # Prometheus configuration
 │
-├── deploy/                             # Deployment files (Week 6)
+├── k8s/                                # Kubernetes manifests (Week 9 Day 2 - ~1,000 lines)
+│   ├── README.md                       # Kubernetes overview
+│   ├── QUICKSTART.md                   # Quick deployment guide
+│   ├── DEPLOYMENT_CHECKLIST.md         # Pre-deployment verification
+│   │
+│   ├── base/                           # Base manifests (10 files, ~600 lines)
+│   │   ├── namespace.yaml              # Namespace definitions
+│   │   ├── api-deployment.yaml         # API deployment (3 replicas, rolling updates)
+│   │   ├── postgres-statefulset.yaml   # PostgreSQL StatefulSet (10Gi PVC)
+│   │   ├── redis-statefulset.yaml      # Redis StatefulSet (5Gi PVC)
+│   │   ├── configmap.yaml              # ConfigMap for env vars
+│   │   ├── secrets.yaml                # Secrets (base64 encoded)
+│   │   ├── ingress.yaml                # Ingress with TLS
+│   │   ├── hpa.yaml                    # HorizontalPodAutoscaler (3-10 replicas)
+│   │   ├── rbac.yaml                   # RBAC (ServiceAccount, Role, RoleBinding)
+│   │   ├── storage-class.yaml          # StorageClass for PVCs
+│   │   ├── resource-limits.yaml        # LimitRange
+│   │   └── kustomization.yaml          # Kustomize base
+│   │
+│   ├── overlays/                       # Environment-specific overlays
+│   │   ├── production/
+│   │   │   ├── kustomization.yaml
+│   │   │   ├── patches.yaml            # Production patches
+│   │   │   └── argocd-app.yaml         # ArgoCD application (Week 9 Day 3)
+│   │   ├── staging/
+│   │   │   ├── kustomization.yaml
+│   │   │   ├── patches.yaml
+│   │   │   └── argocd-app.yaml
+│   │   └── development/
+│   │       ├── kustomization.yaml
+│   │       └── patches.yaml
+│   │
+│   └── istio/                          # Istio service mesh (Week 9 Day 5 - ~900 lines, 7 files)
+│       ├── INSTALL.md                  # Installation guide (400 lines)
+│       ├── gateway.yaml                # Ingress gateway (60 lines)
+│       ├── virtualservice.yaml         # Traffic routing (180 lines)
+│       ├── destinationrule.yaml        # Load balancing, circuit breakers (200 lines)
+│       ├── peer-authentication.yaml    # mTLS configuration (40 lines)
+│       └── authorization-policy.yaml   # Zero-trust policies (220 lines)
+│
+├── helm/                               # Helm chart (Week 9 Day 2 - ~400 lines)
+│   └── synfinance/
+│       ├── Chart.yaml                  # Chart metadata (v0.1.0)
+│       ├── values.yaml                 # Default values
+│       ├── values-prod.yaml            # Production values
+│       ├── values-staging.yaml         # Staging values
+│       ├── values-dev.yaml             # Development values
+│       └── templates/                  # Helm templates (15 files)
+│           ├── deployment.yaml
+│           ├── service.yaml
+│           ├── ingress.yaml
+│           ├── configmap.yaml
+│           ├── secrets.yaml
+│           ├── hpa.yaml
+│           ├── pdb.yaml                # PodDisruptionBudget
+│           ├── serviceaccount.yaml
+│           ├── role.yaml
+│           ├── rolebinding.yaml
+│           ├── postgres-statefulset.yaml
+│           ├── redis-statefulset.yaml
+│           ├── persistentvolumeclaim.yaml
+│           ├── NOTES.txt
+│           └── _helpers.tpl            # Template helpers
+│
+├── scripts/                            # Utility scripts (Week 9 Day 3)
+│   ├── ci/
+│   │   ├── scan_image.sh               # Trivy scanning wrapper
+│   │   └── deploy_argocd.sh            # ArgoCD sync helper
+│   └── ...                             # Other utility scripts
+│
+├── Dockerfile                          # Production Docker image (Week 9 Day 1 - 231 lines)
+├── docker-compose.yml                  # Docker Compose (Week 9 Day 1 - 3 services)
+├── docker-compose.dev.yml              # Development compose
+├── .dockerignore                       # Docker build context exclusions
+│
+├── deploy/                             # Legacy deployment files (pre-Week 9)
 │   ├── docker/
 │   │   ├── Dockerfile                  # Production Docker image
 │   │   ├── Dockerfile.dev              # Development Docker image
@@ -256,10 +415,13 @@ SynFinance/
 │   ├── complete_ml_pipeline.py         # Week 6 complete pipeline (850 lines)
 │   ├── demo_all_fraud_patterns.py
 │   ├── demo_analytics_dashboard.py
+│   ├── demo_api_versioning.py          # Week 8 Day 5 API versioning demo (411 lines)
+│   ├── demo_ensemble_models.py         # Week 8 Day 3 ensemble ML demo
 │   ├── demo_geographic_patterns.py
 │   ├── demo_merchant_ecosystem.py
 │   ├── demo_observability.py
 │   ├── demo_qa_framework.py
+│   ├── demo_tenancy.py                 # Week 8 Day 4 multi-tenancy demo
 │   ├── fraud_detection_tutorial.ipynb  # Jupyter notebook tutorial
 │   ├── fraud_detection_tutorial.py
 │   ├── generate_anomaly_dataset.py
@@ -293,9 +455,13 @@ SynFinance/
 │   ├── STRUCTURE.md                   # Structure documentation
 │   │
 │   ├── guides/                        # User guides
+│   │   ├── CI_CD_SETUP.md             # Week 9 Day 3: CI/CD configuration (300+ lines)
 │   │   ├── INTEGRATION_GUIDE.md       # API integration guide
+│   │   ├── OBSERVABILITY_GUIDE.md     # Week 9 Day 4: Metrics, logging, tracing (400+ lines)
 │   │   ├── QUICK_REFERENCE.md         # Quick reference
 │   │   ├── QUICKSTART.md              # 5-minute quickstart
+│   │   ├── ROLLBACK_RUNBOOK.md        # Week 9 Day 3: Incident response (200+ lines)
+│   │   ├── SERVICE_MESH_GUIDE.md      # Week 9 Day 5: Istio service mesh (1000+ lines)
 │   │   └── WEEK1_GUIDE.md             # Week 1 tutorial
 │   │
 │   ├── technical/                     # Technical documentation
@@ -335,7 +501,27 @@ SynFinance/
 │   │   ├── WEEK6_DAY7_COMPLETE.md
 │   │   ├── WEEK7_DAY5_COMPLETE.md     # Database integration (Week 7)
 │   │   ├── WEEK7_DAY6_COMPLETE.md     # CLI tools (Week 7)
-│   │   └── WEEK7_COMPLETE.md          # Week 7 comprehensive summary
+│   │   ├── WEEK7_COMPLETE.md          # Week 7 comprehensive summary
+│   │   │
+│   │   ├── week8/                     # Week 8 progress
+│   │   │   ├── README.md              # Week 8 overview
+│   │   │   ├── day1_complete.md       # GraphQL API (12.2 KB)
+│   │   │   ├── day2_complete.md       # WebSocket (14.5 KB)
+│   │   │   ├── day3_complete.md       # Ensemble ML (13.6 KB)
+│   │   │   ├── day4_complete.md       # Multi-tenancy (11.5 KB)
+│   │   │   ├── day5_complete.md       # API Versioning (13.8 KB)
+│   │   │   ├── WEEK8_COMPLETION_SUMMARY.md   # Complete week summary
+│   │   │   └── DEPENDENCIES_INSTALLED.md     # Dependency guide
+│   │   │
+│   │   └── week9/                     # Week 9 progress (NEW)
+│   │       ├── day1_complete.md       # Docker containerization
+│   │       ├── day2_complete.md       # Kubernetes & Helm
+│   │       ├── day3_complete.md       # CI/CD & GitOps
+│   │       ├── day4_complete.md       # Observability stack
+│   │       ├── day4_plan.md           # Observability planning
+│   │       ├── day5_complete.md       # Service mesh
+│   │       ├── day5_plan.md           # Service mesh planning
+│   │       └── WEEK9_COMPLETE.md      # Complete week summary (~850 lines)
 │   │
 │   └── planning/                      # Planning documents
 │       ├── ROADMAP.md                 # 12-week roadmap
