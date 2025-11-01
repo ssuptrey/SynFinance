@@ -8,7 +8,7 @@ Author: SynFinance ML Team
 Date: October 28, 2025
 """
 
-from fastapi import FastAPI, HTTPException, status, Request
+from fastapi import FastAPI, HTTPException, status, Request, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, validator
@@ -16,6 +16,8 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime
 import time
 import logging
+import json
+import uuid
 from contextlib import asynccontextmanager
 
 from .fraud_detection_api import (
@@ -23,6 +25,17 @@ from .fraud_detection_api import (
     BatchDetectionAPI,
     PredictionRequest,
     BatchPredictionRequest,
+)
+from .graphql.schema import create_graphql_router
+from .websocket import get_connection_manager, Event, EventType
+from .websocket.handlers import WebSocketHandler
+from .metrics import (
+    get_metrics,
+    record_http_request,
+    record_error,
+    record_transaction,
+    update_system_metrics,
+    active_connections
 )
 
 # Configure logging
@@ -241,7 +254,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="SynFinance Fraud Detection API",
     description="Production-ready API for real-time fraud detection with comprehensive ML capabilities",
-    version="1.0.0",
+    version="2.15.0",
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan
@@ -256,16 +269,51 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Add Health Check router (for Docker/Kubernetes)
+from src.api.health import router as health_router
+app.include_router(health_router)
 
-# Middleware for request timing
+# Add GraphQL router
+app.include_router(
+    create_graphql_router(),
+    prefix="",
+    tags=["GraphQL"]
+)
+
+
+# Middleware for request timing and metrics
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
-    """Add processing time to response headers"""
+    """Add processing time to response headers and record metrics"""
     start_time = time.time()
-    response = await call_next(request)
-    process_time = (time.time() - start_time) * 1000
-    response.headers["X-Process-Time-Ms"] = str(round(process_time, 2))
-    return response
+    
+    try:
+        response = await call_next(request)
+        process_time = time.time() - start_time
+        
+        # Add processing time header
+        response.headers["X-Process-Time-Ms"] = str(round(process_time * 1000, 2))
+        
+        # Record metrics
+        record_http_request(
+            method=request.method,
+            endpoint=request.url.path,
+            status_code=response.status_code,
+            duration=process_time
+        )
+        
+        return response
+    
+    except Exception as e:
+        process_time = time.time() - start_time
+        record_error('internal')
+        record_http_request(
+            method=request.method,
+            endpoint=request.url.path,
+            status_code=500,
+            duration=process_time
+        )
+        raise
 
 
 # Endpoints
@@ -274,7 +322,7 @@ async def root():
     """Root endpoint with API information"""
     return {
         "name": "SynFinance Fraud Detection API",
-        "version": "1.0.0",
+        "version": "2.15.0",
         "status": "running",
         "endpoints": {
             "predict": "/predict",
@@ -286,6 +334,21 @@ async def root():
         "docs": "/docs",
         "redoc": "/redoc"
     }
+
+
+@app.get("/metrics", tags=["Monitoring"])
+async def metrics():
+    """
+    Prometheus metrics endpoint
+    
+    Returns metrics in Prometheus exposition format for scraping.
+    Includes:
+    - Transaction and fraud detection metrics
+    - API performance metrics (request duration, error rates)
+    - System metrics (CPU, memory usage)
+    - Database and ML model metrics
+    """
+    return get_metrics()
 
 
 @app.post("/predict", response_model=PredictionOutput, tags=["Prediction"])
@@ -475,6 +538,84 @@ async def general_exception_handler(request: Request, exc: Exception):
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={"detail": "Internal server error"}
     )
+
+
+# WebSocket endpoint for real-time event streaming
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    """
+    WebSocket endpoint for real-time event streaming
+    
+    Supports:
+    - Real-time fraud detection alerts
+    - Transaction creation events
+    - Model training progress updates
+    - System notifications
+    
+    Usage:
+        ws = new WebSocket("ws://localhost:8000/ws");
+        ws.send(JSON.stringify({type: "subscribe", topic: "fraud_detected"}));
+    """
+    # Generate unique client ID
+    client_id = str(uuid.uuid4())
+    connection_manager = get_connection_manager()
+    ws_handler = WebSocketHandler(connection_manager)
+    
+    try:
+        # Accept connection
+        await connection_manager.connect(websocket, client_id)
+        
+        logger.info(f"WebSocket client connected: {client_id}")
+        
+        # Main message loop
+        while True:
+            try:
+                # Receive message from client
+                data = await websocket.receive_text()
+                message = json.loads(data)
+                
+                # Handle message
+                await ws_handler.handle_message(websocket, client_id, message)
+                
+            except WebSocketDisconnect:
+                logger.info(f"WebSocket client disconnected: {client_id}")
+                break
+            except json.JSONDecodeError:
+                await websocket.send_json({
+                    "event_type": "error",
+                    "data": {"message": "Invalid JSON format"}
+                })
+            except Exception as e:
+                logger.error(f"WebSocket error for client {client_id}: {e}")
+                await websocket.send_json({
+                    "event_type": "error",
+                    "data": {"message": f"Internal error: {str(e)}"}
+                })
+    
+    except Exception as e:
+        logger.error(f"WebSocket connection error for client {client_id}: {e}")
+    
+    finally:
+        # Cleanup connection
+        connection_manager.disconnect(client_id)
+        logger.info(f"WebSocket client cleaned up: {client_id}")
+
+
+# WebSocket management endpoints
+@app.get("/ws/stats", tags=["WebSocket"])
+async def get_websocket_stats():
+    """
+    Get WebSocket connection statistics
+    
+    Returns information about active connections and subscriptions.
+    """
+    connection_manager = get_connection_manager()
+    
+    return {
+        "total_connections": connection_manager.get_connection_count(),
+        "clients": connection_manager.get_all_clients(),
+        "timestamp": datetime.now().isoformat()
+    }
 
 
 if __name__ == "__main__":
