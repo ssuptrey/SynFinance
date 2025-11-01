@@ -61,11 +61,27 @@ spec:
         app.kubernetes.io/component: api
         app.kubernetes.io/part-of: synfinance
         app.kubernetes.io/version: "2.15.0"
+        # Istio labels for traffic management
+        app: synfinance-api
+        version: stable  # Used by DestinationRule subsets (change to 'canary', 'blue', 'green' as needed)
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8000"
         prometheus.io/path: "/metrics"
         kubectl.kubernetes.io/default-container: "api"
+        # Istio sidecar configuration
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPULimit: "200m"
+        sidecar.istio.io/proxyMemoryLimit: "256Mi"
+        # Istio traffic management
+        traffic.sidecar.istio.io/includeOutboundIPRanges: "*"
+        traffic.sidecar.istio.io/excludeInboundPorts: "9090"  # Exclude metrics port from mTLS
+        # Istio proxy lifecycle
+        proxy.istio.io/config: |
+          terminationDrainDuration: 30s
+          holdApplicationUntilProxyStarts: true
     spec:
       terminationGracePeriodSeconds: 60
       securityContext:

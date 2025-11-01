@@ -1,0 +1,178 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: synfinance-api
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  hosts:
+  - "api.synfinance.com"
+  - "synfinance-api.synfinance-production.svc.cluster.local"
+  gateways:
+  - synfinance-gateway
+  - mesh  # Also apply to internal mesh traffic
+  
+  http:
+  # Health check endpoint (always route to stable)
+  - match:
+    - uri:
+        exact: /health
+    - uri:
+        exact: /metrics
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+    timeout: 5s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: 5xx,reset,connect-failure,refused-stream
+
+  # GraphQL endpoint
+  - match:
+    - uri:
+        prefix: /graphql
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+      weight: 90  # 90% to stable version
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: canary
+        port:
+          number: 8000
+      weight: 10  # 10% canary testing
+    timeout: 30s
+    retries:
+      attempts: 2
+      perTryTimeout: 15s
+      retryOn: 5xx
+
+  # WebSocket endpoint (no retries for WebSocket)
+  - match:
+    - uri:
+        prefix: /ws
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+    timeout: 1h  # Long timeout for WebSocket connections
+
+  # API v1 endpoints
+  - match:
+    - uri:
+        prefix: /api/v1
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+      weight: 95
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: canary
+        port:
+          number: 8000
+      weight: 5
+    timeout: 15s
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+      retryOn: 5xx,reset,connect-failure
+
+  # API v2 endpoints (newer version, more canary traffic)
+  - match:
+    - uri:
+        prefix: /api/v2
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+      weight: 80
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: canary
+        port:
+          number: 8000
+      weight: 20
+    timeout: 15s
+    retries:
+      attempts: 3
+      perTryTimeout: 5s
+
+  # Default route (all other traffic)
+  - route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+        port:
+          number: 8000
+    timeout: 30s
+
+---
+# VirtualService for fault injection testing (optional, for testing only)
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: synfinance-api-fault-injection
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: testing
+    enabled: "false"  # Set to "true" to enable fault injection
+spec:
+  hosts:
+  - synfinance-api.synfinance-production.svc.cluster.local
+  http:
+  - match:
+    - headers:
+        x-test-fault:
+          exact: "true"
+    fault:
+      delay:
+        percentage:
+          value: 10  # 10% of requests
+        fixedDelay: 5s
+      abort:
+        percentage:
+          value: 5  # 5% of requests
+        httpStatus: 503
+    route:
+    - destination:
+        host: synfinance-api.synfinance-production.svc.cluster.local
+        subset: stable
+
+---
+# VirtualService for database (internal mesh traffic)
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: postgres
+  namespace: synfinance-production
+  labels:
+    app: postgres
+spec:
+  hosts:
+  - postgres.synfinance-production.svc.cluster.local
+  tcp:
+  - match:
+    - port: 5432
+    route:
+    - destination:
+        host: postgres.synfinance-production.svc.cluster.local
+        port:
+          number: 5432

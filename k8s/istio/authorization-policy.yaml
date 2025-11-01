@@ -1,0 +1,265 @@
+---
+# Default deny all policy (security best practice)
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+spec:
+  {}  # Empty spec = deny all by default
+
+---
+# Allow health checks from ingress gateway
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-health-checks
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        paths:
+        - /health
+        - /metrics
+        methods:
+        - GET
+
+---
+# Allow ingress gateway to access API
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-ingress-to-api
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces:
+        - istio-system
+        principals:
+        - cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
+    to:
+    - operation:
+        methods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - OPTIONS
+
+---
+# Allow API to access PostgreSQL
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-api-to-postgres
+  namespace: synfinance-production
+  labels:
+    app: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/synfinance-production/sa/synfinance-api
+    to:
+    - operation:
+        ports:
+        - "5432"
+
+---
+# Allow API to access Redis
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-api-to-redis
+  namespace: synfinance-production
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals:
+        - cluster.local/ns/synfinance-production/sa/synfinance-api
+    to:
+    - operation:
+        ports:
+        - "6379"
+
+---
+# Allow Prometheus to scrape metrics
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-prometheus-scraping
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces:
+        - monitoring
+        - istio-system
+        principals:
+        - cluster.local/ns/monitoring/sa/prometheus
+        - cluster.local/ns/istio-system/sa/prometheus
+    to:
+    - operation:
+        paths:
+        - /metrics
+        methods:
+        - GET
+
+---
+# JWT authentication policy (for API tokens)
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: require-jwt-for-api
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: ALLOW
+  rules:
+  # Public endpoints (no JWT required)
+  - to:
+    - operation:
+        paths:
+        - /health
+        - /metrics
+        - /api/v1/auth/login
+        methods:
+        - GET
+        - POST
+  
+  # Protected endpoints (JWT required via RequestAuthentication)
+  - from:
+    - source:
+        requestPrincipals:
+        - "*"
+    to:
+    - operation:
+        paths:
+        - /api/*
+        - /graphql
+        notPaths:
+        - /api/v1/auth/login
+        methods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+
+---
+# Role-based access control (admin endpoints)
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: admin-only-endpoints
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.claims[role]
+      values:
+      - admin
+    to:
+    - operation:
+        paths:
+        - /api/v1/admin/*
+        - /api/v2/admin/*
+
+---
+# Rate limiting by IP (using CUSTOM action with Envoy ext_authz)
+# Requires external authorization service
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: rate-limit-by-ip
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    enabled: "false"  # Enable when ext_authz is configured
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: CUSTOM
+  provider:
+    name: rate-limiter  # External rate limiting service
+  rules:
+  - to:
+    - operation:
+        paths:
+        - /api/*
+
+---
+# Deny policy for specific user agents (block bots)
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-bad-user-agents
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  action: DENY
+  rules:
+  - when:
+    - key: request.headers[User-Agent]
+      values:
+      - "*bot*"
+      - "*crawler*"
+      - "*scraper*"
+      notValues:
+      - "*Googlebot*"  # Allow legitimate bots

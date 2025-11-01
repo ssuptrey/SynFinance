@@ -1,0 +1,184 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: synfinance-api
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  host: synfinance-api.synfinance-production.svc.cluster.local
+  
+  # Traffic policy defaults
+  trafficPolicy:
+    # Load balancing strategy
+    loadBalancer:
+      simple: LEAST_REQUEST  # Route to least busy backend
+      # Alternative: ROUND_ROBIN, RANDOM, PASSTHROUGH
+      localityLbSetting:
+        enabled: true
+        failover:
+        - from: us-east-1
+          to: us-west-2
+    
+    # Connection pool settings
+    connectionPool:
+      tcp:
+        maxConnections: 100
+        connectTimeout: 3s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+      http:
+        http1MaxPendingRequests: 50
+        http2MaxRequests: 100
+        maxRequestsPerConnection: 2
+        maxRetries: 3
+        idleTimeout: 900s
+        h2UpgradePolicy: UPGRADE  # Allow HTTP/2 upgrade
+    
+    # Outlier detection (circuit breaker)
+    outlierDetection:
+      consecutive5xxErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50
+      minHealthPercent: 50
+      splitExternalLocalOriginErrors: true
+      consecutiveLocalOriginFailures: 5
+      consecutiveGatewayErrors: 3
+    
+    # TLS settings for service-to-service
+    tls:
+      mode: ISTIO_MUTUAL  # Use Istio's mTLS
+  
+  # Subsets for canary deployments
+  subsets:
+  # Stable version (current production)
+  - name: stable
+    labels:
+      version: stable
+    trafficPolicy:
+      loadBalancer:
+        simple: LEAST_REQUEST
+      connectionPool:
+        tcp:
+          maxConnections: 100
+        http:
+          http2MaxRequests: 100
+      outlierDetection:
+        consecutive5xxErrors: 5
+        interval: 30s
+        baseEjectionTime: 30s
+
+  # Canary version (new release for testing)
+  - name: canary
+    labels:
+      version: canary
+    trafficPolicy:
+      loadBalancer:
+        simple: LEAST_REQUEST
+      connectionPool:
+        tcp:
+          maxConnections: 50  # Lower limits for canary
+        http:
+          http2MaxRequests: 50
+      outlierDetection:
+        consecutive5xxErrors: 3  # More aggressive circuit breaking for canary
+        interval: 20s
+        baseEjectionTime: 60s
+
+  # Blue version (for blue-green deployments)
+  - name: blue
+    labels:
+      version: blue
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+
+  # Green version (for blue-green deployments)
+  - name: green
+    labels:
+      version: green
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+
+---
+# DestinationRule for PostgreSQL
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: postgres
+  namespace: synfinance-production
+  labels:
+    app: postgres
+spec:
+  host: postgres.synfinance-production.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 50
+        connectTimeout: 5s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+    outlierDetection:
+      consecutiveErrors: 3
+      interval: 30s
+      baseEjectionTime: 60s
+      maxEjectionPercent: 100
+    tls:
+      mode: DISABLE  # PostgreSQL uses its own TLS
+
+---
+# DestinationRule for Redis (if used)
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: redis
+  namespace: synfinance-production
+  labels:
+    app: redis
+spec:
+  host: redis.synfinance-production.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 200
+        connectTimeout: 2s
+    outlierDetection:
+      consecutiveErrors: 5
+      interval: 10s
+      baseEjectionTime: 30s
+    tls:
+      mode: ISTIO_MUTUAL
+
+---
+# DestinationRule with aggressive circuit breaker (for testing)
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: synfinance-api-strict
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    profile: strict
+    enabled: "false"  # Enable for high-reliability scenarios
+spec:
+  host: synfinance-api.synfinance-production.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 50
+      http:
+        http1MaxPendingRequests: 25
+        http2MaxRequests: 50
+        maxRequestsPerConnection: 1
+        maxRetries: 2
+    outlierDetection:
+      consecutive5xxErrors: 2  # Very aggressive
+      interval: 10s
+      baseEjectionTime: 60s
+      maxEjectionPercent: 75

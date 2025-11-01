@@ -1,0 +1,61 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: synfinance-gateway
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: gateway
+spec:
+  selector:
+    istio: ingressgateway  # Use Istio's default ingress gateway
+  servers:
+  # HTTP traffic (redirect to HTTPS in production)
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "api.synfinance.com"
+    - "*.synfinance.com"
+    # Uncomment for automatic HTTPS redirect
+    # tls:
+    #   httpsRedirect: true
+  
+  # HTTPS traffic
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "api.synfinance.com"
+    - "*.synfinance.com"
+    tls:
+      mode: SIMPLE
+      credentialName: synfinance-tls-cert  # K8s secret with TLS cert
+      minProtocolVersion: TLSV1_2
+      cipherSuites:
+      - ECDHE-RSA-AES256-GCM-SHA384
+      - ECDHE-RSA-AES128-GCM-SHA256
+
+---
+# Gateway for internal services (optional)
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: synfinance-internal-gateway
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: internal-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 8080
+      name: http-internal
+      protocol: HTTP
+    hosts:
+    - "internal.synfinance.local"

@@ -1,0 +1,63 @@
+---
+# Namespace-wide mTLS enforcement
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+spec:
+  mtls:
+    mode: STRICT  # Require mTLS for all workloads in this namespace
+
+---
+# Workload-specific mTLS (for specific service)
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: synfinance-api-mtls
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  mtls:
+    mode: STRICT  # Enforce mTLS for API service
+
+---
+# Port-level mTLS configuration
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: synfinance-api-ports
+  namespace: synfinance-production
+  labels:
+    app: synfinance
+    component: api
+spec:
+  selector:
+    matchLabels:
+      app: synfinance-api
+  mtls:
+    mode: STRICT
+  portLevelMtls:
+    8000:  # API port
+      mode: STRICT
+    9090:  # Metrics port (may want PERMISSIVE for Prometheus)
+      mode: PERMISSIVE
+
+---
+# Global mesh-wide mTLS (apply to istio-system)
+# Uncomment to enforce mTLS across entire mesh
+# apiVersion: security.istio.io/v1beta1
+# kind: PeerAuthentication
+# metadata:
+#   name: default
+#   namespace: istio-system
+# spec:
+#   mtls:
+#     mode: STRICT
