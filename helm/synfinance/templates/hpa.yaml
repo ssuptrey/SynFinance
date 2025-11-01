@@ -1,0 +1,91 @@
+{{- if .Values.api.autoscaling.enabled }}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.api.name }}-hpa
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.api.labels" . | nindent 4 }}
+    app.kubernetes.io/component: autoscaling
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.api.name }}
+  minReplicas: {{ .Values.api.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.api.autoscaling.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.api.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.api.autoscaling.targetMemoryUtilizationPercentage }}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: {{ .Values.api.autoscaling.scaleUp.stabilizationWindowSeconds }}
+      policies:
+        {{- toYaml .Values.api.autoscaling.scaleUp.policies | nindent 8 }}
+      selectPolicy: Max
+    scaleDown:
+      stabilizationWindowSeconds: {{ .Values.api.autoscaling.scaleDown.stabilizationWindowSeconds }}
+      policies:
+        {{- toYaml .Values.api.autoscaling.scaleDown.policies | nindent 8 }}
+      selectPolicy: Min
+{{- end }}
+---
+{{- if .Values.api.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.api.name }}-pdb
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.api.labels" . | nindent 4 }}
+    app.kubernetes.io/component: availability
+spec:
+  minAvailable: {{ .Values.api.podDisruptionBudget.minAvailable }}
+  selector:
+    matchLabels:
+      {{- include "synfinance.api.selectorLabels" . | nindent 6 }}
+  unhealthyPodEvictionPolicy: AlwaysAllow
+{{- end }}
+---
+{{- if and .Values.postgres.enabled .Values.postgres.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.postgres.name }}-pdb
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.postgres.labels" . | nindent 4 }}
+    app.kubernetes.io/component: availability
+spec:
+  maxUnavailable: {{ .Values.postgres.podDisruptionBudget.maxUnavailable }}
+  selector:
+    matchLabels:
+      {{- include "synfinance.postgres.selectorLabels" . | nindent 6 }}
+{{- end }}
+---
+{{- if and .Values.redis.enabled .Values.redis.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.redis.name }}-pdb
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.redis.labels" . | nindent 4 }}
+    app.kubernetes.io/component: availability
+spec:
+  maxUnavailable: {{ .Values.redis.podDisruptionBudget.maxUnavailable }}
+  selector:
+    matchLabels:
+      {{- include "synfinance.redis.selectorLabels" . | nindent 6 }}
+{{- end }}

@@ -23,8 +23,8 @@ database:
   host: "localhost"
   port: 5432
   name: "synfinance"
-  user: "postgres"
-  password: ""
+  user: "synfinance_trey"
+  password: "synfinance_guccigeng77@"
   pool_size: 10
   max_overflow: 20
   pool_timeout: 30

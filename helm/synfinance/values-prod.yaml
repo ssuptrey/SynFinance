@@ -1,0 +1,103 @@
+# Production environment values
+# Production-grade configurations with high availability
+
+global:
+  environment: production
+
+api:
+  replicaCount: 5
+  
+  image:
+    pullPolicy: IfNotPresent
+  
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+      ephemeral-storage: 2Gi
+    limits:
+      cpu: 4000m
+      memory: 8Gi
+      ephemeral-storage: 4Gi
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 5
+    maxReplicas: 50
+    targetCPUUtilizationPercentage: 60
+    targetMemoryUtilizationPercentage: 70
+  
+  podDisruptionBudget:
+    enabled: true
+    minAvailable: 3
+  
+  config:
+    LOG_LEVEL: "WARNING"
+    DEBUG: "false"
+    ENVIRONMENT: "production"
+    API_WORKERS: "8"
+
+postgres:
+  persistence:
+    size: 100Gi
+    storageClass: "synfinance-fast-ssd"
+  
+  resources:
+    requests:
+      cpu: 2000m
+      memory: 4Gi
+    limits:
+      cpu: 8000m
+      memory: 16Gi
+  
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: 0
+  
+  config:
+    max_connections: 500
+    shared_buffers: "4GB"
+    effective_cache_size: "12GB"
+    work_mem: "32MB"
+    maintenance_work_mem: "1GB"
+
+redis:
+  persistence:
+    size: 10Gi
+    storageClass: "synfinance-fast-ssd"
+  
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+  
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: 0
+  
+  config:
+    maxmemory: "1536mb"
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/limit-rps: "500"
+    nginx.ingress.kubernetes.io/limit-connections: "500"
+
+networkPolicy:
+  enabled: true
+
+resourceQuota:
+  enabled: true
+  hard:
+    requests.cpu: "100"
+    requests.memory: 200Gi
+    requests.storage: 500Gi
+    limits.cpu: "200"
+    limits.memory: 400Gi
+
+limitRange:
+  enabled: true

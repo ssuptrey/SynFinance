@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: synfinance
+  labels:
+    name: synfinance
+    app.kubernetes.io/name: synfinance
+    app.kubernetes.io/version: "2.15.0"
+    app.kubernetes.io/component: platform
+    app.kubernetes.io/part-of: synfinance
+    environment: production
+  annotations:
+    description: "SynFinance Fraud Detection Platform - Production Environment"

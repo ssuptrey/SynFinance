@@ -17,6 +17,8 @@ server:
 # Database Configuration
 database:
   name: "synfinance_test"
+  user: "synfinance_trey"
+  password: "synfinance_guccigeng77@"
   pool_size: 2  # Minimal pool for tests
   max_overflow: 5
   echo: false  # No SQL logging in tests

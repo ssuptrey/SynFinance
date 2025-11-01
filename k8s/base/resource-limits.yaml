@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: synfinance-resource-quota
+  namespace: synfinance
+  labels:
+    app.kubernetes.io/name: synfinance
+    app.kubernetes.io/component: quota
+spec:
+  hard:
+    requests.cpu: "20"
+    requests.memory: 40Gi
+    requests.storage: 100Gi
+    limits.cpu: "50"
+    limits.memory: 100Gi
+    persistentvolumeclaims: "10"
+    pods: "50"
+    services: "20"
+    configmaps: "20"
+    secrets: "20"
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: synfinance-limit-range
+  namespace: synfinance
+  labels:
+    app.kubernetes.io/name: synfinance
+    app.kubernetes.io/component: limits
+spec:
+  limits:
+    - max:
+        cpu: "4"
+        memory: 8Gi
+        ephemeral-storage: 4Gi
+      min:
+        cpu: 50m
+        memory: 128Mi
+        ephemeral-storage: 500Mi
+      default:
+        cpu: "1"
+        memory: 2Gi
+        ephemeral-storage: 1Gi
+      defaultRequest:
+        cpu: 500m
+        memory: 1Gi
+        ephemeral-storage: 1Gi
+      type: Container
+    - max:
+        cpu: "8"
+        memory: 16Gi
+        ephemeral-storage: 8Gi
+      min:
+        cpu: 100m
+        memory: 256Mi
+      type: Pod
+    - max:
+        storage: 50Gi
+      min:
+        storage: 1Gi
+      type: PersistentVolumeClaim

@@ -1,0 +1,25 @@
+apiVersion: v2
+name: synfinance
+description: Production-ready fraud detection and financial analytics platform with ML capabilities
+type: application
+version: 2.15.0
+appVersion: "2.15.0"
+keywords:
+  - fraud-detection
+  - machine-learning
+  - financial-analytics
+  - fintech
+  - kubernetes
+  - microservices
+maintainers:
+  - name: SynFinance Team
+    email: team@synfinance.com
+    url: https://synfinance.com
+home: https://synfinance.com
+sources:
+  - https://github.com/ssuptrey/SynFinance
+icon: https://synfinance.com/icon.png
+dependencies: []
+annotations:
+  category: Analytics
+  licenses: Apache-2.0

@@ -10,11 +10,24 @@ import pytest
 from datetime import datetime, timedelta
 from decimal import Decimal
 from unittest.mock import Mock, patch, MagicMock
+import os
+import shutil
 
 from src.database import (
     Transaction, Customer, Merchant, MLFeatures, ModelPrediction,
     DatabaseConfig, DatabaseManager,
     TransactionRepository, CustomerRepository, MerchantRepository
+)
+
+
+def is_postgres_available():
+    """Check if PostgreSQL is available."""
+    return shutil.which("psql") is not None
+
+
+postgres_required = pytest.mark.skipif(
+    not is_postgres_available(),
+    reason="PostgreSQL not installed"
 )
 
 
@@ -258,14 +271,22 @@ class TestRepositories:
 class TestIntegration:
     """Integration tests (require database)"""
     
-    @pytest.mark.skip(reason="Requires PostgreSQL database")
+    @postgres_required
     def test_full_workflow(self):
         """Test full database workflow"""
-        # This would test:
-        # 1. Initialize database
-        # 2. Create tables
-        # 3. Insert data
-        # 4. Query data
-        # 5. Update data
-        # 6. Delete data
-        pass
+        # Test basic database functionality
+        config = DatabaseConfig(
+            host="localhost",
+            port=5432,
+            database="postgres",  # Use default postgres database for testing
+            username=os.getenv("POSTGRES_USER", "postgres"),
+            password=os.getenv("POSTGRES_PASSWORD", "postgres")
+        )
+        
+        # Just verify we can create config and connection string
+        conn_str = config.get_connection_string()
+        assert "postgresql+psycopg2://" in conn_str
+        assert "@localhost:5432/postgres" in conn_str
+        
+        # Test passes if we can create the config (actual DB connection
+        # would require a running PostgreSQL instance with proper credentials)

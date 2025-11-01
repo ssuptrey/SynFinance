@@ -1,0 +1,40 @@
+{{- if .Values.resourceQuota.enabled }}
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: synfinance-resource-quota
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.labels" . | nindent 4 }}
+    app.kubernetes.io/component: quota
+spec:
+  hard:
+    {{- toYaml .Values.resourceQuota.hard | nindent 4 }}
+{{- end }}
+---
+{{- if .Values.limitRange.enabled }}
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: synfinance-limit-range
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    {{- include "synfinance.labels" . | nindent 4 }}
+    app.kubernetes.io/component: limits
+spec:
+  limits:
+    - max:
+        cpu: {{ .Values.limitRange.container.max.cpu }}
+        memory: {{ .Values.limitRange.container.max.memory }}
+      min:
+        cpu: {{ .Values.limitRange.container.min.cpu }}
+        memory: {{ .Values.limitRange.container.min.memory }}
+      default:
+        cpu: {{ .Values.limitRange.container.default.cpu }}
+        memory: {{ .Values.limitRange.container.default.memory }}
+      defaultRequest:
+        cpu: {{ .Values.limitRange.container.defaultRequest.cpu }}
+        memory: {{ .Values.limitRange.container.defaultRequest.memory }}
+      type: Container
+{{- end }}

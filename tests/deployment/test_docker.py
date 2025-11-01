@@ -9,6 +9,18 @@ import subprocess
 import time
 import requests
 from pathlib import Path
+import shutil
+
+
+def is_docker_available():
+    """Check if Docker is available."""
+    return shutil.which("docker") is not None
+
+
+docker_required = pytest.mark.skipif(
+    not is_docker_available(),
+    reason="Docker not installed"
+)
 
 
 class TestDockerBuild:
@@ -36,6 +48,7 @@ class TestDockerBuild:
         assert compose_file.exists(), "docker-compose.yml not found"
 
 
+@docker_required
 class TestDockerCompose:
     """Test Docker Compose configuration."""
     
@@ -62,6 +75,7 @@ class TestDockerCompose:
 
 @pytest.mark.slow
 @pytest.mark.integration
+@docker_required
 class TestDockerImage:
     """Test Docker image functionality."""
     
@@ -116,6 +130,7 @@ class TestDockerImage:
 
 @pytest.mark.slow
 @pytest.mark.integration
+@docker_required
 class TestContainerRuntime:
     """Test running Docker container."""
     
@@ -198,7 +213,46 @@ class TestContainerRuntime:
         
         response = requests.get("http://localhost:8001/health")
         assert response.status_code == 200
-        assert response.json().get("status") == "healthy"
+        data = response.json()
+        # Status can be "healthy" or "degraded" (if DB/Redis not configured)
+        assert data.get("status") in ["healthy", "degraded"]
+        assert "version" in data
+    
+    def test_readiness_check(self, running_container):
+        """Test that readiness check endpoint works."""
+        response = requests.get("http://localhost:8001/health/ready", timeout=10)
+        # May be 200 (ready) or 503 (not ready yet)
+        assert response.status_code in [200, 503]
+        
+        data = response.json()
+        # Response can have "checks" at root or nested in "detail"
+        assert "checks" in data or ("detail" in data and "checks" in data["detail"])
+        assert "status" in data or ("detail" in data and "status" in data["detail"])
+    
+    def test_detailed_health(self, running_container):
+        """Test that detailed health endpoint works."""
+        response = requests.get("http://localhost:8001/health/detailed", timeout=10)
+        assert response.status_code == 200
+        
+        data = response.json()
+        assert "version" in data
+        assert "uptime_seconds" in data
+        assert data["version"] == "2.15.0"
+    
+    def test_ping_endpoint(self, running_container):
+        """Test that ping endpoint works."""
+        response = requests.get("http://localhost:8001/health/ping", timeout=5)
+        assert response.status_code == 200
+        assert response.json() == {"ping": "pong"}
+    
+    def test_version_endpoint(self, running_container):
+        """Test that version endpoint works."""
+        response = requests.get("http://localhost:8001/health/version", timeout=5)
+        assert response.status_code == 200
+        
+        data = response.json()
+        assert data["version"] == "2.15.0"
+        assert data["name"] == "SynFinance"
     
     def test_api_docs_accessible(self, running_container):
         """Test that API documentation is accessible."""

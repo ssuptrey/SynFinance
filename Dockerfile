@@ -3,16 +3,18 @@
 # Target: <500MB final image
 
 # Stage 1: Builder - Install dependencies
-FROM python:3.12-slim AS builder
+FROM python:3.13-slim AS builder
 
 # Set build arguments
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Install build dependencies
+# Install build dependencies (needed for XGBoost, LightGBM, etc.)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     g++ \
+    cmake \
     python3-dev \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create virtual environment
@@ -27,12 +29,12 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
     pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime - Create minimal production image
-FROM python:3.12-slim
+FROM python:3.13-slim
 
 # Set metadata
 LABEL maintainer="SynFinance Team"
-LABEL version="0.6.6"
-LABEL description="SynFinance - Synthetic Financial Data Generator with ML & Fraud Detection"
+LABEL version="2.15.0"
+LABEL description="SynFinance - Enterprise Fraud Detection Platform with GraphQL, WebSocket, ML Ensemble, Multi-tenancy & API Versioning"
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -45,6 +47,7 @@ ENV PYTHONUNBUFFERED=1 \
 # Install runtime dependencies only
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy virtual environment from builder

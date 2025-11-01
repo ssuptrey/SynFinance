@@ -1,0 +1,64 @@
+# Staging environment values
+# Production-like configuration with reduced resources
+
+global:
+  environment: staging
+
+api:
+  replicaCount: 2
+  
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+      ephemeral-storage: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+      ephemeral-storage: 2Gi
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+  
+  config:
+    LOG_LEVEL: "INFO"
+    DEBUG: "false"
+    ENVIRONMENT: "staging"
+
+postgres:
+  persistence:
+    size: 50Gi
+  
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+    limits:
+      cpu: 4000m
+      memory: 8Gi
+
+redis:
+  persistence:
+    size: 5Gi
+  
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+ingress:
+  enabled: true
+  hosts:
+    - host: staging.api.synfinance.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: synfinance-staging-tls
+      hosts:
+        - staging.api.synfinance.com

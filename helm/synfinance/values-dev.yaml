@@ -1,0 +1,79 @@
+# Development environment values
+# Override production defaults for local development
+
+global:
+  environment: development
+
+api:
+  replicaCount: 1
+  
+  image:
+    pullPolicy: Never
+  
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+      ephemeral-storage: 500Mi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+      ephemeral-storage: 1Gi
+  
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 3
+  
+  podDisruptionBudget:
+    enabled: false
+  
+  config:
+    LOG_LEVEL: "DEBUG"
+    DEBUG: "true"
+    ENVIRONMENT: "development"
+
+postgres:
+  persistence:
+    size: 5Gi
+  
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+  
+  podDisruptionBudget:
+    enabled: false
+
+redis:
+  persistence:
+    size: 1Gi
+  
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  
+  podDisruptionBudget:
+    enabled: false
+  
+  config:
+    maxmemory: "128mb"
+
+ingress:
+  enabled: false
+
+networkPolicy:
+  enabled: false
+
+resourceQuota:
+  enabled: false
+
+limitRange:
+  enabled: false

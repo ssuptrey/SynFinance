@@ -20,6 +20,8 @@ server:
 # Database Configuration
 database:
   name: "synfinance_dev"
+  user: "synfinance_trey"
+  password: "synfinance_guccigeng77@"
   pool_size: 5  # Smaller pool for dev
   echo: true  # Log all SQL queries
 

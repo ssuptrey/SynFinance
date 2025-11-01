@@ -1,0 +1,52 @@
+# Docker Compose Development Override
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: development
+    image: synfinance:2.15.0-dev
+    environment:
+      - SYNFINANCE_ENV=development
+      - LOG_LEVEL=DEBUG
+      - RELOAD=true
+      - DEBUG=true
+    volumes:
+      # Mount source code for live reload
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./examples:/app/examples
+      - ./config:/app/config
+    command: uvicorn src.app:app --host 0.0.0.0 --port 8000 --reload --log-level debug
+    ports:
+      - "8000:8000"
+      - "5678:5678"  # Debug port
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
+
+  postgres:
+    environment:
+      - POSTGRES_DB=synfinance_dev
+    ports:
+      - "5433:5432"  # Different port for dev
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+
+  redis:
+    ports:
+      - "6380:6379"  # Different port for dev
+    volumes:
+      - redis-dev-data:/data
+
+volumes:
+  postgres-dev-data:
+    name: synfinance-postgres-dev-data
+  redis-dev-data:
+    name: synfinance-redis-dev-data

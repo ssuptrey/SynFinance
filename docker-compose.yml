@@ -9,7 +9,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: synfinance:latest
+    image: synfinance:2.15.0
     container_name: synfinance-api
     restart: unless-stopped
     ports:
@@ -18,10 +18,22 @@ services:
       - SYNFINANCE_ENV=production
       - PYTHONUNBUFFERED=1
       - LOG_LEVEL=INFO
+      - DATABASE_URL=postgresql://synfinance_trey:synfinance_password@postgres:5432/synfinance
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY:-changeme-secret-key}
+      - JWT_SECRET=${JWT_SECRET:-changeme-jwt-secret}
+      - ENABLE_GRAPHQL=true
+      - ENABLE_WEBSOCKET=true
+      - ENABLE_MULTITENANCY=true
     volumes:
       - ./data:/app/data:ro  # Read-only data mount
       - ./output:/app/output  # Output directory
       - ./logs:/app/logs      # Logs directory
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -99,37 +111,37 @@ services:
     profiles:
       - monitoring
 
-  # PostgreSQL Database (Optional - for persistence)
+  # PostgreSQL Database (Required for GraphQL, Multi-tenancy)
   postgres:
-    image: postgres:15-alpine
+    image: postgres:14-alpine
     container_name: synfinance-postgres
     restart: unless-stopped
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=synfinance
-      - POSTGRES_PASSWORD=synfinance_password  # Change in production!
+      - POSTGRES_USER=synfinance_trey
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-synfinance_password}
       - POSTGRES_DB=synfinance
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./setup_database.sql:/docker-entrypoint-initdb.d/setup_database.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U synfinance"]
+      test: ["CMD-SHELL", "pg_isready -U synfinance_trey -d synfinance"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
       - synfinance-network
-    profiles:
-      - database
 
-  # Redis Cache (Optional - for caching)
+  # Redis Cache (Required for WebSocket, caching)
   redis:
     image: redis:7-alpine
     container_name: synfinance-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
-    command: redis-server --appendonly yes
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
     volumes:
       - redis-data:/data
     healthcheck:
@@ -139,8 +151,6 @@ services:
       retries: 5
     networks:
       - synfinance-network
-    profiles:
-      - cache
 
 networks:
   synfinance-network:

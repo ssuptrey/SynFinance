@@ -1,0 +1,24 @@
+# SynFinance Kubernetes Kustomization
+
+resources:
+  - namespace.yaml
+  - storage-class.yaml
+  - configmap.yaml
+  - secrets.yaml
+  - rbac.yaml
+  - postgres-statefulset.yaml
+  - redis-statefulset.yaml
+  - api-deployment.yaml
+  - hpa.yaml
+  - ingress.yaml
+  - resource-limits.yaml
+
+namespace: synfinance
+
+commonLabels:
+  app.kubernetes.io/part-of: synfinance
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+  - name: synfinance
+    newTag: "2.15.0"

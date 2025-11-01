@@ -17,10 +17,10 @@ if requirements_file.exists():
 
 setup(
     name="synfinance",
-    version="1.0.0",  # Week 7 complete - Production infrastructure
+    version="2.15.0",  # Week 8 complete - Enterprise features & advanced APIs
     author="SynFinance Development Team",
     author_email="dev@synfinance.example.com",
-    description="Production-grade synthetic financial transaction data generator for Indian market with fraud detection, ML features, database integration, and professional CLI tools",
+    description="Enterprise-grade synthetic financial transaction data generator with GraphQL/WebSocket APIs, ensemble ML models, multi-tenancy, and comprehensive API versioning",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ssuptrey/synfinance",
