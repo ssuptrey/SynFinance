@@ -1,0 +1,60 @@
+name: CI - manifests & helm
+
+on:
+  push:
+    paths:
+      - 'k8s/**'
+      - 'helm/**'
+      - 'tests/deployment/**'
+      - '.github/workflows/ci-manifest.yml'
+  pull_request:
+    paths:
+      - 'k8s/**'
+      - 'helm/**'
+      - 'tests/deployment/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest yamllint kubeval pyyaml
+
+      - name: Lint YAML
+        run: |
+          yamllint -c .yamllint.yaml k8s || true
+
+      - name: Helm lint & template
+        run: |
+          # install helm (bundled by runner) and run lint
+          if [ -x "$(command -v helm)" ]; then
+            helm version
+          else
+            curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+          fi
+          ./scripts/ci/helm_lint.sh || true
+
+      - name: Run manifest unit tests
+        run: |
+          ./scripts/ci/run_tests.sh -k "TestKubernetesManifests" || exit 1
+
+      - name: Run full test suite (fast)
+        run: |
+          ./scripts/ci/run_tests.sh || true
+
+      - name: Summary
+        run: echo "Manifest linting and tests completed. See above for failures." 
+
+# Notes:
+# - This workflow focuses on linting and test-only checks for manifests and Helm. It does not build or push container images.
+# - Keep your existing CI workflow intact; this file is intentionally additive and low-risk.

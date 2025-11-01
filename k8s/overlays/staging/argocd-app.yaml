@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: synfinance-staging
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: synfinance
+    app.kubernetes.io/part-of: synfinance
+    environment: staging
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/ssuptrey/SynFinance.git"
+    path: "helm/synfinance"
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-staging.yaml
+      parameters:
+        - name: image.tag
+          value: "main-*"  # Use main branch builds for staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: synfinance-staging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  # Staging can be more aggressive with auto-sync for faster feedback
