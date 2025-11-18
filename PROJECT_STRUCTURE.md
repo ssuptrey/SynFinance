@@ -2,9 +2,9 @@
 
 Complete directory structure and file organization for the SynFinance synthetic transaction data generator.
 
-**Last Updated**: November 2, 2025
-**Version**: 2.16.0 (Production/Stable)
-**Status**: Week 9 Complete - Production Infrastructure & DevOps
+**Last Updated**: November 5, 2025
+**Version**: 2.17.0 (Production/Stable)
+**Status**: Week 11 Day 4 Complete - Benchmark Validation Suite
 
 ## Project Overview
 
@@ -387,6 +387,40 @@ SynFinance/
 │   │   ├── scan_image.sh               # Trivy scanning wrapper
 │   │   └── deploy_argocd.sh            # ArgoCD sync helper
 │   └── ...                             # Other utility scripts
+│
+├── benchmarks/                         # Benchmark Validation Suite (Week 11 Day 2-4 - 1,267 lines)
+│   ├── README.md                       # Validation methodology (305 lines)
+│   ├── model_research.md               # 5 model architectures documented
+│   ├── generate_dataset.py             # Generate 500k realistic UPI transactions (418 lines)
+│   ├── verify_dataset.py               # Data quality validation
+│   ├── train_models.py                 # Train 5 fraud detection models (387 lines)
+│   ├── evaluate_models.py              # Comprehensive evaluation pipeline (462 lines)
+│   │
+│   ├── data/                           # Generated datasets
+│   │   ├── train_500k.parquet          # 350k training transactions
+│   │   ├── test_150k.parquet           # 150k test transactions
+│   │   ├── full_500k.parquet           # Complete 500k dataset
+│   │   └── dataset_validation_stats.json  # Quality metrics
+│   │
+│   ├── models/                         # Trained fraud detection models
+│   │   ├── logistic_regression.pkl     # Baseline model + scaler
+│   │   ├── random_forest.pkl           # 200 trees ensemble
+│   │   ├── xgboost.pkl                 # Gradient boosting (industry standard)
+│   │   ├── lightgbm.pkl                # Fast boosting (BEST: 81.22% recall)
+│   │   ├── neural_network.h5           # 3-layer neural network
+│   │   ├── neural_network_scaler.pkl   # StandardScaler for NN
+│   │   ├── feature_names.json          # Feature order (26 features)
+│   │   └── training_summary.json       # Training times, parameters
+│   │
+│   └── results/                        # Evaluation results
+│       ├── model_comparison.csv        # Model comparison table
+│       ├── evaluation_results.json     # Raw metrics for all models
+│       ├── training_summary.json       # Training performance
+│       └── charts/                     # Visualizations
+│           ├── roc_curves.png          # ROC comparison
+│           ├── precision_recall.png    # Precision-recall curves
+│           ├── confusion_matrices.png  # Error breakdown
+│           └── metrics_comparison.png  # Bar charts
 │
 ├── Dockerfile                          # Production Docker image (Week 9 Day 1 - 231 lines)
 ├── docker-compose.yml                  # Docker Compose (Week 9 Day 1 - 3 services)

@@ -62,6 +62,34 @@ pyjwt>=2.8.0
 scipy>=1.11.0
 statsmodels>=0.14.0
 
+# Visualization Dependencies (Week 10 Day 2)
+plotly>=5.17.0
+folium>=0.15.0
+kaleido>=0.2.1
+Pillow>=10.0.0
+
+# Reporting Dependencies (Week 10 Day 3)
+jinja2>=3.1.0
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+# Optional: weasyprint>=60.0 (PDF export - requires GTK on Windows)
+reportlab>=4.0.0
+
+# Advanced Fraud Detection Dependencies (Week 10 Day 4)
+networkx>=3.0
+# Optional: redis>=5.0.0 (already listed above - distributed velocity caching)
+# Optional: mlflow>=2.9.0 (model deployment tracking)
+# Optional: prophet>=1.1.5 (time-series anomaly detection)
+
+# Performance Optimization Dependencies (Week 10 Day 5)
+# psutil>=5.9.0 (already listed above - system metrics)
+memory-profiler>=0.61.0
+locust>=2.17.0
+aiohttp>=3.9.0
+# Optional: py-spy>=0.3.14 (production profiling)
+# Optional: asyncpg>=0.29.0 (async PostgreSQL)
+# Optional: aiosqlite>=0.19.0 (async SQLite)
+
 # Testing Dependencies
 pytest>=7.4.0
 pytest-cov>=4.1.0

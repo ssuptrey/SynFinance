@@ -1,0 +1,19 @@
+# Streamlit Cloud Requirements (Essential packages only)
+# Full requirements.txt has too many heavy dependencies
+
+# Core Dependencies
+streamlit>=1.28.0
+pandas>=2.2.0
+faker==19.12.0
+numpy>=1.26.0
+xlsxwriter==3.1.9
+
+# ML Dependencies (only essential ones for demo)
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pyarrow>=14.0.0
+
+# Note: Heavy dependencies like TensorFlow, XGBoost, Redis, PostgreSQL
+# are excluded for Streamlit Cloud demo. Full functionality requires
+# local or custom deployment.

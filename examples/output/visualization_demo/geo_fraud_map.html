@@ -1,0 +1,5421 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2ae041b5252c0522c4a7d223cfa0e92f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 600.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2ae041b5252c0522c4a7d223cfa0e92f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2ae041b5252c0522c4a7d223cfa0e92f = L.map(
+                "map_2ae041b5252c0522c4a7d223cfa0e92f",
+                {
+                    center: [40.62791585605604, -97.86908910938084],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8b82f9bb05a7496e8b4cc364d41ab497 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8b82f9bb05a7496e8b4cc364d41ab497.addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var marker_e7a6510f764b4b21989394f2f91578b7 = L.marker(
+                [49.511898385743336, -115.2325118106905],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_7d8979328638a6e9e814ea5b1d818ec9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8680f7d761d627c813e9142528849855 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7e07af2a8654e3c674c9fe7c4138b09c = $(`<div id="html_7e07af2a8654e3c674c9fe7c4138b09c" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 24.027819783187482<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-10-28 02:17:26.027350352</div>`)[0];
+                popup_8680f7d761d627c813e9142528849855.setContent(html_7e07af2a8654e3c674c9fe7c4138b09c);
+            
+        
+
+        marker_e7a6510f764b4b21989394f2f91578b7.bindPopup(popup_8680f7d761d627c813e9142528849855)
+        ;
+
+        
+    
+    
+                marker_e7a6510f764b4b21989394f2f91578b7.setIcon(icon_7d8979328638a6e9e814ea5b1d818ec9);
+            
+    
+            var marker_e415414648d65cd82bb294beb83c6000 = L.marker(
+                [38.894245616343625, -85.72351296824826],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_3e253c74fbc01b0f606d3efdb33ef633 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_855fdffdd8fb822dca4e3ed192c077a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df2442555135646a45929cb673f168e6 = $(`<div id="html_df2442555135646a45929cb673f168e6" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 199.6114200755363<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-07-04 00:19:55.082255844</div>`)[0];
+                popup_855fdffdd8fb822dca4e3ed192c077a7.setContent(html_df2442555135646a45929cb673f168e6);
+            
+        
+
+        marker_e415414648d65cd82bb294beb83c6000.bindPopup(popup_855fdffdd8fb822dca4e3ed192c077a7)
+        ;
+
+        
+    
+    
+                marker_e415414648d65cd82bb294beb83c6000.setIcon(icon_3e253c74fbc01b0f606d3efdb33ef633);
+            
+    
+            var marker_1cd1bd03ba8504f6571a606fdedb1ff3 = L.marker(
+                [35.141457029001884, -90.68872966594937],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_cd169e7e101c995b494b8bf6357f9f5b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90b17019ca580a5184a0cfc09c7b5e92 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7eb824ebd926987296660f291a94c79b = $(`<div id="html_7eb824ebd926987296660f291a94c79b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 77.99132416574867<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-10-23 16:17:02.264974116</div>`)[0];
+                popup_90b17019ca580a5184a0cfc09c7b5e92.setContent(html_7eb824ebd926987296660f291a94c79b);
+            
+        
+
+        marker_1cd1bd03ba8504f6571a606fdedb1ff3.bindPopup(popup_90b17019ca580a5184a0cfc09c7b5e92)
+        ;
+
+        
+    
+    
+                marker_1cd1bd03ba8504f6571a606fdedb1ff3.setIcon(icon_cd169e7e101c995b494b8bf6357f9f5b);
+            
+    
+            var marker_1f802ad83bed9b105670fe1f0c56f5df = L.marker(
+                [46.64338496678393, -89.19373774563225],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_09109499e6a10db86449953bd33193f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d3c37facce3bebcb85610ee2047656be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_790b43df692fc9374f45dc5b9ed78516 = $(`<div id="html_790b43df692fc9374f45dc5b9ed78516" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 38.79702355996116<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-08-13 18:02:44.659213540</div>`)[0];
+                popup_d3c37facce3bebcb85610ee2047656be.setContent(html_790b43df692fc9374f45dc5b9ed78516);
+            
+        
+
+        marker_1f802ad83bed9b105670fe1f0c56f5df.bindPopup(popup_d3c37facce3bebcb85610ee2047656be)
+        ;
+
+        
+    
+    
+                marker_1f802ad83bed9b105670fe1f0c56f5df.setIcon(icon_09109499e6a10db86449953bd33193f5);
+            
+    
+            var marker_6bdb61446ab4216559d67f86b0e14940 = L.marker(
+                [41.611484018232765, -101.43288671544042],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ef1bf74d9392894f3a99bafdd81db3fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9cab647b44cb44b08bbf8b67756b4a38 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a9fd141deb8d43c9510ae7ce758795fb = $(`<div id="html_a9fd141deb8d43c9510ae7ce758795fb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 11.827851186321173<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-03-30 19:29:43.741121730</div>`)[0];
+                popup_9cab647b44cb44b08bbf8b67756b4a38.setContent(html_a9fd141deb8d43c9510ae7ce758795fb);
+            
+        
+
+        marker_6bdb61446ab4216559d67f86b0e14940.bindPopup(popup_9cab647b44cb44b08bbf8b67756b4a38)
+        ;
+
+        
+    
+    
+                marker_6bdb61446ab4216559d67f86b0e14940.setIcon(icon_ef1bf74d9392894f3a99bafdd81db3fd);
+            
+    
+            var marker_2db21b06809ccdfe8e7e574b6b56fd5b = L.marker(
+                [38.89920516676718, -96.7438843740799],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5aa1e49db463a47de1e478cdb3e11743 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1be0a6f8f406d13d2689ca12b461e0d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9909faf7b4e5643f06d60d0dca43d06e = $(`<div id="html_9909faf7b4e5643f06d60d0dca43d06e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 141.85846147081375<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-10-30 10:21:36.612408856</div>`)[0];
+                popup_1be0a6f8f406d13d2689ca12b461e0d5.setContent(html_9909faf7b4e5643f06d60d0dca43d06e);
+            
+        
+
+        marker_2db21b06809ccdfe8e7e574b6b56fd5b.bindPopup(popup_1be0a6f8f406d13d2689ca12b461e0d5)
+        ;
+
+        
+    
+    
+                marker_2db21b06809ccdfe8e7e574b6b56fd5b.setIcon(icon_5aa1e49db463a47de1e478cdb3e11743);
+            
+    
+            var marker_0433507e5d745c00a6c5825c91d727b3 = L.marker(
+                [38.760262005629755, -103.46564095935324],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_f99832f68f3306d4405fd45611d89b71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd48a562ea506656baded73300fbc9a4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f2dfbcb7175aff84c3364ca6a78863c = $(`<div id="html_4f2dfbcb7175aff84c3364ca6a78863c" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 97.85317040957939<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-02-24 11:58:23.273074924</div>`)[0];
+                popup_fd48a562ea506656baded73300fbc9a4.setContent(html_4f2dfbcb7175aff84c3364ca6a78863c);
+            
+        
+
+        marker_0433507e5d745c00a6c5825c91d727b3.bindPopup(popup_fd48a562ea506656baded73300fbc9a4)
+        ;
+
+        
+    
+    
+                marker_0433507e5d745c00a6c5825c91d727b3.setIcon(icon_f99832f68f3306d4405fd45611d89b71);
+            
+    
+            var marker_794003daee9209e0a3675b4e3c45b4ee = L.marker(
+                [44.28306794912574, -82.43329945191354],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d190babdfee53933d77e6b61eb458da1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f150abce2fa3ab786f80f280c0bc5aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_27e1eb2bbec2d240ce12da66e3ea000f = $(`<div id="html_27e1eb2bbec2d240ce12da66e3ea000f" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 5.147377817724969<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-18 17:08:09.771724788</div>`)[0];
+                popup_5f150abce2fa3ab786f80f280c0bc5aa.setContent(html_27e1eb2bbec2d240ce12da66e3ea000f);
+            
+        
+
+        marker_794003daee9209e0a3675b4e3c45b4ee.bindPopup(popup_5f150abce2fa3ab786f80f280c0bc5aa)
+        ;
+
+        
+    
+    
+                marker_794003daee9209e0a3675b4e3c45b4ee.setIcon(icon_d190babdfee53933d77e6b61eb458da1);
+            
+    
+            var marker_9e1796309a8104826a85c69386b75ad9 = L.marker(
+                [39.29579326227712, -87.9841247724066],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5f3a9de41268557d4da4e34f89cb373d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_940c17e91353b8f76b8349ce8f7893f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8eb923b1652d08c2ae7ecd035e59c82 = $(`<div id="html_f8eb923b1652d08c2ae7ecd035e59c82" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 5.488730702910312<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-19 03:57:57.350482666</div>`)[0];
+                popup_940c17e91353b8f76b8349ce8f7893f9.setContent(html_f8eb923b1652d08c2ae7ecd035e59c82);
+            
+        
+
+        marker_9e1796309a8104826a85c69386b75ad9.bindPopup(popup_940c17e91353b8f76b8349ce8f7893f9)
+        ;
+
+        
+    
+    
+                marker_9e1796309a8104826a85c69386b75ad9.setIcon(icon_5f3a9de41268557d4da4e34f89cb373d);
+            
+    
+            var marker_34596e67815fc2e72d71135a4f354f05 = L.marker(
+                [43.31251509531678, -98.54563731149211],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2f595139c8d9052e78c6f4df8f7c98a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad5b6620b61967039eb1efea681d6631 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7eab3b3b75fede64d2759ee9e291df0f = $(`<div id="html_7eab3b3b75fede64d2759ee9e291df0f" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2297.3217712731025<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2024-12-19 22:51:55.514299047</div>`)[0];
+                popup_ad5b6620b61967039eb1efea681d6631.setContent(html_7eab3b3b75fede64d2759ee9e291df0f);
+            
+        
+
+        marker_34596e67815fc2e72d71135a4f354f05.bindPopup(popup_ad5b6620b61967039eb1efea681d6631)
+        ;
+
+        
+    
+    
+                marker_34596e67815fc2e72d71135a4f354f05.setIcon(icon_2f595139c8d9052e78c6f4df8f7c98a1);
+            
+    
+            var marker_3ae7179a9cebc47933570ee4f1b7fc00 = L.marker(
+                [46.00567160007401, -106.77935522176442],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_a7c0c2194e0165dd65f0e164fbac3031 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b93e7e18be9226fff49da95b0bd995b7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6877d0345b3cc949bd5f195c9439c4dc = $(`<div id="html_6877d0345b3cc949bd5f195c9439c4dc" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1058.5558756656287<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-01-23 16:01:29.051652783</div>`)[0];
+                popup_b93e7e18be9226fff49da95b0bd995b7.setContent(html_6877d0345b3cc949bd5f195c9439c4dc);
+            
+        
+
+        marker_3ae7179a9cebc47933570ee4f1b7fc00.bindPopup(popup_b93e7e18be9226fff49da95b0bd995b7)
+        ;
+
+        
+    
+    
+                marker_3ae7179a9cebc47933570ee4f1b7fc00.setIcon(icon_a7c0c2194e0165dd65f0e164fbac3031);
+            
+    
+            var marker_654fb2fb6ae8a843e2fcd06165287e97 = L.marker(
+                [46.44165903192176, -108.97884312308292],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e4e882ed0f52c7b0b7fe1847e7de45f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_303812e2ba41998861b391323f0d5679 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c69b89cc2b55de7e61598417bbcadcd1 = $(`<div id="html_c69b89cc2b55de7e61598417bbcadcd1" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 669.8282680293254<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-06-06 11:45:42.877035320</div>`)[0];
+                popup_303812e2ba41998861b391323f0d5679.setContent(html_c69b89cc2b55de7e61598417bbcadcd1);
+            
+        
+
+        marker_654fb2fb6ae8a843e2fcd06165287e97.bindPopup(popup_303812e2ba41998861b391323f0d5679)
+        ;
+
+        
+    
+    
+                marker_654fb2fb6ae8a843e2fcd06165287e97.setIcon(icon_e4e882ed0f52c7b0b7fe1847e7de45f8);
+            
+    
+            var marker_d77af71293bda036c3382b43c112ff73 = L.marker(
+                [43.40363619148034, -81.98558577456056],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_03fae03b5429b3e21de544fd68abce2a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b45df86d479857ca85e7f40c075e7e03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8bfd47864104616a759d29349262b65b = $(`<div id="html_8bfd47864104616a759d29349262b65b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 342.1856149568823<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-02-05 02:46:14.200167634</div>`)[0];
+                popup_b45df86d479857ca85e7f40c075e7e03.setContent(html_8bfd47864104616a759d29349262b65b);
+            
+        
+
+        marker_d77af71293bda036c3382b43c112ff73.bindPopup(popup_b45df86d479857ca85e7f40c075e7e03)
+        ;
+
+        
+    
+    
+                marker_d77af71293bda036c3382b43c112ff73.setIcon(icon_03fae03b5429b3e21de544fd68abce2a);
+            
+    
+            var marker_b06b755a57d8b990a35a639cc0612b36 = L.marker(
+                [40.1492989849088, -96.5510891191928],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_58e8ca28bb3d53acb6829fc4588efe67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9e39bbd8c260d71b281855c0aa43ce2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a99e45e2026e97a2abe98d1565ea22b = $(`<div id="html_5a99e45e2026e97a2abe98d1565ea22b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 38.337676478447214<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-03 01:36:40.662813898</div>`)[0];
+                popup_f9e39bbd8c260d71b281855c0aa43ce2.setContent(html_5a99e45e2026e97a2abe98d1565ea22b);
+            
+        
+
+        marker_b06b755a57d8b990a35a639cc0612b36.bindPopup(popup_f9e39bbd8c260d71b281855c0aa43ce2)
+        ;
+
+        
+    
+    
+                marker_b06b755a57d8b990a35a639cc0612b36.setIcon(icon_58e8ca28bb3d53acb6829fc4588efe67);
+            
+    
+            var marker_a01b5c354a53f2516f399da245f3e9c6 = L.marker(
+                [45.199915848171, -82.59100338167033],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_fa604e5413c10ea9ad8b587ec0ecafdf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4707589e9400619ad9cffbc18dd4fa5e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_92eaf0c6b1ee68634d7fd485644504ae = $(`<div id="html_92eaf0c6b1ee68634d7fd485644504ae" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 46.85266660743035<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-13 02:32:07.395487166</div>`)[0];
+                popup_4707589e9400619ad9cffbc18dd4fa5e.setContent(html_92eaf0c6b1ee68634d7fd485644504ae);
+            
+        
+
+        marker_a01b5c354a53f2516f399da245f3e9c6.bindPopup(popup_4707589e9400619ad9cffbc18dd4fa5e)
+        ;
+
+        
+    
+    
+                marker_a01b5c354a53f2516f399da245f3e9c6.setIcon(icon_fa604e5413c10ea9ad8b587ec0ecafdf);
+            
+    
+            var marker_b070f3aa40ceeb52ca7c81b63a25d1bc = L.marker(
+                [35.93917656567674, -95.89801501497026],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_27823997e9945019645cbae6f5ef58ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4820db7e6fedfe46f31eb84d684bb94d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_106841ad3af04225b1d74ca681af7235 = $(`<div id="html_106841ad3af04225b1d74ca681af7235" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 79.35749468291309<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-02-09 12:46:37.962543872</div>`)[0];
+                popup_4820db7e6fedfe46f31eb84d684bb94d.setContent(html_106841ad3af04225b1d74ca681af7235);
+            
+        
+
+        marker_b070f3aa40ceeb52ca7c81b63a25d1bc.bindPopup(popup_4820db7e6fedfe46f31eb84d684bb94d)
+        ;
+
+        
+    
+    
+                marker_b070f3aa40ceeb52ca7c81b63a25d1bc.setIcon(icon_27823997e9945019645cbae6f5ef58ea);
+            
+    
+            var marker_37989f916a5ac53076ab0c9a1a226282 = L.marker(
+                [40.16133954884449, -103.51147263912712],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_1b3a9325092793b339c41e70b8e10e61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fac4fa2852770d8d57f52aaf8746e115 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bda6bc377086cf433937ba03a69bef3 = $(`<div id="html_4bda6bc377086cf433937ba03a69bef3" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 34.92489129337145<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-07-16 04:04:08.907638380</div>`)[0];
+                popup_fac4fa2852770d8d57f52aaf8746e115.setContent(html_4bda6bc377086cf433937ba03a69bef3);
+            
+        
+
+        marker_37989f916a5ac53076ab0c9a1a226282.bindPopup(popup_fac4fa2852770d8d57f52aaf8746e115)
+        ;
+
+        
+    
+    
+                marker_37989f916a5ac53076ab0c9a1a226282.setIcon(icon_1b3a9325092793b339c41e70b8e10e61);
+            
+    
+            var marker_be3c4fd0b15094222771d4d1fe45a4aa = L.marker(
+                [33.196791702350964, -96.83686301677072],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_55a7cd7c328ae3a14219bcf3d59a4aa7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_323af17b08ff018e221fc3e757678483 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9d117d54f1c05079e27f260b97f4a655 = $(`<div id="html_9d117d54f1c05079e27f260b97f4a655" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 264.99985531351984<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2024-12-01 20:19:33.480095627</div>`)[0];
+                popup_323af17b08ff018e221fc3e757678483.setContent(html_9d117d54f1c05079e27f260b97f4a655);
+            
+        
+
+        marker_be3c4fd0b15094222771d4d1fe45a4aa.bindPopup(popup_323af17b08ff018e221fc3e757678483)
+        ;
+
+        
+    
+    
+                marker_be3c4fd0b15094222771d4d1fe45a4aa.setIcon(icon_55a7cd7c328ae3a14219bcf3d59a4aa7);
+            
+    
+            var marker_82357cb2998ced91c770df31e46d738d = L.marker(
+                [38.72468981969568, -98.32108426528266],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2a00c9e84f522aee9ed80e7bfe687e71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c9d15d51012c63d12ea3f4c23a78940b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cfdbc3abd3dcac9791e442eb81239b36 = $(`<div id="html_cfdbc3abd3dcac9791e442eb81239b36" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 6042.800246669641<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-01-13 06:20:23.165064124</div>`)[0];
+                popup_c9d15d51012c63d12ea3f4c23a78940b.setContent(html_cfdbc3abd3dcac9791e442eb81239b36);
+            
+        
+
+        marker_82357cb2998ced91c770df31e46d738d.bindPopup(popup_c9d15d51012c63d12ea3f4c23a78940b)
+        ;
+
+        
+    
+    
+                marker_82357cb2998ced91c770df31e46d738d.setIcon(icon_2a00c9e84f522aee9ed80e7bfe687e71);
+            
+    
+            var marker_d8acdad49eb0990e5a4ae0d648f510d9 = L.marker(
+                [38.02624090185575, -93.1908840128527],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_df4ea6e6407e7dca240cc68ba3d3d20c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1317376a217bd693742e12053b944b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ed548c0eed06140ec8f36e177640ed3 = $(`<div id="html_1ed548c0eed06140ec8f36e177640ed3" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 33.55112813722677<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-10-23 15:24:28.349582576</div>`)[0];
+                popup_f1317376a217bd693742e12053b944b4.setContent(html_1ed548c0eed06140ec8f36e177640ed3);
+            
+        
+
+        marker_d8acdad49eb0990e5a4ae0d648f510d9.bindPopup(popup_f1317376a217bd693742e12053b944b4)
+        ;
+
+        
+    
+    
+                marker_d8acdad49eb0990e5a4ae0d648f510d9.setIcon(icon_df4ea6e6407e7dca240cc68ba3d3d20c);
+            
+    
+            var marker_b04e414c66f22e7e661f820ce672f182 = L.marker(
+                [32.48807134066304, -101.37072643591739],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_eac820ae741aa015151824035ce43ee4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a3da330896b5fb688103738c11a5094 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bc2e5a76a0d9ff64363a5e5114236606 = $(`<div id="html_bc2e5a76a0d9ff64363a5e5114236606" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 17.59651208018389<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-07-10 21:54:45.091256744</div>`)[0];
+                popup_9a3da330896b5fb688103738c11a5094.setContent(html_bc2e5a76a0d9ff64363a5e5114236606);
+            
+        
+
+        marker_b04e414c66f22e7e661f820ce672f182.bindPopup(popup_9a3da330896b5fb688103738c11a5094)
+        ;
+
+        
+    
+    
+                marker_b04e414c66f22e7e661f820ce672f182.setIcon(icon_eac820ae741aa015151824035ce43ee4);
+            
+    
+            var marker_ec1f475fe2da94cb69947cebdc775db0 = L.marker(
+                [43.71889725154482, -107.8009224102988],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_f265ce754ec4e5bd8ce084035204671d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_326f1372c39dca0604ac38e240e73735 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bcb07bf7377bd9948057de738265da1 = $(`<div id="html_4bcb07bf7377bd9948057de738265da1" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 754.7517693653423<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-07-13 08:36:37.422489868</div>`)[0];
+                popup_326f1372c39dca0604ac38e240e73735.setContent(html_4bcb07bf7377bd9948057de738265da1);
+            
+        
+
+        marker_ec1f475fe2da94cb69947cebdc775db0.bindPopup(popup_326f1372c39dca0604ac38e240e73735)
+        ;
+
+        
+    
+    
+                marker_ec1f475fe2da94cb69947cebdc775db0.setIcon(icon_f265ce754ec4e5bd8ce084035204671d);
+            
+    
+            var marker_0e048aa572016f4d0abe87237884deff = L.marker(
+                [37.671150636123194, -84.88354003046119],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e87ba3f46001c79e9e4e0b30bb0d11ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38f0169539a883e751579dee5c0f6080 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_353c9a3d7397857674dc2e0d7b825c43 = $(`<div id="html_353c9a3d7397857674dc2e0d7b825c43" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 13.555764454027551<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-12 11:38:30.833831</div>`)[0];
+                popup_38f0169539a883e751579dee5c0f6080.setContent(html_353c9a3d7397857674dc2e0d7b825c43);
+            
+        
+
+        marker_0e048aa572016f4d0abe87237884deff.bindPopup(popup_38f0169539a883e751579dee5c0f6080)
+        ;
+
+        
+    
+    
+                marker_0e048aa572016f4d0abe87237884deff.setIcon(icon_e87ba3f46001c79e9e4e0b30bb0d11ac);
+            
+    
+            var marker_0aef9f4d9e0149ac619afa4e7120f312 = L.marker(
+                [44.70045810098978, -105.9299071756501],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_1e5ce9ec62f345bf22905b5f9a96ae82 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d3596ad581dfcb5eca083ca260035911 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ecf4c7c56bac63846f2c632094f07cd9 = $(`<div id="html_ecf4c7c56bac63846f2c632094f07cd9" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 122.2560974778481<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-06-18 19:52:46.279375556</div>`)[0];
+                popup_d3596ad581dfcb5eca083ca260035911.setContent(html_ecf4c7c56bac63846f2c632094f07cd9);
+            
+        
+
+        marker_0aef9f4d9e0149ac619afa4e7120f312.bindPopup(popup_d3596ad581dfcb5eca083ca260035911)
+        ;
+
+        
+    
+    
+                marker_0aef9f4d9e0149ac619afa4e7120f312.setIcon(icon_1e5ce9ec62f345bf22905b5f9a96ae82);
+            
+    
+            var marker_355e118241444262839350b2ee673b67 = L.marker(
+                [34.18058613933897, -88.7153108509129],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9667f892ad114e8c95e514052e649294 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0b5af02d1796b91016f033f030116ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed12a7b5c06280144a31f32dcf5134d1 = $(`<div id="html_ed12a7b5c06280144a31f32dcf5134d1" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1214.8052589864433<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-12 22:09:17.818529470</div>`)[0];
+                popup_b0b5af02d1796b91016f033f030116ac.setContent(html_ed12a7b5c06280144a31f32dcf5134d1);
+            
+        
+
+        marker_355e118241444262839350b2ee673b67.bindPopup(popup_b0b5af02d1796b91016f033f030116ac)
+        ;
+
+        
+    
+    
+                marker_355e118241444262839350b2ee673b67.setIcon(icon_9667f892ad114e8c95e514052e649294);
+            
+    
+            var marker_acf99003b87afa67c76ec69d71ab909f = L.marker(
+                [44.51800026397299, -96.80659694488179],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d8ef86c395e4f1199e99c8f22eb71f6b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d724e731d73b8eb2e27c6831f754186 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_61a480c392205f68149bc1bd02fa1da2 = $(`<div id="html_61a480c392205f68149bc1bd02fa1da2" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 176.80334430661628<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-14 09:11:54.434191036</div>`)[0];
+                popup_7d724e731d73b8eb2e27c6831f754186.setContent(html_61a480c392205f68149bc1bd02fa1da2);
+            
+        
+
+        marker_acf99003b87afa67c76ec69d71ab909f.bindPopup(popup_7d724e731d73b8eb2e27c6831f754186)
+        ;
+
+        
+    
+    
+                marker_acf99003b87afa67c76ec69d71ab909f.setIcon(icon_d8ef86c395e4f1199e99c8f22eb71f6b);
+            
+    
+            var marker_47cfa516c167e3e6f527334d48f06a74 = L.marker(
+                [47.47666858319256, -119.37828131841282],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5c4c317b2d30d232265ba7f54aef305e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dd8c81deb81872c1173b33cc599afb97 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8123c386164eed1ca308a2b491d192f6 = $(`<div id="html_8123c386164eed1ca308a2b491d192f6" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 44.35901794888139<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2024-12-26 02:55:27.215469165</div>`)[0];
+                popup_dd8c81deb81872c1173b33cc599afb97.setContent(html_8123c386164eed1ca308a2b491d192f6);
+            
+        
+
+        marker_47cfa516c167e3e6f527334d48f06a74.bindPopup(popup_dd8c81deb81872c1173b33cc599afb97)
+        ;
+
+        
+    
+    
+                marker_47cfa516c167e3e6f527334d48f06a74.setIcon(icon_5c4c317b2d30d232265ba7f54aef305e);
+            
+    
+            var marker_bde5b3009ef198a78f82f20f6b33a29c = L.marker(
+                [35.267461095336145, -99.10208508980432],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_29af3d40b06dd6e072b098dc4cccc63a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97302b15c302780a44e167a0630338fc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_64c243100b6d905b35b678151b6edf57 = $(`<div id="html_64c243100b6d905b35b678151b6edf57" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1338.8282391339276<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2024-11-13 04:38:42.715019119</div>`)[0];
+                popup_97302b15c302780a44e167a0630338fc.setContent(html_64c243100b6d905b35b678151b6edf57);
+            
+        
+
+        marker_bde5b3009ef198a78f82f20f6b33a29c.bindPopup(popup_97302b15c302780a44e167a0630338fc)
+        ;
+
+        
+    
+    
+                marker_bde5b3009ef198a78f82f20f6b33a29c.setIcon(icon_29af3d40b06dd6e072b098dc4cccc63a);
+            
+    
+            var marker_a75c8eb5cc1fd874d88d1d7d2a1ba73f = L.marker(
+                [45.32967730978854, -97.2040204487633],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_32d41950c6aacdef3382f4a5dd3449d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f79fe915ce9b4b4d21bf81714a7de8e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8eac2ed8f263922f21a5bd8df639ef57 = $(`<div id="html_8eac2ed8f263922f21a5bd8df639ef57" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 29.07731767963652<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-06-03 19:48:27.053452964</div>`)[0];
+                popup_f79fe915ce9b4b4d21bf81714a7de8e3.setContent(html_8eac2ed8f263922f21a5bd8df639ef57);
+            
+        
+
+        marker_a75c8eb5cc1fd874d88d1d7d2a1ba73f.bindPopup(popup_f79fe915ce9b4b4d21bf81714a7de8e3)
+        ;
+
+        
+    
+    
+                marker_a75c8eb5cc1fd874d88d1d7d2a1ba73f.setIcon(icon_32d41950c6aacdef3382f4a5dd3449d0);
+            
+    
+            var marker_b7e08f5c0da9ea887b4004fb44ba59ec = L.marker(
+                [28.05516964072845, -99.15287744393846],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_7cf38b7336a76d487a16fbda9ff1a03d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_34685104577e7848b5787adf57ba09ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e08c0cfc4284a580069121122fb7673 = $(`<div id="html_3e08c0cfc4284a580069121122fb7673" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 98.72342316022342<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-10-27 07:53:33.804128028</div>`)[0];
+                popup_34685104577e7848b5787adf57ba09ed.setContent(html_3e08c0cfc4284a580069121122fb7673);
+            
+        
+
+        marker_b7e08f5c0da9ea887b4004fb44ba59ec.bindPopup(popup_34685104577e7848b5787adf57ba09ed)
+        ;
+
+        
+    
+    
+                marker_b7e08f5c0da9ea887b4004fb44ba59ec.setIcon(icon_7cf38b7336a76d487a16fbda9ff1a03d);
+            
+    
+            var marker_c839917ef58f095b0841b05ac3e48f4c = L.marker(
+                [40.26693485075471, -119.04473769307101],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_4c4c0ba4e9d2d981090358432e796b9f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e315f80b737fc4b79ce40d71f1d9fe7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_08eeb5bf4c8591fc86bf0fc89cb0da4a = $(`<div id="html_08eeb5bf4c8591fc86bf0fc89cb0da4a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 158.36446581226383<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-09-10 09:14:38.610608676</div>`)[0];
+                popup_0e315f80b737fc4b79ce40d71f1d9fe7.setContent(html_08eeb5bf4c8591fc86bf0fc89cb0da4a);
+            
+        
+
+        marker_c839917ef58f095b0841b05ac3e48f4c.bindPopup(popup_0e315f80b737fc4b79ce40d71f1d9fe7)
+        ;
+
+        
+    
+    
+                marker_c839917ef58f095b0841b05ac3e48f4c.setIcon(icon_4c4c0ba4e9d2d981090358432e796b9f);
+            
+    
+            var marker_377b0dc4c47b6fe8ec5f88bc92b471d6 = L.marker(
+                [36.17329979592621, -97.1663296305265],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9aa00e87695a22c19093492fd044b470 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0612d53f04553520f5ee2f1b696c0f06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a03b06f2386b3bea5052dc47806fe5a1 = $(`<div id="html_a03b06f2386b3bea5052dc47806fe5a1" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2.9208313968905486<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2024-11-13 05:31:16.630410658</div>`)[0];
+                popup_0612d53f04553520f5ee2f1b696c0f06.setContent(html_a03b06f2386b3bea5052dc47806fe5a1);
+            
+        
+
+        marker_377b0dc4c47b6fe8ec5f88bc92b471d6.bindPopup(popup_0612d53f04553520f5ee2f1b696c0f06)
+        ;
+
+        
+    
+    
+                marker_377b0dc4c47b6fe8ec5f88bc92b471d6.setIcon(icon_9aa00e87695a22c19093492fd044b470);
+            
+    
+            var marker_ef4f1186b43e5d47e2315a50b8a822b5 = L.marker(
+                [43.26912706428009, -114.6642844678624],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_207c9a30dd6ebcf676ed98157f8fc317 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_901ebccdf5b4bce486dec733bee77887 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c8ede7c07d13a68fb161f5c54f42dba0 = $(`<div id="html_c8ede7c07d13a68fb161f5c54f42dba0" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 117.87539950172145<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-14 06:52:12.796027220</div>`)[0];
+                popup_901ebccdf5b4bce486dec733bee77887.setContent(html_c8ede7c07d13a68fb161f5c54f42dba0);
+            
+        
+
+        marker_ef4f1186b43e5d47e2315a50b8a822b5.bindPopup(popup_901ebccdf5b4bce486dec733bee77887)
+        ;
+
+        
+    
+    
+                marker_ef4f1186b43e5d47e2315a50b8a822b5.setIcon(icon_207c9a30dd6ebcf676ed98157f8fc317);
+            
+    
+            var marker_3f787d4694fd24868fc09f4acfddfecc = L.marker(
+                [36.718390054455696, -112.07475529934297],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_1463fef90faec346a7adc0a558156d67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f8722ef15460a24df827d59cd708bbfd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b5405d79b8e700f714b4b6b40bdec5d9 = $(`<div id="html_b5405d79b8e700f714b4b6b40bdec5d9" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 16.258453515564348<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2025-07-06 08:24:05.667314348</div>`)[0];
+                popup_f8722ef15460a24df827d59cd708bbfd.setContent(html_b5405d79b8e700f714b4b6b40bdec5d9);
+            
+        
+
+        marker_3f787d4694fd24868fc09f4acfddfecc.bindPopup(popup_f8722ef15460a24df827d59cd708bbfd)
+        ;
+
+        
+    
+    
+                marker_3f787d4694fd24868fc09f4acfddfecc.setIcon(icon_1463fef90faec346a7adc0a558156d67);
+            
+    
+            var marker_3bd1be275fd1a1d67772f03442af5862 = L.marker(
+                [36.04309938306721, -61.52947023516753],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_f3ea9197cee45d38231b71c6e5049371 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87a326ad3bad12bdf426abefa2fb74f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8f7394bc4f85d9989adb398f842eafd = $(`<div id="html_f8f7394bc4f85d9989adb398f842eafd" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 996.044104789057<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-09-12 11:10:51.787926408</div>`)[0];
+                popup_87a326ad3bad12bdf426abefa2fb74f3.setContent(html_f8f7394bc4f85d9989adb398f842eafd);
+            
+        
+
+        marker_3bd1be275fd1a1d67772f03442af5862.bindPopup(popup_87a326ad3bad12bdf426abefa2fb74f3)
+        ;
+
+        
+    
+    
+                marker_3bd1be275fd1a1d67772f03442af5862.setIcon(icon_f3ea9197cee45d38231b71c6e5049371);
+            
+    
+            var marker_f3244ce3b6df15c59829e757e7948085 = L.marker(
+                [43.894541531736415, -105.2136576833433],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_520ea1e85a29d60e75c1cbe9da54b01a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_79f7a72abb4179550c07a7394f53893d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_983c5ebaeda2826980dc857b3c160ab5 = $(`<div id="html_983c5ebaeda2826980dc857b3c160ab5" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 31.361608823451782<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-12 19:49:36.180365654</div>`)[0];
+                popup_79f7a72abb4179550c07a7394f53893d.setContent(html_983c5ebaeda2826980dc857b3c160ab5);
+            
+        
+
+        marker_f3244ce3b6df15c59829e757e7948085.bindPopup(popup_79f7a72abb4179550c07a7394f53893d)
+        ;
+
+        
+    
+    
+                marker_f3244ce3b6df15c59829e757e7948085.setIcon(icon_520ea1e85a29d60e75c1cbe9da54b01a);
+            
+    
+            var marker_e7bbdde267340ef6b747cbc9c5425253 = L.marker(
+                [39.526457643730126, -106.12356539262797],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_c31b5a0edc70c49941603940f8633017 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_677d922f87c821f692629bc74aeda00c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9ef4ca7d4b33d7c937beb5c28bf7f970 = $(`<div id="html_9ef4ca7d4b33d7c937beb5c28bf7f970" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1190.0758625398782<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-09-30 01:27:19.006648280</div>`)[0];
+                popup_677d922f87c821f692629bc74aeda00c.setContent(html_9ef4ca7d4b33d7c937beb5c28bf7f970);
+            
+        
+
+        marker_e7bbdde267340ef6b747cbc9c5425253.bindPopup(popup_677d922f87c821f692629bc74aeda00c)
+        ;
+
+        
+    
+    
+                marker_e7bbdde267340ef6b747cbc9c5425253.setIcon(icon_c31b5a0edc70c49941603940f8633017);
+            
+    
+            var marker_b6d7845b1d50be7a2515ec36ec68bb6f = L.marker(
+                [40.47920874054056, -128.47932287880909],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_cf2594ef3d32365138dc5dfc49843edc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e92e95adc243fc3a0b2bf9acf615ff34 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a8284ca81ea2c14a48c852e943784409 = $(`<div id="html_a8284ca81ea2c14a48c852e943784409" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 200.06309489174978<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2024-11-11 16:43:32.183966014</div>`)[0];
+                popup_e92e95adc243fc3a0b2bf9acf615ff34.setContent(html_a8284ca81ea2c14a48c852e943784409);
+            
+        
+
+        marker_b6d7845b1d50be7a2515ec36ec68bb6f.bindPopup(popup_e92e95adc243fc3a0b2bf9acf615ff34)
+        ;
+
+        
+    
+    
+                marker_b6d7845b1d50be7a2515ec36ec68bb6f.setIcon(icon_cf2594ef3d32365138dc5dfc49843edc);
+            
+    
+            var marker_1564c01d5c24b5f8c175aaa2d7c57848 = L.marker(
+                [36.47943642685143, -109.00916737991645],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_978e98493ff4c3578c17f5fb0afc2f52 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0aa0e329f998e74aa576602d397176a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45b2dacccbdf3dd223105ae40a06b331 = $(`<div id="html_45b2dacccbdf3dd223105ae40a06b331" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 163.81506746753325<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-02-19 16:19:46.441391756</div>`)[0];
+                popup_b0aa0e329f998e74aa576602d397176a.setContent(html_45b2dacccbdf3dd223105ae40a06b331);
+            
+        
+
+        marker_1564c01d5c24b5f8c175aaa2d7c57848.bindPopup(popup_b0aa0e329f998e74aa576602d397176a)
+        ;
+
+        
+    
+    
+                marker_1564c01d5c24b5f8c175aaa2d7c57848.setIcon(icon_978e98493ff4c3578c17f5fb0afc2f52);
+            
+    
+            var marker_4652ff14494c042b11a46a4ba6c65bf2 = L.marker(
+                [37.74396594714592, -107.03656167517832],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9d32d7d5dee44cc7aa6c2b708d3ed169 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e355bc6df193f3be911254e24ed1d587 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cbd63e091983c689a4e5ea0ecb78baae = $(`<div id="html_cbd63e091983c689a4e5ea0ecb78baae" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 14.139791659421618<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-04-12 07:07:02.805028120</div>`)[0];
+                popup_e355bc6df193f3be911254e24ed1d587.setContent(html_cbd63e091983c689a4e5ea0ecb78baae);
+            
+        
+
+        marker_4652ff14494c042b11a46a4ba6c65bf2.bindPopup(popup_e355bc6df193f3be911254e24ed1d587)
+        ;
+
+        
+    
+    
+                marker_4652ff14494c042b11a46a4ba6c65bf2.setIcon(icon_9d32d7d5dee44cc7aa6c2b708d3ed169);
+            
+    
+            var marker_f448ec6ff0d7b9888bf38b29772816db = L.marker(
+                [44.846635525168544, -91.65182999832128],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9984881c54d8bf3117fc7241fdc80fc6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c6a65b3607189a94e6b07fbf0599db25 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83959d9f3ac122c9fb63d382dc836d95 = $(`<div id="html_83959d9f3ac122c9fb63d382dc836d95" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 735.8769605837066<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-10-12 13:04:38.070554672</div>`)[0];
+                popup_c6a65b3607189a94e6b07fbf0599db25.setContent(html_83959d9f3ac122c9fb63d382dc836d95);
+            
+        
+
+        marker_f448ec6ff0d7b9888bf38b29772816db.bindPopup(popup_c6a65b3607189a94e6b07fbf0599db25)
+        ;
+
+        
+    
+    
+                marker_f448ec6ff0d7b9888bf38b29772816db.setIcon(icon_9984881c54d8bf3117fc7241fdc80fc6);
+            
+    
+            var marker_7281e996bf00a919eaef429c7d6ad82a = L.marker(
+                [37.33473751764833, -103.21659817021023],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_364b390101e94826c1db99b5f34b4383 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1c718dbf23023fb1542548b9c5adc179 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_187509c411226bcc3cdc55260530a591 = $(`<div id="html_187509c411226bcc3cdc55260530a591" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 34.20891119385292<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2025-09-10 21:30:33.426090224</div>`)[0];
+                popup_1c718dbf23023fb1542548b9c5adc179.setContent(html_187509c411226bcc3cdc55260530a591);
+            
+        
+
+        marker_7281e996bf00a919eaef429c7d6ad82a.bindPopup(popup_1c718dbf23023fb1542548b9c5adc179)
+        ;
+
+        
+    
+    
+                marker_7281e996bf00a919eaef429c7d6ad82a.setIcon(icon_364b390101e94826c1db99b5f34b4383);
+            
+    
+            var marker_6e2b8465060127d60392375aef49d975 = L.marker(
+                [39.439484201148254, -71.44566911451888],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_46804e05027d2568aa2ed5130774b574 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7993e63344c27582ade43b54b77cc546 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5ca76be6c1762e74edb1d4cfbd3a7223 = $(`<div id="html_5ca76be6c1762e74edb1d4cfbd3a7223" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 66.89627276670332<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-09-22 06:50:55.028250440</div>`)[0];
+                popup_7993e63344c27582ade43b54b77cc546.setContent(html_5ca76be6c1762e74edb1d4cfbd3a7223);
+            
+        
+
+        marker_6e2b8465060127d60392375aef49d975.bindPopup(popup_7993e63344c27582ade43b54b77cc546)
+        ;
+
+        
+    
+    
+                marker_6e2b8465060127d60392375aef49d975.setIcon(icon_46804e05027d2568aa2ed5130774b574);
+            
+    
+            var marker_85157cb1f009b8dbbb7c99c32f92324e = L.marker(
+                [48.50961265946969, -97.56445779693017],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_b5960c45186b2b4c191e3de505da552e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3124bcbd46b4bd2258948c4136aef52a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3151234de5763df1573dcc717b4be263 = $(`<div id="html_3151234de5763df1573dcc717b4be263" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 12.675623003805178<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-15 23:10:12.904038021</div>`)[0];
+                popup_3124bcbd46b4bd2258948c4136aef52a.setContent(html_3151234de5763df1573dcc717b4be263);
+            
+        
+
+        marker_85157cb1f009b8dbbb7c99c32f92324e.bindPopup(popup_3124bcbd46b4bd2258948c4136aef52a)
+        ;
+
+        
+    
+    
+                marker_85157cb1f009b8dbbb7c99c32f92324e.setIcon(icon_b5960c45186b2b4c191e3de505da552e);
+            
+    
+            var marker_124599d8472ee289275d50ce8955ac6b = L.marker(
+                [45.90149891502543, -94.67773186413278],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_7dd924d1eefa94ab03c250e79569988f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d0963c27ac61ef26ed18c8927d6c834 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7fe72a42432a14f4cb4b3c1772ab7cc0 = $(`<div id="html_7fe72a42432a14f4cb4b3c1772ab7cc0" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 87.57169307713336<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-10-21 00:19:46.441391756</div>`)[0];
+                popup_0d0963c27ac61ef26ed18c8927d6c834.setContent(html_7fe72a42432a14f4cb4b3c1772ab7cc0);
+            
+        
+
+        marker_124599d8472ee289275d50ce8955ac6b.bindPopup(popup_0d0963c27ac61ef26ed18c8927d6c834)
+        ;
+
+        
+    
+    
+                marker_124599d8472ee289275d50ce8955ac6b.setIcon(icon_7dd924d1eefa94ab03c250e79569988f);
+            
+    
+            var marker_9d88a2e0c8dd960597324216966aa24a = L.marker(
+                [48.90290134132483, -103.80281492321757],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_a93f11db50e9cfc57b51b5dbc2632c48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc28f79105504e7e211ed8849d18a508 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83db2881499d2f8d7af5111224b180bb = $(`<div id="html_83db2881499d2f8d7af5111224b180bb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2655.3864085454557<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-01-02 00:30:17.224470065</div>`)[0];
+                popup_bc28f79105504e7e211ed8849d18a508.setContent(html_83db2881499d2f8d7af5111224b180bb);
+            
+        
+
+        marker_9d88a2e0c8dd960597324216966aa24a.bindPopup(popup_bc28f79105504e7e211ed8849d18a508)
+        ;
+
+        
+    
+    
+                marker_9d88a2e0c8dd960597324216966aa24a.setIcon(icon_a93f11db50e9cfc57b51b5dbc2632c48);
+            
+    
+            var marker_8dcf6cd2c13fde5e6427472f51aab66c = L.marker(
+                [44.24975048038043, -101.66186976377212],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_aa86e7bc91f082989ffe32307f92e80e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_be9873f8750acb35b455ed10cca3ab74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8ac0a1f59c6b73e2a36a852ea3619db6 = $(`<div id="html_8ac0a1f59c6b73e2a36a852ea3619db6" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 664.0814585756314<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-07-31 03:15:54.218169432</div>`)[0];
+                popup_be9873f8750acb35b455ed10cca3ab74.setContent(html_8ac0a1f59c6b73e2a36a852ea3619db6);
+            
+        
+
+        marker_8dcf6cd2c13fde5e6427472f51aab66c.bindPopup(popup_be9873f8750acb35b455ed10cca3ab74)
+        ;
+
+        
+    
+    
+                marker_8dcf6cd2c13fde5e6427472f51aab66c.setIcon(icon_aa86e7bc91f082989ffe32307f92e80e);
+            
+    
+            var marker_bfd24f5b18f3b8906744ae9827d1424a = L.marker(
+                [46.18809506615861, -99.71476171675346],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e7440c2dd6d6e26bc049f59914834d43 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2e51de35ccf63fd8d0a0058c8c92b28 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b798fbf51097d4c68456405c2ab4227c = $(`<div id="html_b798fbf51097d4c68456405c2ab4227c" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 10.18260433943922<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-03-17 03:50:19.384686086</div>`)[0];
+                popup_b2e51de35ccf63fd8d0a0058c8c92b28.setContent(html_b798fbf51097d4c68456405c2ab4227c);
+            
+        
+
+        marker_bfd24f5b18f3b8906744ae9827d1424a.bindPopup(popup_b2e51de35ccf63fd8d0a0058c8c92b28)
+        ;
+
+        
+    
+    
+                marker_bfd24f5b18f3b8906744ae9827d1424a.setIcon(icon_e7440c2dd6d6e26bc049f59914834d43);
+            
+    
+            var marker_c098fbdb168b3cbfdc03dd5bf966c79f = L.marker(
+                [39.60241728884219, -100.66001366693301],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_375277282633efce9ce4f4334d35910a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_83574425bd2d501f8e34f9052ba9cbc3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39dcaf740ef84d155c4cebcd9c0980f2 = $(`<div id="html_39dcaf740ef84d155c4cebcd9c0980f2" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2120.9695743549332<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2024-12-15 08:28:42.174965114</div>`)[0];
+                popup_83574425bd2d501f8e34f9052ba9cbc3.setContent(html_39dcaf740ef84d155c4cebcd9c0980f2);
+            
+        
+
+        marker_c098fbdb168b3cbfdc03dd5bf966c79f.bindPopup(popup_83574425bd2d501f8e34f9052ba9cbc3)
+        ;
+
+        
+    
+    
+                marker_c098fbdb168b3cbfdc03dd5bf966c79f.setIcon(icon_375277282633efce9ce4f4334d35910a);
+            
+    
+            var marker_14c64f68d4c0757282ea1e6b5efd2947 = L.marker(
+                [44.22618306824989, -95.09083880980603],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_75e03ebeb7fd5afd2d13e58cabaf0fa5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_98382f5df4c7bdb2243d6db9ae82f8ca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b30fda3bb1796ca5ada66a319b1ca2cc = $(`<div id="html_b30fda3bb1796ca5ada66a319b1ca2cc" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1471.9373146550051<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-04-06 20:34:49.411688786</div>`)[0];
+                popup_98382f5df4c7bdb2243d6db9ae82f8ca.setContent(html_b30fda3bb1796ca5ada66a319b1ca2cc);
+            
+        
+
+        marker_14c64f68d4c0757282ea1e6b5efd2947.bindPopup(popup_98382f5df4c7bdb2243d6db9ae82f8ca)
+        ;
+
+        
+    
+    
+                marker_14c64f68d4c0757282ea1e6b5efd2947.setIcon(icon_75e03ebeb7fd5afd2d13e58cabaf0fa5);
+            
+    
+            var marker_79938365d9a8aa365fc1082c224275b4 = L.marker(
+                [46.47525933397068, -101.16489728694832],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ff51254efe1d1920a36fea3d12c62d3d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d907aaf7194114a5a13de55deaf1d39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a1262a78d2443513a65b7420d1b39579 = $(`<div id="html_a1262a78d2443513a65b7420d1b39579" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 57.113882816407866<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-03-02 14:16:47.143461964</div>`)[0];
+                popup_3d907aaf7194114a5a13de55deaf1d39.setContent(html_a1262a78d2443513a65b7420d1b39579);
+            
+        
+
+        marker_79938365d9a8aa365fc1082c224275b4.bindPopup(popup_3d907aaf7194114a5a13de55deaf1d39)
+        ;
+
+        
+    
+    
+                marker_79938365d9a8aa365fc1082c224275b4.setIcon(icon_ff51254efe1d1920a36fea3d12c62d3d);
+            
+    
+            var marker_da43ff2dd198ff801f3ea3f183fd475a = L.marker(
+                [46.18491529531526, -94.83687107669373],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_835e6920f382c09524a2705570044a0f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_598046e30bcd0bc0a71b75f0b97cf599 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12461d310f7d36a292d214a148e703ef = $(`<div id="html_12461d310f7d36a292d214a148e703ef" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1729.2760438709383<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-03-13 22:44:34.830230640</div>`)[0];
+                popup_598046e30bcd0bc0a71b75f0b97cf599.setContent(html_12461d310f7d36a292d214a148e703ef);
+            
+        
+
+        marker_da43ff2dd198ff801f3ea3f183fd475a.bindPopup(popup_598046e30bcd0bc0a71b75f0b97cf599)
+        ;
+
+        
+    
+    
+                marker_da43ff2dd198ff801f3ea3f183fd475a.setIcon(icon_835e6920f382c09524a2705570044a0f);
+            
+    
+            var marker_5e486c2ae652d6ceac7c40c13491b0c0 = L.marker(
+                [39.04411163323817, -95.21475792769073],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_020c3048d88b18387555df898a2a4be0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6e76d1c611e8260b1b756b1eb6d5cfc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_93609c41e9e43226f065ebbd2eae6712 = $(`<div id="html_93609c41e9e43226f065ebbd2eae6712" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 31.65930136535869<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-09-26 02:50:16.144362052</div>`)[0];
+                popup_d6e76d1c611e8260b1b756b1eb6d5cfc.setContent(html_93609c41e9e43226f065ebbd2eae6712);
+            
+        
+
+        marker_5e486c2ae652d6ceac7c40c13491b0c0.bindPopup(popup_d6e76d1c611e8260b1b756b1eb6d5cfc)
+        ;
+
+        
+    
+    
+                marker_5e486c2ae652d6ceac7c40c13491b0c0.setIcon(icon_020c3048d88b18387555df898a2a4be0);
+            
+    
+            var marker_a2b1d97da79bdc946339f0d6a9c872e6 = L.marker(
+                [38.64273892506173, -86.31705336239676],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_4c50fea4f50e5205841b719eeb7f49a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_895e4258765fcc0d48a3e37024ea0e5d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6485aeb995840d67e6d0dbbdef28b0bb = $(`<div id="html_6485aeb995840d67e6d0dbbdef28b0bb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 110.2953077010055<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2024-12-29 05:23:30.023749993</div>`)[0];
+                popup_895e4258765fcc0d48a3e37024ea0e5d.setContent(html_6485aeb995840d67e6d0dbbdef28b0bb);
+            
+        
+
+        marker_a2b1d97da79bdc946339f0d6a9c872e6.bindPopup(popup_895e4258765fcc0d48a3e37024ea0e5d)
+        ;
+
+        
+    
+    
+                marker_a2b1d97da79bdc946339f0d6a9c872e6.setIcon(icon_4c50fea4f50e5205841b719eeb7f49a1);
+            
+    
+            var marker_e880c9f9857341235d804290fa825f42 = L.marker(
+                [40.30311055417721, -82.49701618537617],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_c49b75a30b546fffc9ff2ee5ce8d8bf9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a08321b7a563306b0cbd5909814217ca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe7290949533e7667dbce8b6e8f3073e = $(`<div id="html_fe7290949533e7667dbce8b6e8f3073e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 741.2585580656138<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-25 10:04:36.990446662</div>`)[0];
+                popup_a08321b7a563306b0cbd5909814217ca.setContent(html_fe7290949533e7667dbce8b6e8f3073e);
+            
+        
+
+        marker_e880c9f9857341235d804290fa825f42.bindPopup(popup_a08321b7a563306b0cbd5909814217ca)
+        ;
+
+        
+    
+    
+                marker_e880c9f9857341235d804290fa825f42.setIcon(icon_c49b75a30b546fffc9ff2ee5ce8d8bf9);
+            
+    
+            var marker_b077cb6d368944d86160d7540ad06b65 = L.marker(
+                [39.37030263751585, -94.81149172797518],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9bf6f00e1a15e39bb45674841a600194 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_88fc30739396b6a73b34774ba99ce467 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd396ca49e384f62e7b2695860422dc5 = $(`<div id="html_bd396ca49e384f62e7b2695860422dc5" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 79.37048165233611<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-05-21 09:24:26.189366554</div>`)[0];
+                popup_88fc30739396b6a73b34774ba99ce467.setContent(html_bd396ca49e384f62e7b2695860422dc5);
+            
+        
+
+        marker_b077cb6d368944d86160d7540ad06b65.bindPopup(popup_88fc30739396b6a73b34774ba99ce467)
+        ;
+
+        
+    
+    
+                marker_b077cb6d368944d86160d7540ad06b65.setIcon(icon_9bf6f00e1a15e39bb45674841a600194);
+            
+    
+            var marker_4fa3a5c5f084328869c2a83cc7eb59e8 = L.marker(
+                [45.94057646890464, -91.6339893614544],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e5f1fde0d7d460f8a2b51d5d0b0a2557 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_86f5614d5fc8d9db5835e452101f389c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2ee36252a52cd288ecd78666b9effeb = $(`<div id="html_c2ee36252a52cd288ecd78666b9effeb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 126.15235823173145<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2024-12-18 19:42:24.137161334</div>`)[0];
+                popup_86f5614d5fc8d9db5835e452101f389c.setContent(html_c2ee36252a52cd288ecd78666b9effeb);
+            
+        
+
+        marker_4fa3a5c5f084328869c2a83cc7eb59e8.bindPopup(popup_86f5614d5fc8d9db5835e452101f389c)
+        ;
+
+        
+    
+    
+                marker_4fa3a5c5f084328869c2a83cc7eb59e8.setIcon(icon_e5f1fde0d7d460f8a2b51d5d0b0a2557);
+            
+    
+            var marker_b99eb5eae8553c752e35efc143417e16 = L.marker(
+                [32.481563949162414, -78.36592611772089],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_07eb8271099234e8055645445ecc095c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e52880c6dfc23d1664273074c62e1f83 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45d9cf4ebbac75a794c8610b08c7de7e = $(`<div id="html_45d9cf4ebbac75a794c8610b08c7de7e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 601.3676092375135<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-22 13:26:31.481895806</div>`)[0];
+                popup_e52880c6dfc23d1664273074c62e1f83.setContent(html_45d9cf4ebbac75a794c8610b08c7de7e);
+            
+        
+
+        marker_b99eb5eae8553c752e35efc143417e16.bindPopup(popup_e52880c6dfc23d1664273074c62e1f83)
+        ;
+
+        
+    
+    
+                marker_b99eb5eae8553c752e35efc143417e16.setIcon(icon_07eb8271099234e8055645445ecc095c);
+            
+    
+            var marker_5e8dedc70a88ced6c33c78cf8c0e39f6 = L.marker(
+                [45.18668443639184, -87.0926256474146],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_80132e626b143ccef88070396762eb37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e66a890e54ca98c32c2862253d25d620 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a414e0271c40b7b2566de5f6556db15 = $(`<div id="html_2a414e0271c40b7b2566de5f6556db15" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1504.2272482752621<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-09-01 11:28:43.255073124</div>`)[0];
+                popup_e66a890e54ca98c32c2862253d25d620.setContent(html_2a414e0271c40b7b2566de5f6556db15);
+            
+        
+
+        marker_5e8dedc70a88ced6c33c78cf8c0e39f6.bindPopup(popup_e66a890e54ca98c32c2862253d25d620)
+        ;
+
+        
+    
+    
+                marker_5e8dedc70a88ced6c33c78cf8c0e39f6.setIcon(icon_80132e626b143ccef88070396762eb37);
+            
+    
+            var marker_ee1980287071a56d163a06965d8cc4eb = L.marker(
+                [42.82756460117919, -105.84997554492016],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_312b3675fb0268691751ae6962ad8c5b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1e46100f08e89701c1ffa4a93611f676 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_369f3caa701e802e346ecf864fa841da = $(`<div id="html_369f3caa701e802e346ecf864fa841da" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 86.90731179547694<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-05-10 13:12:33.318079426</div>`)[0];
+                popup_1e46100f08e89701c1ffa4a93611f676.setContent(html_369f3caa701e802e346ecf864fa841da);
+            
+        
+
+        marker_ee1980287071a56d163a06965d8cc4eb.bindPopup(popup_1e46100f08e89701c1ffa4a93611f676)
+        ;
+
+        
+    
+    
+                marker_ee1980287071a56d163a06965d8cc4eb.setIcon(icon_312b3675fb0268691751ae6962ad8c5b);
+            
+    
+            var marker_599fc00652698654ccd46e3e4929302c = L.marker(
+                [45.609588356064464, -95.84491538237315],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_a06a13d93609fee45412598b65c4339f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9754c5b6c5d5d21f25c1c8de4999bcea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fec6cdb949d547e29328e47609e1375a = $(`<div id="html_fec6cdb949d547e29328e47609e1375a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 16.284855352931302<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-27 08:46:07.719519568</div>`)[0];
+                popup_9754c5b6c5d5d21f25c1c8de4999bcea.setContent(html_fec6cdb949d547e29328e47609e1375a);
+            
+        
+
+        marker_599fc00652698654ccd46e3e4929302c.bindPopup(popup_9754c5b6c5d5d21f25c1c8de4999bcea)
+        ;
+
+        
+    
+    
+                marker_599fc00652698654ccd46e3e4929302c.setIcon(icon_a06a13d93609fee45412598b65c4339f);
+            
+    
+            var marker_0ceb448884b71a3c00ad0b695da191fc = L.marker(
+                [36.387656154914445, -91.25797203243732],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_f694fc92a2fea8a8593aed98bd8dec70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52757b8980e2e4826e7c82c5083ef3e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fc37c7b9d5f9c59cf37b88335a36385a = $(`<div id="html_fc37c7b9d5f9c59cf37b88335a36385a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 10.266953351377326<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-03-15 21:10:32.345982216</div>`)[0];
+                popup_52757b8980e2e4826e7c82c5083ef3e0.setContent(html_fc37c7b9d5f9c59cf37b88335a36385a);
+            
+        
+
+        marker_0ceb448884b71a3c00ad0b695da191fc.bindPopup(popup_52757b8980e2e4826e7c82c5083ef3e0)
+        ;
+
+        
+    
+    
+                marker_0ceb448884b71a3c00ad0b695da191fc.setIcon(icon_f694fc92a2fea8a8593aed98bd8dec70);
+            
+    
+            var marker_67e1493883b1b40554a23ad856a7e63e = L.marker(
+                [50.978423407127586, -102.9273096267976],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_25f18d9a65285090a5dce0287736ac4d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_975385f47e87ccb878cea738f4cb7d7c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c5137abf8913693f2774b243f91a506 = $(`<div id="html_2c5137abf8913693f2774b243f91a506" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 14.203819709865643<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-08-07 11:21:31.211868804</div>`)[0];
+                popup_975385f47e87ccb878cea738f4cb7d7c.setContent(html_2c5137abf8913693f2774b243f91a506);
+            
+        
+
+        marker_67e1493883b1b40554a23ad856a7e63e.bindPopup(popup_975385f47e87ccb878cea738f4cb7d7c)
+        ;
+
+        
+    
+    
+                marker_67e1493883b1b40554a23ad856a7e63e.setIcon(icon_25f18d9a65285090a5dce0287736ac4d);
+            
+    
+            var marker_33b33410c66c05d4c66afe96e492a5c8 = L.marker(
+                [32.34958662211691, -83.13756510089682],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5fa3373b93b2a76b1fe23f0a34e233f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c2229f59d4ea893c60d4823c94cef7d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c3d919d51230af4f50349f19d31c4de = $(`<div id="html_3c3d919d51230af4f50349f19d31c4de" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 28.678088651267213<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-01-21 16:42:57.620509669</div>`)[0];
+                popup_9c2229f59d4ea893c60d4823c94cef7d.setContent(html_3c3d919d51230af4f50349f19d31c4de);
+            
+        
+
+        marker_33b33410c66c05d4c66afe96e492a5c8.bindPopup(popup_9c2229f59d4ea893c60d4823c94cef7d)
+        ;
+
+        
+    
+    
+                marker_33b33410c66c05d4c66afe96e492a5c8.setIcon(icon_5fa3373b93b2a76b1fe23f0a34e233f8);
+            
+    
+            var marker_6736fab94767a21fd685c2b97ffdd2c8 = L.marker(
+                [44.92703285375643, -92.59094779007098],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e352ee1dd26aeb8581a3179255728890 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7728ef34447b5130b651c157ded1ea82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ffe290240417cf6487ecfae2197f554 = $(`<div id="html_6ffe290240417cf6487ecfae2197f554" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 23.991498843619038<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-03-28 08:47:51.409888606</div>`)[0];
+                popup_7728ef34447b5130b651c157ded1ea82.setContent(html_6ffe290240417cf6487ecfae2197f554);
+            
+        
+
+        marker_6736fab94767a21fd685c2b97ffdd2c8.bindPopup(popup_7728ef34447b5130b651c157ded1ea82)
+        ;
+
+        
+    
+    
+                marker_6736fab94767a21fd685c2b97ffdd2c8.setIcon(icon_e352ee1dd26aeb8581a3179255728890);
+            
+    
+            var marker_f6fcb2d5c170cb0141ad4360088d25ce = L.marker(
+                [30.22997085993256, -101.63180135106907],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_680d7ab3a4c25d14825f149c2a842d7d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_455a6637602d74bf0951eda24ad4f31e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f661b6f17c7c8291d697c385e32f59b = $(`<div id="html_6f661b6f17c7c8291d697c385e32f59b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 10.616917142702913<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-01-26 17:36:57.944542072</div>`)[0];
+                popup_455a6637602d74bf0951eda24ad4f31e.setContent(html_6f661b6f17c7c8291d697c385e32f59b);
+            
+        
+
+        marker_f6fcb2d5c170cb0141ad4360088d25ce.bindPopup(popup_455a6637602d74bf0951eda24ad4f31e)
+        ;
+
+        
+    
+    
+                marker_f6fcb2d5c170cb0141ad4360088d25ce.setIcon(icon_680d7ab3a4c25d14825f149c2a842d7d);
+            
+    
+            var marker_6b6f827059756e02348e83989a0c052c = L.marker(
+                [45.89304087167248, -104.32417838047148],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_fba2e59d41eacee7775cf3f250f5320f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5bf8959d588029cc81f9aca16476f883 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d52e47a35590439363b79f97f2fff029 = $(`<div id="html_d52e47a35590439363b79f97f2fff029" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 15.665590831334107<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2024-12-04 01:46:02.318979515</div>`)[0];
+                popup_5bf8959d588029cc81f9aca16476f883.setContent(html_d52e47a35590439363b79f97f2fff029);
+            
+        
+
+        marker_6b6f827059756e02348e83989a0c052c.bindPopup(popup_5bf8959d588029cc81f9aca16476f883)
+        ;
+
+        
+    
+    
+                marker_6b6f827059756e02348e83989a0c052c.setIcon(icon_fba2e59d41eacee7775cf3f250f5320f);
+            
+    
+            var marker_1d6e75cbf762a495402412c462853c71 = L.marker(
+                [47.622906205287066, -111.10869622120342],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_891821a38b342450f95f9d0a84110cd6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a59971be0b11a3839f755c6b85a6462 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_65fc0ee15842222e100ee47fe93b23d0 = $(`<div id="html_65fc0ee15842222e100ee47fe93b23d0" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 25.95028888668419<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-04-04 23:01:25.811328750</div>`)[0];
+                popup_8a59971be0b11a3839f755c6b85a6462.setContent(html_65fc0ee15842222e100ee47fe93b23d0);
+            
+        
+
+        marker_1d6e75cbf762a495402412c462853c71.bindPopup(popup_8a59971be0b11a3839f755c6b85a6462)
+        ;
+
+        
+    
+    
+                marker_1d6e75cbf762a495402412c462853c71.setIcon(icon_891821a38b342450f95f9d0a84110cd6);
+            
+    
+            var marker_f8fb6ef064a6c5898142f637bd1afe5f = L.marker(
+                [34.78806177691757, -123.29976217122243],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d1eaac04682d62aa3994ba1db57b5b51 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6e4cbdf59adbc8c58ea8039728404bd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_068610b3af2c8772e56c79ed3b0c371a = $(`<div id="html_068610b3af2c8772e56c79ed3b0c371a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 47.32261800858428<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-08-02 15:42:54.380185636</div>`)[0];
+                popup_e6e4cbdf59adbc8c58ea8039728404bd.setContent(html_068610b3af2c8772e56c79ed3b0c371a);
+            
+        
+
+        marker_f8fb6ef064a6c5898142f637bd1afe5f.bindPopup(popup_e6e4cbdf59adbc8c58ea8039728404bd)
+        ;
+
+        
+    
+    
+                marker_f8fb6ef064a6c5898142f637bd1afe5f.setIcon(icon_d1eaac04682d62aa3994ba1db57b5b51);
+            
+    
+            var marker_74dc75110d890343c409854077613ce9 = L.marker(
+                [35.05360246647132, -90.84768710438932],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_e5ca770591a051f2cb2ec053998881e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a6a4e1ed3c538aa74bc86ca901094879 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df9c64d5dd43d57baa5ce64b2265a6e5 = $(`<div id="html_df9c64d5dd43d57baa5ce64b2265a6e5" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 165.58972653204304<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-18 00:48:25.973344952</div>`)[0];
+                popup_a6a4e1ed3c538aa74bc86ca901094879.setContent(html_df9c64d5dd43d57baa5ce64b2265a6e5);
+            
+        
+
+        marker_74dc75110d890343c409854077613ce9.bindPopup(popup_a6a4e1ed3c538aa74bc86ca901094879)
+        ;
+
+        
+    
+    
+                marker_74dc75110d890343c409854077613ce9.setIcon(icon_e5ca770591a051f2cb2ec053998881e5);
+            
+    
+            var marker_91f18c4acc6d72e652915d298ae24cd9 = L.marker(
+                [53.513983021850095, -116.51269890693541],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_44245f18a7278b7aba787885f5c488bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_067c6ee456f7a9903ba14315357cdeec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ea93afba278547a9a3fa2e1938cfbaa = $(`<div id="html_2ea93afba278547a9a3fa2e1938cfbaa" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 37.17285399664462<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-04-25 06:07:42.769024520</div>`)[0];
+                popup_067c6ee456f7a9903ba14315357cdeec.setContent(html_2ea93afba278547a9a3fa2e1938cfbaa);
+            
+        
+
+        marker_91f18c4acc6d72e652915d298ae24cd9.bindPopup(popup_067c6ee456f7a9903ba14315357cdeec)
+        ;
+
+        
+    
+    
+                marker_91f18c4acc6d72e652915d298ae24cd9.setIcon(icon_44245f18a7278b7aba787885f5c488bc);
+            
+    
+            var marker_61553e53ff052b2d9158689314ed17e1 = L.marker(
+                [35.861613517878496, -103.11935602209753],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_16da29e5a0ab753e0855763afa4ade1c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_650580ea4eda21e81d4d84e6fe01fe9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_077ee37c2f2a9ebdfe53a61fbff48c24 = $(`<div id="html_077ee37c2f2a9ebdfe53a61fbff48c24" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1.9613114977166315<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-07-08 00:42:05.775325148</div>`)[0];
+                popup_650580ea4eda21e81d4d84e6fe01fe9f.setContent(html_077ee37c2f2a9ebdfe53a61fbff48c24);
+            
+        
+
+        marker_61553e53ff052b2d9158689314ed17e1.bindPopup(popup_650580ea4eda21e81d4d84e6fe01fe9f)
+        ;
+
+        
+    
+    
+                marker_61553e53ff052b2d9158689314ed17e1.setIcon(icon_16da29e5a0ab753e0855763afa4ade1c);
+            
+    
+            var marker_4bcd8fedcbc189aa7e31861f4c02cf97 = L.marker(
+                [41.04231210565646, -96.24823048960266],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2070839dccc2e9d88269aacdbb89ccd0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_663dfff870729c24e8e33045d42d1683 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd9a1ae2322efaec9e83e23391f6a841 = $(`<div id="html_bd9a1ae2322efaec9e83e23391f6a841" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 72.23420482366862<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2024-12-06 07:12:31.157863404</div>`)[0];
+                popup_663dfff870729c24e8e33045d42d1683.setContent(html_bd9a1ae2322efaec9e83e23391f6a841);
+            
+        
+
+        marker_4bcd8fedcbc189aa7e31861f4c02cf97.bindPopup(popup_663dfff870729c24e8e33045d42d1683)
+        ;
+
+        
+    
+    
+                marker_4bcd8fedcbc189aa7e31861f4c02cf97.setIcon(icon_2070839dccc2e9d88269aacdbb89ccd0);
+            
+    
+            var marker_6e088a9d779a953f38989061d9001599 = L.marker(
+                [41.70634573483989, -93.1366203140461],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_c203160424f161a3e3c26510e36c74c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_128a2a8118160033fcec9326e54e4b72 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31876785bcd0bfe139be53a770c3b5f8 = $(`<div id="html_31876785bcd0bfe139be53a770c3b5f8" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 132.9072992323553<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2024-11-28 03:50:28.025550172</div>`)[0];
+                popup_128a2a8118160033fcec9326e54e4b72.setContent(html_31876785bcd0bfe139be53a770c3b5f8);
+            
+        
+
+        marker_6e088a9d779a953f38989061d9001599.bindPopup(popup_128a2a8118160033fcec9326e54e4b72)
+        ;
+
+        
+    
+    
+                marker_6e088a9d779a953f38989061d9001599.setIcon(icon_c203160424f161a3e3c26510e36c74c4);
+            
+    
+            var marker_1d9131ae6ffd501123bb18854d15176e = L.marker(
+                [40.652162384423306, -93.42738087065692],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_a4ef7125bf74f473e47d7fa08fb8dcb8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cb1ce01e4306679557425c3d028bae00 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3738d9ad220bf0141201557644e00da1 = $(`<div id="html_3738d9ad220bf0141201557644e00da1" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 35.19356037026952<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-10-20 21:42:04.695217140</div>`)[0];
+                popup_cb1ce01e4306679557425c3d028bae00.setContent(html_3738d9ad220bf0141201557644e00da1);
+            
+        
+
+        marker_1d9131ae6ffd501123bb18854d15176e.bindPopup(popup_cb1ce01e4306679557425c3d028bae00)
+        ;
+
+        
+    
+    
+                marker_1d9131ae6ffd501123bb18854d15176e.setIcon(icon_a4ef7125bf74f473e47d7fa08fb8dcb8);
+            
+    
+            var marker_480d0aebf09b0e79220289649cded803 = L.marker(
+                [39.32425091700584, -84.99849699636967],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_45c9e6e9b84eb27f2314568fa41e234a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31498824a44ef3de2204f280176ab91e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_35f7c0c31d773fb87148bef44b58ab13 = $(`<div id="html_35f7c0c31d773fb87148bef44b58ab13" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 40.40853608017122<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-05-10 23:43:20.302777896</div>`)[0];
+                popup_31498824a44ef3de2204f280176ab91e.setContent(html_35f7c0c31d773fb87148bef44b58ab13);
+            
+        
+
+        marker_480d0aebf09b0e79220289649cded803.bindPopup(popup_31498824a44ef3de2204f280176ab91e)
+        ;
+
+        
+    
+    
+                marker_480d0aebf09b0e79220289649cded803.setIcon(icon_45c9e6e9b84eb27f2314568fa41e234a);
+            
+    
+            var marker_618e908a916bf932b493cc160259b528 = L.marker(
+                [40.688304982344945, -87.33667151309606],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ab737fa58769564ec1703a5fafdb3a66 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c72ac0e18f5252331a885cf261faf9b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_86d0429865fffdb2804ddb60708f5f03 = $(`<div id="html_86d0429865fffdb2804ddb60708f5f03" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 347.9740371384059<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-04-01 06:32:20.356783296</div>`)[0];
+                popup_9c72ac0e18f5252331a885cf261faf9b.setContent(html_86d0429865fffdb2804ddb60708f5f03);
+            
+        
+
+        marker_618e908a916bf932b493cc160259b528.bindPopup(popup_9c72ac0e18f5252331a885cf261faf9b)
+        ;
+
+        
+    
+    
+                marker_618e908a916bf932b493cc160259b528.setIcon(icon_ab737fa58769564ec1703a5fafdb3a66);
+            
+    
+            var marker_5de587968424a966dc88287dd35511e5 = L.marker(
+                [37.56772636423544, -103.73713925696859],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_c8522c3e4abe47f5dd2b23f7411eeace = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af7ff887012383fe6f360619876c840b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c345dde677c1ed1bdca51f050e418757 = $(`<div id="html_c345dde677c1ed1bdca51f050e418757" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 3125.949180794167<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-09-02 05:00:01.562903908</div>`)[0];
+                popup_af7ff887012383fe6f360619876c840b.setContent(html_c345dde677c1ed1bdca51f050e418757);
+            
+        
+
+        marker_5de587968424a966dc88287dd35511e5.bindPopup(popup_af7ff887012383fe6f360619876c840b)
+        ;
+
+        
+    
+    
+                marker_5de587968424a966dc88287dd35511e5.setIcon(icon_c8522c3e4abe47f5dd2b23f7411eeace);
+            
+    
+            var marker_918d26ce9cec7cbf9775c2aa09bfd01d = L.marker(
+                [37.36668596338152, -104.97454651128906],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_4ba259a1a544049cdd41af4c367f7e1a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a1ead4d33f3ccbf51e566bdfed702230 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fdc4731a327792644bf28f4c20733b79 = $(`<div id="html_fdc4731a327792644bf28f4c20733b79" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 128.77750690272327<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-30 09:13:29.483695987</div>`)[0];
+                popup_a1ead4d33f3ccbf51e566bdfed702230.setContent(html_fdc4731a327792644bf28f4c20733b79);
+            
+        
+
+        marker_918d26ce9cec7cbf9775c2aa09bfd01d.bindPopup(popup_a1ead4d33f3ccbf51e566bdfed702230)
+        ;
+
+        
+    
+    
+                marker_918d26ce9cec7cbf9775c2aa09bfd01d.setIcon(icon_4ba259a1a544049cdd41af4c367f7e1a);
+            
+    
+            var marker_8d02a06f6ec983f10d3106177a9cbd26 = L.marker(
+                [38.41275745324512, -94.26718134248634],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_27430753e4f6d5e8bf249c473f9348d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e44bedc9b5d7240f8b53ac87cf78a3eb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6aed49f4ec6e569f63193b1c1365172d = $(`<div id="html_6aed49f4ec6e569f63193b1c1365172d" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 28.382331967078034<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-08 18:16:51.463894006</div>`)[0];
+                popup_e44bedc9b5d7240f8b53ac87cf78a3eb.setContent(html_6aed49f4ec6e569f63193b1c1365172d);
+            
+        
+
+        marker_8d02a06f6ec983f10d3106177a9cbd26.bindPopup(popup_e44bedc9b5d7240f8b53ac87cf78a3eb)
+        ;
+
+        
+    
+    
+                marker_8d02a06f6ec983f10d3106177a9cbd26.setIcon(icon_27430753e4f6d5e8bf249c473f9348d2);
+            
+    
+            var marker_3370f55c306e5adebab49a4ff7a296af = L.marker(
+                [34.82001446519305, -89.69726147806583],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_8036d1171cfe00ce600c872567ccf38a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_68893016fa6bdfebdc15eca609c95382 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c1f1c9da446fe835daad66e66449d3b = $(`<div id="html_7c1f1c9da446fe835daad66e66449d3b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 881.0715608670304<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2024-12-28 06:36:48.223569975</div>`)[0];
+                popup_68893016fa6bdfebdc15eca609c95382.setContent(html_7c1f1c9da446fe835daad66e66449d3b);
+            
+        
+
+        marker_3370f55c306e5adebab49a4ff7a296af.bindPopup(popup_68893016fa6bdfebdc15eca609c95382)
+        ;
+
+        
+    
+    
+                marker_3370f55c306e5adebab49a4ff7a296af.setIcon(icon_8036d1171cfe00ce600c872567ccf38a);
+            
+    
+            var marker_27b785ad7b5a4a950812e5b02f6b9264 = L.marker(
+                [39.33912959973348, -75.43530949464252],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_429b9253eceaa125705281030eb32e3d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27c116f3696abd565c2f84878bc03c9b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_def7c4372c0bc204b953f14472c26c02 = $(`<div id="html_def7c4372c0bc204b953f14472c26c02" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 9.314895290663838<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-05-06 21:36:01.778925510</div>`)[0];
+                popup_27c116f3696abd565c2f84878bc03c9b.setContent(html_def7c4372c0bc204b953f14472c26c02);
+            
+        
+
+        marker_27b785ad7b5a4a950812e5b02f6b9264.bindPopup(popup_27c116f3696abd565c2f84878bc03c9b)
+        ;
+
+        
+    
+    
+                marker_27b785ad7b5a4a950812e5b02f6b9264.setIcon(icon_429b9253eceaa125705281030eb32e3d);
+            
+    
+            var marker_3ae3ad1b7400c8d8497162a0dd14b1a5 = L.marker(
+                [37.59595234325711, -107.49208665466831],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_95d8e4b66a30cf27531f4ac86e162b45 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22efa604e2a3d1ebfe3ae90087464c51 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2b7ac452082f4cd5fa5a3e18b8a2842 = $(`<div id="html_c2b7ac452082f4cd5fa5a3e18b8a2842" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 12.412643079565882<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-09-08 21:19:28.079555572</div>`)[0];
+                popup_22efa604e2a3d1ebfe3ae90087464c51.setContent(html_c2b7ac452082f4cd5fa5a3e18b8a2842);
+            
+        
+
+        marker_3ae3ad1b7400c8d8497162a0dd14b1a5.bindPopup(popup_22efa604e2a3d1ebfe3ae90087464c51)
+        ;
+
+        
+    
+    
+                marker_3ae3ad1b7400c8d8497162a0dd14b1a5.setIcon(icon_95d8e4b66a30cf27531f4ac86e162b45);
+            
+    
+            var marker_5e6dac247736ffa7b21186dc13685076 = L.marker(
+                [49.465971107588196, -85.78267001840064],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_f3dd6e09ccb239013b039e022d966a76 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7149454218c66e7109e1a17b2f938ffc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_969f94fc4508aba09a65ee30726824eb = $(`<div id="html_969f94fc4508aba09a65ee30726824eb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 89.70785673300958<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-10 23:24:19.708718488</div>`)[0];
+                popup_7149454218c66e7109e1a17b2f938ffc.setContent(html_969f94fc4508aba09a65ee30726824eb);
+            
+        
+
+        marker_5e6dac247736ffa7b21186dc13685076.bindPopup(popup_7149454218c66e7109e1a17b2f938ffc)
+        ;
+
+        
+    
+    
+                marker_5e6dac247736ffa7b21186dc13685076.setIcon(icon_f3dd6e09ccb239013b039e022d966a76);
+            
+    
+            var marker_840459d96e4234656dc874cb37c0cda2 = L.marker(
+                [44.75535658298712, -109.95826384927344],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_482888f9c08a33431e5d99dbfd050ce3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acb5b7958549633fb3f7bb0e28c4f15a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_351cc74984c7eebfc95b973336c88d4d = $(`<div id="html_351cc74984c7eebfc95b973336c88d4d" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 18.60108995008012<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-30 15:37:00.104758092</div>`)[0];
+                popup_acb5b7958549633fb3f7bb0e28c4f15a.setContent(html_351cc74984c7eebfc95b973336c88d4d);
+            
+        
+
+        marker_840459d96e4234656dc874cb37c0cda2.bindPopup(popup_acb5b7958549633fb3f7bb0e28c4f15a)
+        ;
+
+        
+    
+    
+                marker_840459d96e4234656dc874cb37c0cda2.setIcon(icon_482888f9c08a33431e5d99dbfd050ce3);
+            
+    
+            var marker_5d60f3e2c3eaf8be439b71964c803b8c = L.marker(
+                [43.27980627651802, -96.77595918409187],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5675e0e7cc0621797da64c5bddc1c213 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cc94ba7922a2e9c091cdf4573b993be8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ccaa4e20e0b39f8bb26c1ac11e7ec85e = $(`<div id="html_ccaa4e20e0b39f8bb26c1ac11e7ec85e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 7.39522043061859<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-03-26 12:59:35.640311648</div>`)[0];
+                popup_cc94ba7922a2e9c091cdf4573b993be8.setContent(html_ccaa4e20e0b39f8bb26c1ac11e7ec85e);
+            
+        
+
+        marker_5d60f3e2c3eaf8be439b71964c803b8c.bindPopup(popup_cc94ba7922a2e9c091cdf4573b993be8)
+        ;
+
+        
+    
+    
+                marker_5d60f3e2c3eaf8be439b71964c803b8c.setIcon(icon_5675e0e7cc0621797da64c5bddc1c213);
+            
+    
+            var marker_1c9c1834b64752c0d400c9bc91662bfe = L.marker(
+                [37.5150298072177, -95.7906134589238],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_6f0a89b035b14c431d07ee92e428cfd2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3f2fa2896bdd301fe8bd5ad686c7e02 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0545364f6ee1e035fd704d98c5f1f62e = $(`<div id="html_0545364f6ee1e035fd704d98c5f1f62e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 45.73652484884455<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-01-02 11:01:04.209168534</div>`)[0];
+                popup_a3f2fa2896bdd301fe8bd5ad686c7e02.setContent(html_0545364f6ee1e035fd704d98c5f1f62e);
+            
+        
+
+        marker_1c9c1834b64752c0d400c9bc91662bfe.bindPopup(popup_a3f2fa2896bdd301fe8bd5ad686c7e02)
+        ;
+
+        
+    
+    
+                marker_1c9c1834b64752c0d400c9bc91662bfe.setIcon(icon_6f0a89b035b14c431d07ee92e428cfd2);
+            
+    
+            var marker_8ebfe42aec0e5fc6313e7421eafce7d9 = L.marker(
+                [39.11449738804889, -117.09375322979649],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_cb6dfed22d61650fd15421ee4822f0c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7e727cf1c84e3855175c030cd4a9c727 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5cf6d9f836d17c5aefe5d788350fdea2 = $(`<div id="html_5cf6d9f836d17c5aefe5d788350fdea2" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 26.28917227469091<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-01-24 17:25:52.598007418</div>`)[0];
+                popup_7e727cf1c84e3855175c030cd4a9c727.setContent(html_5cf6d9f836d17c5aefe5d788350fdea2);
+            
+        
+
+        marker_8ebfe42aec0e5fc6313e7421eafce7d9.bindPopup(popup_7e727cf1c84e3855175c030cd4a9c727)
+        ;
+
+        
+    
+    
+                marker_8ebfe42aec0e5fc6313e7421eafce7d9.setIcon(icon_cb6dfed22d61650fd15421ee4822f0c9);
+            
+    
+            var marker_58916bb9312a97fcaee21c08cd9a16a6 = L.marker(
+                [39.003207126217674, -112.5380080261969],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2f0e986760eec2a63c928dfd68348a5d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aea47074b04391603e83e8cab2e6fb4e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_019e7cd8f0c757c6b7dc2f37696eb426 = $(`<div id="html_019e7cd8f0c757c6b7dc2f37696eb426" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 65.10433097029602<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2024-11-13 23:02:34.938241441</div>`)[0];
+                popup_aea47074b04391603e83e8cab2e6fb4e.setContent(html_019e7cd8f0c757c6b7dc2f37696eb426);
+            
+        
+
+        marker_58916bb9312a97fcaee21c08cd9a16a6.bindPopup(popup_aea47074b04391603e83e8cab2e6fb4e)
+        ;
+
+        
+    
+    
+                marker_58916bb9312a97fcaee21c08cd9a16a6.setIcon(icon_2f0e986760eec2a63c928dfd68348a5d);
+            
+    
+            var marker_ddb73e2f3dd0bdfd9f8ce2adf2cd1cc9 = L.marker(
+                [34.78263955678469, -120.90035783322664],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ee43a809830f9c16995caee6097827e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_250b20dfd2621fcdb2cbbee49aef7613 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0924dfd0a57944e31dce3c320faa748c = $(`<div id="html_0924dfd0a57944e31dce3c320faa748c" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 27.496191862870862<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-02-05 09:46:45.523299948</div>`)[0];
+                popup_250b20dfd2621fcdb2cbbee49aef7613.setContent(html_0924dfd0a57944e31dce3c320faa748c);
+            
+        
+
+        marker_ddb73e2f3dd0bdfd9f8ce2adf2cd1cc9.bindPopup(popup_250b20dfd2621fcdb2cbbee49aef7613)
+        ;
+
+        
+    
+    
+                marker_ddb73e2f3dd0bdfd9f8ce2adf2cd1cc9.setIcon(icon_ee43a809830f9c16995caee6097827e5);
+            
+    
+            var marker_b4b04464468d44a46ce7829d531168f6 = L.marker(
+                [39.80873730137092, -79.89579584607478],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_c3b6fbbdb99ed8537af4aff4bf823d4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bf3345a5c03a429552db40bccbdb2d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c66efb03269f7dfa076c345b73b77b32 = $(`<div id="html_c66efb03269f7dfa076c345b73b77b32" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1494.7338897699628<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-08-29 02:00:09.123659984</div>`)[0];
+                popup_8bf3345a5c03a429552db40bccbdb2d0.setContent(html_c66efb03269f7dfa076c345b73b77b32);
+            
+        
+
+        marker_b4b04464468d44a46ce7829d531168f6.bindPopup(popup_8bf3345a5c03a429552db40bccbdb2d0)
+        ;
+
+        
+    
+    
+                marker_b4b04464468d44a46ce7829d531168f6.setIcon(icon_c3b6fbbdb99ed8537af4aff4bf823d4b);
+            
+    
+            var marker_468478f2a227f6702b98188e343b000d = L.marker(
+                [43.18883283090401, -75.12851821999091],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_0c6b1b346e2647202b768e850cb0be3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_304d210ec4eb1a9656109a46b56f7c3f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97efc35b6066c78be6b7eddd0cdbec80 = $(`<div id="html_97efc35b6066c78be6b7eddd0cdbec80" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 9.192170968904096<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-18 22:42:33.858133430</div>`)[0];
+                popup_304d210ec4eb1a9656109a46b56f7c3f.setContent(html_97efc35b6066c78be6b7eddd0cdbec80);
+            
+        
+
+        marker_468478f2a227f6702b98188e343b000d.bindPopup(popup_304d210ec4eb1a9656109a46b56f7c3f)
+        ;
+
+        
+    
+    
+                marker_468478f2a227f6702b98188e343b000d.setIcon(icon_0c6b1b346e2647202b768e850cb0be3e);
+            
+    
+            var marker_305a37728b020790b4fc2616611698ab = L.marker(
+                [39.94591879027706, -108.58968767445339],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d04c490224839da36ef48de8d0880112 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c8bd5defa8dc95202ad9e67c41fa8313 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f4a5261c8ca0f73f597e68ff54674e74 = $(`<div id="html_f4a5261c8ca0f73f597e68ff54674e74" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 90.64368691394382<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2025-04-02 20:12:38.718619480</div>`)[0];
+                popup_c8bd5defa8dc95202ad9e67c41fa8313.setContent(html_f4a5261c8ca0f73f597e68ff54674e74);
+            
+        
+
+        marker_305a37728b020790b4fc2616611698ab.bindPopup(popup_c8bd5defa8dc95202ad9e67c41fa8313)
+        ;
+
+        
+    
+    
+                marker_305a37728b020790b4fc2616611698ab.setIcon(icon_d04c490224839da36ef48de8d0880112);
+            
+    
+            var marker_91fbd9c7b3f546a14e3ba7cd79024f6b = L.marker(
+                [37.359318599289374, -103.44686771868204],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_431c5658b305dce60df478972775decb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d1d96260e4a174c341ea1f18064ce527 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f2f8c9a98456fa025c1968b4f9fd6d6d = $(`<div id="html_f2f8c9a98456fa025c1968b4f9fd6d6d" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 51.00293464367261<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-02-01 14:39:58.322579876</div>`)[0];
+                popup_d1d96260e4a174c341ea1f18064ce527.setContent(html_f2f8c9a98456fa025c1968b4f9fd6d6d);
+            
+        
+
+        marker_91fbd9c7b3f546a14e3ba7cd79024f6b.bindPopup(popup_d1d96260e4a174c341ea1f18064ce527)
+        ;
+
+        
+    
+    
+                marker_91fbd9c7b3f546a14e3ba7cd79024f6b.setIcon(icon_431c5658b305dce60df478972775decb);
+            
+    
+            var marker_cba9e7cefb6b331a382f91d4677cea84 = L.marker(
+                [33.44273150286091, -95.97861136883827],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_007505eac457b6888bff070b4bf472bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_02be79b746c434b94f2c2a4512f23a48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d0deffeb66b89e7eadbcf4669872adcd = $(`<div id="html_d0deffeb66b89e7eadbcf4669872adcd" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 17.170615997963527<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-19 23:14:23.489096526</div>`)[0];
+                popup_02be79b746c434b94f2c2a4512f23a48.setContent(html_d0deffeb66b89e7eadbcf4669872adcd);
+            
+        
+
+        marker_cba9e7cefb6b331a382f91d4677cea84.bindPopup(popup_02be79b746c434b94f2c2a4512f23a48)
+        ;
+
+        
+    
+    
+                marker_cba9e7cefb6b331a382f91d4677cea84.setIcon(icon_007505eac457b6888bff070b4bf472bd);
+            
+    
+            var marker_59aff78894fd1c0a7778c2fb7429afff = L.marker(
+                [46.515040418680655, -98.06904955168223],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_8ef4edfc3d1f3813493b0bf82c9bcee2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_387d2cee8da79e36d63afc404ce51e74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b6e5560c537a8c8e88b9bce1a3078f52 = $(`<div id="html_b6e5560c537a8c8e88b9bce1a3078f52" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 521.124763760058<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2024-11-27 04:11:12.309978615</div>`)[0];
+                popup_387d2cee8da79e36d63afc404ce51e74.setContent(html_b6e5560c537a8c8e88b9bce1a3078f52);
+            
+        
+
+        marker_59aff78894fd1c0a7778c2fb7429afff.bindPopup(popup_387d2cee8da79e36d63afc404ce51e74)
+        ;
+
+        
+    
+    
+                marker_59aff78894fd1c0a7778c2fb7429afff.setIcon(icon_8ef4edfc3d1f3813493b0bf82c9bcee2);
+            
+    
+            var marker_ecd6f83021e52527b891d121946596a5 = L.marker(
+                [39.45390296029241, -96.16472114563557],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_3a69b84dd555f7574ebf9869b55e9c12 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c7f8daac8a9cff332db0f9a6df98504 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_64b06c43e5ffd8a3edc572e5d3ac1a4d = $(`<div id="html_64b06c43e5ffd8a3edc572e5d3ac1a4d" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 5532.091388831747<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2024-11-20 06:36:22.300977715</div>`)[0];
+                popup_7c7f8daac8a9cff332db0f9a6df98504.setContent(html_64b06c43e5ffd8a3edc572e5d3ac1a4d);
+            
+        
+
+        marker_ecd6f83021e52527b891d121946596a5.bindPopup(popup_7c7f8daac8a9cff332db0f9a6df98504)
+        ;
+
+        
+    
+    
+                marker_ecd6f83021e52527b891d121946596a5.setIcon(icon_3a69b84dd555f7574ebf9869b55e9c12);
+            
+    
+            var marker_3bd51dc772f185bb86afaf7d33fac0e9 = L.marker(
+                [40.20821367210579, -93.31277208772703],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5e5d8a6b00fbd281241cce054c9b34fd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6677ab5993b2282fe18ecabfcd7cf2fd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7567a0c1213ef9e72ded52f7a3dd83cb = $(`<div id="html_7567a0c1213ef9e72ded52f7a3dd83cb" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 73.13181592252286<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-03-30 18:37:09.825730190</div>`)[0];
+                popup_6677ab5993b2282fe18ecabfcd7cf2fd.setContent(html_7567a0c1213ef9e72ded52f7a3dd83cb);
+            
+        
+
+        marker_3bd51dc772f185bb86afaf7d33fac0e9.bindPopup(popup_6677ab5993b2282fe18ecabfcd7cf2fd)
+        ;
+
+        
+    
+    
+                marker_3bd51dc772f185bb86afaf7d33fac0e9.setIcon(icon_5e5d8a6b00fbd281241cce054c9b34fd);
+            
+    
+            var marker_ccc53b80ab8cf0d7a3e343a82d9a3ccc = L.marker(
+                [37.69880462567511, -98.88682761230145],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_dbe34fc57a1d4128b679011a1b5b9a9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e95f00217f880a644f3696ec5a66e18a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_58ab48d2e20db0b9c7a622b03bd99b1b = $(`<div id="html_58ab48d2e20db0b9c7a622b03bd99b1b" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 26.975708567472427<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-01-22 15:29:39.420689687</div>`)[0];
+                popup_e95f00217f880a644f3696ec5a66e18a.setContent(html_58ab48d2e20db0b9c7a622b03bd99b1b);
+            
+        
+
+        marker_ccc53b80ab8cf0d7a3e343a82d9a3ccc.bindPopup(popup_e95f00217f880a644f3696ec5a66e18a)
+        ;
+
+        
+    
+    
+                marker_ccc53b80ab8cf0d7a3e343a82d9a3ccc.setIcon(icon_dbe34fc57a1d4128b679011a1b5b9a9a);
+            
+    
+            var marker_7c9140da2800ca00310323022d8a89e3 = L.marker(
+                [43.81974070986274, -88.15673225158797],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_856752abc555bb77a114d98d8756015f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0f9c3bb5577bfc458d65e1dca49b7304 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d6cd3fb6387c66c18303f821febda01 = $(`<div id="html_5d6cd3fb6387c66c18303f821febda01" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 10.198236097136633<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-09-24 14:02:31.697917408</div>`)[0];
+                popup_0f9c3bb5577bfc458d65e1dca49b7304.setContent(html_5d6cd3fb6387c66c18303f821febda01);
+            
+        
+
+        marker_7c9140da2800ca00310323022d8a89e3.bindPopup(popup_0f9c3bb5577bfc458d65e1dca49b7304)
+        ;
+
+        
+    
+    
+                marker_7c9140da2800ca00310323022d8a89e3.setIcon(icon_856752abc555bb77a114d98d8756015f);
+            
+    
+            var marker_9e3c6c1c54d5d4a99f94a352386bf956 = L.marker(
+                [43.787551534390616, -73.80172869065436],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_1fedcad40748038462d8713192ea7c2d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2976c99dc5f00454e30b8ae3b4d63ce0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e7438bb93096be16da8b8cf18c41c53 = $(`<div id="html_3e7438bb93096be16da8b8cf18c41c53" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2882.7933622893393<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-01-12 10:11:23.111058723</div>`)[0];
+                popup_2976c99dc5f00454e30b8ae3b4d63ce0.setContent(html_3e7438bb93096be16da8b8cf18c41c53);
+            
+        
+
+        marker_9e3c6c1c54d5d4a99f94a352386bf956.bindPopup(popup_2976c99dc5f00454e30b8ae3b4d63ce0)
+        ;
+
+        
+    
+    
+                marker_9e3c6c1c54d5d4a99f94a352386bf956.setIcon(icon_1fedcad40748038462d8713192ea7c2d);
+            
+    
+            var marker_4de5d35be5877027e3f82079ad4f4836 = L.marker(
+                [39.22464597558443, -106.41330547209417],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_52eb321433f7f2adfa5205caed317058 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_732330be200f7fd84a3396c51b3f8d1e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8fe3a35a3d462cca1a1e1854ea30f1bf = $(`<div id="html_8fe3a35a3d462cca1a1e1854ea30f1bf" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 34.50068118944158<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-06-28 13:47:41.688916508</div>`)[0];
+                popup_732330be200f7fd84a3396c51b3f8d1e.setContent(html_8fe3a35a3d462cca1a1e1854ea30f1bf);
+            
+        
+
+        marker_4de5d35be5877027e3f82079ad4f4836.bindPopup(popup_732330be200f7fd84a3396c51b3f8d1e)
+        ;
+
+        
+    
+    
+                marker_4de5d35be5877027e3f82079ad4f4836.setIcon(icon_52eb321433f7f2adfa5205caed317058);
+            
+    
+            var marker_783e7e753f06e8da2fbe12260a0ad1af = L.marker(
+                [40.30777992805122, -76.59377233095272],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_656bd3d8d66dd65ce6ef9223aa9da32b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70f69a5b8e902fc9ac92743c18f240af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6033addbab291205408fde2ee372f078 = $(`<div id="html_6033addbab291205408fde2ee372f078" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 52.112852150717146<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-02-15 17:42:43.579105528</div>`)[0];
+                popup_70f69a5b8e902fc9ac92743c18f240af.setContent(html_6033addbab291205408fde2ee372f078);
+            
+        
+
+        marker_783e7e753f06e8da2fbe12260a0ad1af.bindPopup(popup_70f69a5b8e902fc9ac92743c18f240af)
+        ;
+
+        
+    
+    
+                marker_783e7e753f06e8da2fbe12260a0ad1af.setIcon(icon_656bd3d8d66dd65ce6ef9223aa9da32b);
+            
+    
+            var marker_71b2e72b3939c9da1eaecc87c820f032 = L.marker(
+                [40.098309468484885, -119.77606491230898],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_77dcfb9c43f57b9770c3f7f24acb9718 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9efa3ed9cb090a528eae5fa4bf6d58e2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f4b7138483be7453ed428ad30e626f7e = $(`<div id="html_f4b7138483be7453ed428ad30e626f7e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1266.1869387125864<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-03-11 19:55:47.737521370</div>`)[0];
+                popup_9efa3ed9cb090a528eae5fa4bf6d58e2.setContent(html_f4b7138483be7453ed428ad30e626f7e);
+            
+        
+
+        marker_71b2e72b3939c9da1eaecc87c820f032.bindPopup(popup_9efa3ed9cb090a528eae5fa4bf6d58e2)
+        ;
+
+        
+    
+    
+                marker_71b2e72b3939c9da1eaecc87c820f032.setIcon(icon_77dcfb9c43f57b9770c3f7f24acb9718);
+            
+    
+            var marker_ad6502ade6e6698f9efbaac4906cc396 = L.marker(
+                [46.069658985877396, -108.68305323528061],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_df8ff07587718aa7179782686f8cabef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f42344aa94db01703127718b15e1b46c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5fcfc5c333d31a17d5afabe169b838f8 = $(`<div id="html_5fcfc5c333d31a17d5afabe169b838f8" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 492.656062661816<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-03-12 07:19:08.637611378</div>`)[0];
+                popup_f42344aa94db01703127718b15e1b46c.setContent(html_5fcfc5c333d31a17d5afabe169b838f8);
+            
+        
+
+        marker_ad6502ade6e6698f9efbaac4906cc396.bindPopup(popup_f42344aa94db01703127718b15e1b46c)
+        ;
+
+        
+    
+    
+                marker_ad6502ade6e6698f9efbaac4906cc396.setIcon(icon_df8ff07587718aa7179782686f8cabef);
+            
+    
+            var marker_d4135d33846079f839e09953e16ba895 = L.marker(
+                [31.90985708639439, -99.30611774359332],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ed5132f9d705bc3054a173e5ffc86745 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ae8fb56e21f78ad84277f469613e2418 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1b8d08b08a27b4965f99ca5963e27821 = $(`<div id="html_1b8d08b08a27b4965f99ca5963e27821" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 63.12597781777964<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-09 02:43:30.023749992</div>`)[0];
+                popup_ae8fb56e21f78ad84277f469613e2418.setContent(html_1b8d08b08a27b4965f99ca5963e27821);
+            
+        
+
+        marker_d4135d33846079f839e09953e16ba895.bindPopup(popup_ae8fb56e21f78ad84277f469613e2418)
+        ;
+
+        
+    
+    
+                marker_d4135d33846079f839e09953e16ba895.setIcon(icon_ed5132f9d705bc3054a173e5ffc86745);
+            
+    
+            var marker_93b427e6cd604ff4f223e4b73dc52f7c = L.marker(
+                [39.59389628315941, -99.11463757161992],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_29f40e1498f8e2c8544f302e361f5cef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e9cb794d5bb5072fcafc0bf0487f6ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0da42745b750825cc4a31e37a5116d54 = $(`<div id="html_0da42745b750825cc4a31e37a5116d54" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 227.8567712829592<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-05-27 05:34:52.652012818</div>`)[0];
+                popup_4e9cb794d5bb5072fcafc0bf0487f6ac.setContent(html_0da42745b750825cc4a31e37a5116d54);
+            
+        
+
+        marker_93b427e6cd604ff4f223e4b73dc52f7c.bindPopup(popup_4e9cb794d5bb5072fcafc0bf0487f6ac)
+        ;
+
+        
+    
+    
+                marker_93b427e6cd604ff4f223e4b73dc52f7c.setIcon(icon_29f40e1498f8e2c8544f302e361f5cef);
+            
+    
+            var marker_07ddbb0390e2feed855d31702220c137 = L.marker(
+                [37.58887236995923, -103.99360023133806],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_33bbc4c04e759850f9ea42d722c1ffdc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3654bf310caa35d3bfedca184f376a41 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a3a2110e9d9d1e596c40456ff65ca297 = $(`<div id="html_a3a2110e9d9d1e596c40456ff65ca297" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 16.13807432196636<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2025-06-08 09:19:06.477395356</div>`)[0];
+                popup_3654bf310caa35d3bfedca184f376a41.setContent(html_a3a2110e9d9d1e596c40456ff65ca297);
+            
+        
+
+        marker_07ddbb0390e2feed855d31702220c137.bindPopup(popup_3654bf310caa35d3bfedca184f376a41)
+        ;
+
+        
+    
+    
+                marker_07ddbb0390e2feed855d31702220c137.setIcon(icon_33bbc4c04e759850f9ea42d722c1ffdc);
+            
+    
+            var marker_348eb373e6e021f7b77eb9201030ae90 = L.marker(
+                [40.48770914736097, -82.3200442598307],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_9b9bce20c31452d7a49ea387d34dca2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_65a8481677f3c9553bbb46d5b3a265c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d5c13e192b09cc6b9dcdcfd3e85e1f17 = $(`<div id="html_d5c13e192b09cc6b9dcdcfd3e85e1f17" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 31.572013524075064<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-07-20 14:57:06.585406156</div>`)[0];
+                popup_65a8481677f3c9553bbb46d5b3a265c9.setContent(html_d5c13e192b09cc6b9dcdcfd3e85e1f17);
+            
+        
+
+        marker_348eb373e6e021f7b77eb9201030ae90.bindPopup(popup_65a8481677f3c9553bbb46d5b3a265c9)
+        ;
+
+        
+    
+    
+                marker_348eb373e6e021f7b77eb9201030ae90.setIcon(icon_9b9bce20c31452d7a49ea387d34dca2c);
+            
+    
+            var marker_3eb47ac4aa6c9f8bf12ec57357a8a844 = L.marker(
+                [49.83994053235078, -85.51549127977697],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2c2a24e33224eb436cd4ed461f30d0c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_212de103748e4e40954115a53a7174f4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f27ce93988f1a03a1afddd80f15a9200 = $(`<div id="html_f27ce93988f1a03a1afddd80f15a9200" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 17.926316583312865<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-08-09 23:48:31.373885004</div>`)[0];
+                popup_212de103748e4e40954115a53a7174f4.setContent(html_f27ce93988f1a03a1afddd80f15a9200);
+            
+        
+
+        marker_3eb47ac4aa6c9f8bf12ec57357a8a844.bindPopup(popup_212de103748e4e40954115a53a7174f4)
+        ;
+
+        
+    
+    
+                marker_3eb47ac4aa6c9f8bf12ec57357a8a844.setIcon(icon_2c2a24e33224eb436cd4ed461f30d0c7);
+            
+    
+            var marker_37ca728e2e8f4bbe42c7b8d1482e4256 = L.marker(
+                [52.016012619237, -120.02294212547059],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_b2d3e08d9cd7822597bbce142e4fbee4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8908381320b82ea8514ad858f48e10b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12a0a3d555ee8d2b436ce28087920029 = $(`<div id="html_12a0a3d555ee8d2b436ce28087920029" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 242.65041649941324<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-10-02 01:38:24.353182936</div>`)[0];
+                popup_8908381320b82ea8514ad858f48e10b4.setContent(html_12a0a3d555ee8d2b436ce28087920029);
+            
+        
+
+        marker_37ca728e2e8f4bbe42c7b8d1482e4256.bindPopup(popup_8908381320b82ea8514ad858f48e10b4)
+        ;
+
+        
+    
+    
+                marker_37ca728e2e8f4bbe42c7b8d1482e4256.setIcon(icon_b2d3e08d9cd7822597bbce142e4fbee4);
+            
+    
+            var marker_906ce41d4f5b0513215b22cf2dcb3525 = L.marker(
+                [43.08433031654751, -96.46688029521336],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d1e4840533634128f75be97a9f1176ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d5a7683b4d4c06b4dc0b78e9a9036fd9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4056f070a93a699b6ac360e8783151cf = $(`<div id="html_4056f070a93a699b6ac360e8783151cf" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 73.76274514735631<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2024-12-30 12:03:17.062453863</div>`)[0];
+                popup_d5a7683b4d4c06b4dc0b78e9a9036fd9.setContent(html_4056f070a93a699b6ac360e8783151cf);
+            
+        
+
+        marker_906ce41d4f5b0513215b22cf2dcb3525.bindPopup(popup_d5a7683b4d4c06b4dc0b78e9a9036fd9)
+        ;
+
+        
+    
+    
+                marker_906ce41d4f5b0513215b22cf2dcb3525.setIcon(icon_d1e4840533634128f75be97a9f1176ad);
+            
+    
+            var marker_6b4b9ef44d94a465c1bacdbf78f76a63 = L.marker(
+                [37.59313193151535, -116.75857974834315],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_5e0cfedee0fd139af1d3b263c53169cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a6a75c164878e3e7903b0cbc60937a0e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b6fd06b0cd14f701875e875711aaa899 = $(`<div id="html_b6fd06b0cd14f701875e875711aaa899" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1022.1472058319324<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-07-18 11:15:45.577305348</div>`)[0];
+                popup_a6a75c164878e3e7903b0cbc60937a0e.setContent(html_b6fd06b0cd14f701875e875711aaa899);
+            
+        
+
+        marker_6b4b9ef44d94a465c1bacdbf78f76a63.bindPopup(popup_a6a75c164878e3e7903b0cbc60937a0e)
+        ;
+
+        
+    
+    
+                marker_6b4b9ef44d94a465c1bacdbf78f76a63.setIcon(icon_5e0cfedee0fd139af1d3b263c53169cd);
+            
+    
+            var marker_718ca561465414603e74f4437c5a8ac5 = L.marker(
+                [45.38049332886276, -90.81475649419045],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_13468d663398818c73ddf1d103c855d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_344a88beebd56366651815cdaff35d12 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17d289af09e94e413d4b01620d161f44 = $(`<div id="html_17d289af09e94e413d4b01620d161f44" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 42.91238958471297<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-08-14 16:49:26.459393556</div>`)[0];
+                popup_344a88beebd56366651815cdaff35d12.setContent(html_17d289af09e94e413d4b01620d161f44);
+            
+        
+
+        marker_718ca561465414603e74f4437c5a8ac5.bindPopup(popup_344a88beebd56366651815cdaff35d12)
+        ;
+
+        
+    
+    
+                marker_718ca561465414603e74f4437c5a8ac5.setIcon(icon_13468d663398818c73ddf1d103c855d0);
+            
+    
+            var marker_18ac80fbcfacdcf816b4e02dd0abba99 = L.marker(
+                [45.09435923287781, -94.95792758612166],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_2c1a80cfda1bfd5c9b39ad51d54973a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c559d1255bb3b91a965e72768349824 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17c69ad24305aff43f483466d460ce42 = $(`<div id="html_17c69ad24305aff43f483466d460ce42" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 62.042161271926524<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-02-18 08:47:25.487296348</div>`)[0];
+                popup_9c559d1255bb3b91a965e72768349824.setContent(html_17c69ad24305aff43f483466d460ce42);
+            
+        
+
+        marker_18ac80fbcfacdcf816b4e02dd0abba99.bindPopup(popup_9c559d1255bb3b91a965e72768349824)
+        ;
+
+        
+    
+    
+                marker_18ac80fbcfacdcf816b4e02dd0abba99.setIcon(icon_2c1a80cfda1bfd5c9b39ad51d54973a9);
+            
+    
+            var marker_1a244276fd74a5b03a4ac8efee78c2fa = L.marker(
+                [42.81026261605062, -92.62848482508608],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_06afb1678286f870b9477cb3c2ff66c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d876d0712d3fa20ff6cea14b5bf9d03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17f9d7057a8fcf4dda7fc88797cd08b0 = $(`<div id="html_17f9d7057a8fcf4dda7fc88797cd08b0" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1070.1522458957209<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-09-08 12:33:48.925640180</div>`)[0];
+                popup_9d876d0712d3fa20ff6cea14b5bf9d03.setContent(html_17f9d7057a8fcf4dda7fc88797cd08b0);
+            
+        
+
+        marker_1a244276fd74a5b03a4ac8efee78c2fa.bindPopup(popup_9d876d0712d3fa20ff6cea14b5bf9d03)
+        ;
+
+        
+    
+    
+                marker_1a244276fd74a5b03a4ac8efee78c2fa.setIcon(icon_06afb1678286f870b9477cb3c2ff66c5);
+            
+    
+            var marker_4574d37c5d210ab0fb88e95e4ab42cd5 = L.marker(
+                [40.45761365039078, -108.88960337651324],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_56b43fe56fe7330ba0681db2bd9c0c01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84d1834d937d8f190009a4843b48efc4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed52dab6a7438695b71659fa78930f64 = $(`<div id="html_ed52dab6a7438695b71659fa78930f64" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1317.1614658997114<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2024-11-12 00:36:37.422489866</div>`)[0];
+                popup_84d1834d937d8f190009a4843b48efc4.setContent(html_ed52dab6a7438695b71659fa78930f64);
+            
+        
+
+        marker_4574d37c5d210ab0fb88e95e4ab42cd5.bindPopup(popup_84d1834d937d8f190009a4843b48efc4)
+        ;
+
+        
+    
+    
+                marker_4574d37c5d210ab0fb88e95e4ab42cd5.setIcon(icon_56b43fe56fe7330ba0681db2bd9c0c01);
+            
+    
+            var marker_8b4cff9b452ce657928172a6a0b7bcab = L.marker(
+                [48.37392466832979, -96.54935405625062],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_8eeaca78c862b0c12efc41d33d80c9fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_46d13e327120559accc071687ed80c05 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eec87cbc02fb6ebe77f95d03703dfaaa = $(`<div id="html_eec87cbc02fb6ebe77f95d03703dfaaa" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1164.6790436095591<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-10-20 07:41:02.048952512</div>`)[0];
+                popup_46d13e327120559accc071687ed80c05.setContent(html_eec87cbc02fb6ebe77f95d03703dfaaa);
+            
+        
+
+        marker_8b4cff9b452ce657928172a6a0b7bcab.bindPopup(popup_46d13e327120559accc071687ed80c05)
+        ;
+
+        
+    
+    
+                marker_8b4cff9b452ce657928172a6a0b7bcab.setIcon(icon_8eeaca78c862b0c12efc41d33d80c9fe);
+            
+    
+            var marker_2c95a954979a156113501df6b94f38e3 = L.marker(
+                [34.95906624639453, -130.7657902408283],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_1b6fcfe3b6abe9018c9ab6adc9fbcf53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cadaa9c590eb28bcb7fb0728073969a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3e9a69748cd8f7c5575526ad280e3fdc = $(`<div id="html_3e9a69748cd8f7c5575526ad280e3fdc" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 4.101242213870107<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-01-25 01:18:57.836531271</div>`)[0];
+                popup_cadaa9c590eb28bcb7fb0728073969a5.setContent(html_3e9a69748cd8f7c5575526ad280e3fdc);
+            
+        
+
+        marker_2c95a954979a156113501df6b94f38e3.bindPopup(popup_cadaa9c590eb28bcb7fb0728073969a5)
+        ;
+
+        
+    
+    
+                marker_2c95a954979a156113501df6b94f38e3.setIcon(icon_1b6fcfe3b6abe9018c9ab6adc9fbcf53);
+            
+    
+            var marker_3257514d92009cff0e2c718907350155 = L.marker(
+                [36.3608240332886, -114.39502836186747],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_7414a7441857cc771a65c4debc16bbb9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_951dc333db9dddb26dc8dfa291c65eb8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8e8a99715ea8087b40b91a86e7a498d = $(`<div id="html_f8e8a99715ea8087b40b91a86e7a498d" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 315.09385486844286<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-27 21:54:36.450392656</div>`)[0];
+                popup_951dc333db9dddb26dc8dfa291c65eb8.setContent(html_f8e8a99715ea8087b40b91a86e7a498d);
+            
+        
+
+        marker_3257514d92009cff0e2c718907350155.bindPopup(popup_951dc333db9dddb26dc8dfa291c65eb8)
+        ;
+
+        
+    
+    
+                marker_3257514d92009cff0e2c718907350155.setIcon(icon_7414a7441857cc771a65c4debc16bbb9);
+            
+    
+            var marker_dcc833f23730890185324e0f4b9f318b = L.marker(
+                [47.01470033918965, -105.00365225292889],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_40f2af1ba408afd078df0e652f19429d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_72244124e3cc42b0849a150ac9b59598 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cba0e8e503041cae4041946846d2908 = $(`<div id="html_0cba0e8e503041cae4041946846d2908" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 24.85725046867525<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-03-18 02:37:01.184866104</div>`)[0];
+                popup_72244124e3cc42b0849a150ac9b59598.setContent(html_0cba0e8e503041cae4041946846d2908);
+            
+        
+
+        marker_dcc833f23730890185324e0f4b9f318b.bindPopup(popup_72244124e3cc42b0849a150ac9b59598)
+        ;
+
+        
+    
+    
+                marker_dcc833f23730890185324e0f4b9f318b.setIcon(icon_40f2af1ba408afd078df0e652f19429d);
+            
+    
+            var marker_025b1ef3604c72bf590eabb3a5c523be = L.marker(
+                [48.60314017312246, -67.6869724961344],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_51a0a54cf1d64f53ef905b68e467481d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6a368fc7172fdf0b94230ab595f45bc1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8670b4bfaac8e564e7e8887a82bb61df = $(`<div id="html_8670b4bfaac8e564e7e8887a82bb61df" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 64.3342527707097<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2024-11-25 07:30:22.625010118</div>`)[0];
+                popup_6a368fc7172fdf0b94230ab595f45bc1.setContent(html_8670b4bfaac8e564e7e8887a82bb61df);
+            
+        
+
+        marker_025b1ef3604c72bf590eabb3a5c523be.bindPopup(popup_6a368fc7172fdf0b94230ab595f45bc1)
+        ;
+
+        
+    
+    
+                marker_025b1ef3604c72bf590eabb3a5c523be.setIcon(icon_51a0a54cf1d64f53ef905b68e467481d);
+            
+    
+            var marker_57607162a0a418b924ac77707bc6d14b = L.marker(
+                [35.434737201613856, -98.65543363061501],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_aee35e296914cffb53a8f3f71f89dcc1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_117f18fc4871a728ead080b87cfbc122 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0d07f8fdd884be80fef2a26dd36125d7 = $(`<div id="html_0d07f8fdd884be80fef2a26dd36125d7" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1459.2581056178972<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2024-11-07 09:20:50.167764394</div>`)[0];
+                popup_117f18fc4871a728ead080b87cfbc122.setContent(html_0d07f8fdd884be80fef2a26dd36125d7);
+            
+        
+
+        marker_57607162a0a418b924ac77707bc6d14b.bindPopup(popup_117f18fc4871a728ead080b87cfbc122)
+        ;
+
+        
+    
+    
+                marker_57607162a0a418b924ac77707bc6d14b.setIcon(icon_aee35e296914cffb53a8f3f71f89dcc1);
+            
+    
+            var marker_5568b480d87129ca3b6b1c969e1a4a4d = L.marker(
+                [45.1517591768188, -115.66310843189899],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ba8856e10689934122f707a7f1f7c191 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f55b631f8694e5533ee72ea63e8710e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f1de3a4d0e789e8809c5a0024d08a00a = $(`<div id="html_f1de3a4d0e789e8809c5a0024d08a00a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 262.6742346356044<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2025-07-26 19:53:12.201967812</div>`)[0];
+                popup_f55b631f8694e5533ee72ea63e8710e4.setContent(html_f1de3a4d0e789e8809c5a0024d08a00a);
+            
+        
+
+        marker_5568b480d87129ca3b6b1c969e1a4a4d.bindPopup(popup_f55b631f8694e5533ee72ea63e8710e4)
+        ;
+
+        
+    
+    
+                marker_5568b480d87129ca3b6b1c969e1a4a4d.setIcon(icon_ba8856e10689934122f707a7f1f7c191);
+            
+    
+            var marker_a98bf3ad7609f6e24573d02919d80fe7 = L.marker(
+                [38.56194231779274, -108.98819271241177],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_501eb6d428e7554e3e9eb82d963847e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_efcbbae01b25461c2c864f2a6370823e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_da1c08814ee050732a35365e8d75bf9e = $(`<div id="html_da1c08814ee050732a35365e8d75bf9e" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 305.8075627257076<br><b>merchant_category:</b> healthcare<br><b>transaction_date:</b> 2024-12-30 12:55:50.977845402</div>`)[0];
+                popup_efcbbae01b25461c2c864f2a6370823e.setContent(html_da1c08814ee050732a35365e8d75bf9e);
+            
+        
+
+        marker_a98bf3ad7609f6e24573d02919d80fe7.bindPopup(popup_efcbbae01b25461c2c864f2a6370823e)
+        ;
+
+        
+    
+    
+                marker_a98bf3ad7609f6e24573d02919d80fe7.setIcon(icon_501eb6d428e7554e3e9eb82d963847e0);
+            
+    
+            var marker_b786889bb4e39532313f7480f8fa558c = L.marker(
+                [29.547343872168476, -98.14533016300832],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_ca8f5ba679b11069b967ef89cc38fbc0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_278bf1033ed6c78f675066786cd0df68 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dc741966a0e1a4363059587898fa36ca = $(`<div id="html_dc741966a0e1a4363059587898fa36ca" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 325.95507574582587<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-03 03:55:21.814929108</div>`)[0];
+                popup_278bf1033ed6c78f675066786cd0df68.setContent(html_dc741966a0e1a4363059587898fa36ca);
+            
+        
+
+        marker_b786889bb4e39532313f7480f8fa558c.bindPopup(popup_278bf1033ed6c78f675066786cd0df68)
+        ;
+
+        
+    
+    
+                marker_b786889bb4e39532313f7480f8fa558c.setIcon(icon_ca8f5ba679b11069b967ef89cc38fbc0);
+            
+    
+            var marker_24f2428c9f26d0011721cb6b40d74c4a = L.marker(
+                [39.82490651969794, -91.44790466973414],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_bbc72f8c3857b4ef239ea0868fb59a31 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35e4b0affa6643a282fb8b0bfb74cdc5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9429308e7f0735fec4588853b2f8c9d9 = $(`<div id="html_9429308e7f0735fec4588853b2f8c9d9" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 2002.9482348959737<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-10-20 05:55:54.218169432</div>`)[0];
+                popup_35e4b0affa6643a282fb8b0bfb74cdc5.setContent(html_9429308e7f0735fec4588853b2f8c9d9);
+            
+        
+
+        marker_24f2428c9f26d0011721cb6b40d74c4a.bindPopup(popup_35e4b0affa6643a282fb8b0bfb74cdc5)
+        ;
+
+        
+    
+    
+                marker_24f2428c9f26d0011721cb6b40d74c4a.setIcon(icon_bbc72f8c3857b4ef239ea0868fb59a31);
+            
+    
+            var marker_d78bc10478c1cf3cdaba8d764e5484b9 = L.marker(
+                [36.33151016191666, -95.14943207920163],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_63a9ccd474fa3c0591c8a577b878d960 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bcf5ec134d0a3d830c97c8702f7ef9cf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33af586c81ef1087dc932d320b8c26e8 = $(`<div id="html_33af586c81ef1087dc932d320b8c26e8" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 36.991197673462274<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-01-04 15:34:59.132660884</div>`)[0];
+                popup_bcf5ec134d0a3d830c97c8702f7ef9cf.setContent(html_33af586c81ef1087dc932d320b8c26e8);
+            
+        
+
+        marker_d78bc10478c1cf3cdaba8d764e5484b9.bindPopup(popup_bcf5ec134d0a3d830c97c8702f7ef9cf)
+        ;
+
+        
+    
+    
+                marker_d78bc10478c1cf3cdaba8d764e5484b9.setIcon(icon_63a9ccd474fa3c0591c8a577b878d960);
+            
+    
+            var marker_1cf1e110e02b9d8552eb80a684e78344 = L.marker(
+                [33.28499039092598, -117.68052206156509],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_577fb768e9cac7526e78482098c0786c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_96278bedda36444119f78d9e1666c6af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cbe20dcb82d594277cd8c934a8b5a701 = $(`<div id="html_cbe20dcb82d594277cd8c934a8b5a701" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 756.2754526197884<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2024-11-27 12:56:51.463894007</div>`)[0];
+                popup_96278bedda36444119f78d9e1666c6af.setContent(html_cbe20dcb82d594277cd8c934a8b5a701);
+            
+        
+
+        marker_1cf1e110e02b9d8552eb80a684e78344.bindPopup(popup_96278bedda36444119f78d9e1666c6af)
+        ;
+
+        
+    
+    
+                marker_1cf1e110e02b9d8552eb80a684e78344.setIcon(icon_577fb768e9cac7526e78482098c0786c);
+            
+    
+            var marker_3c288c6b902942696ed0f73f8ea9d2df = L.marker(
+                [39.92852441013953, -100.28412131848472],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_3c85c5f6cb1296f9d6e9b68fe8b9d9fa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2ef416947756403992c4ade6f3c21c0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_186e35d1907e7d351763b6ef7bb71f86 = $(`<div id="html_186e35d1907e7d351763b6ef7bb71f86" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 33.68180458528405<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-03-25 08:57:30.347782396</div>`)[0];
+                popup_c2ef416947756403992c4ade6f3c21c0.setContent(html_186e35d1907e7d351763b6ef7bb71f86);
+            
+        
+
+        marker_3c288c6b902942696ed0f73f8ea9d2df.bindPopup(popup_c2ef416947756403992c4ade6f3c21c0)
+        ;
+
+        
+    
+    
+                marker_3c288c6b902942696ed0f73f8ea9d2df.setIcon(icon_3c85c5f6cb1296f9d6e9b68fe8b9d9fa);
+            
+    
+            var marker_4b11f30f7a7984c63c09a112b90c0bbd = L.marker(
+                [35.88119915314915, -116.39405094530568],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_06e2613babc922f1fcfd8a9ee27540b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e8e821769a18e33f8c3ea2fe18530b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5fdc69193b28a67815e633d466879337 = $(`<div id="html_5fdc69193b28a67815e633d466879337" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 42.23422643614337<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-10-04 01:49:29.699717588</div>`)[0];
+                popup_0e8e821769a18e33f8c3ea2fe18530b5.setContent(html_5fdc69193b28a67815e633d466879337);
+            
+        
+
+        marker_4b11f30f7a7984c63c09a112b90c0bbd.bindPopup(popup_0e8e821769a18e33f8c3ea2fe18530b5)
+        ;
+
+        
+    
+    
+                marker_4b11f30f7a7984c63c09a112b90c0bbd.setIcon(icon_06e2613babc922f1fcfd8a9ee27540b0);
+            
+    
+            var marker_961cda912b132c6d74a3496565e403d3 = L.marker(
+                [34.955189723432255, -97.09401130340382],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_802be5291ed4f63790d6976b64b9cce0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_77335d680e0fec3652164356fd1bfbd0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_775620bac05682e4ebb4130ff179deb9 = $(`<div id="html_775620bac05682e4ebb4130ff179deb9" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 11.150053732823814<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-08-09 01:01:49.573704988</div>`)[0];
+                popup_77335d680e0fec3652164356fd1bfbd0.setContent(html_775620bac05682e4ebb4130ff179deb9);
+            
+        
+
+        marker_961cda912b132c6d74a3496565e403d3.bindPopup(popup_77335d680e0fec3652164356fd1bfbd0)
+        ;
+
+        
+    
+    
+                marker_961cda912b132c6d74a3496565e403d3.setIcon(icon_802be5291ed4f63790d6976b64b9cce0);
+            
+    
+            var marker_9f693bf1972ef3f0b816b502abf32050 = L.marker(
+                [40.172561925481666, -75.56357700224515],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_7cae7a82db2493ea374f644067886894 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e3ab19039c389f1928ff7d56e0208db = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8cff5a63f97c4554d08274db9fd601fd = $(`<div id="html_8cff5a63f97c4554d08274db9fd601fd" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 51.7023940974534<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2025-04-29 11:45:16.954443062</div>`)[0];
+                popup_6e3ab19039c389f1928ff7d56e0208db.setContent(html_8cff5a63f97c4554d08274db9fd601fd);
+            
+        
+
+        marker_9f693bf1972ef3f0b816b502abf32050.bindPopup(popup_6e3ab19039c389f1928ff7d56e0208db)
+        ;
+
+        
+    
+    
+                marker_9f693bf1972ef3f0b816b502abf32050.setIcon(icon_7cae7a82db2493ea374f644067886894);
+            
+    
+            var marker_98abde334f60ac98ca224dd981f872c5 = L.marker(
+                [42.625986029187644, -99.59170122383205],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_295ef7d9f74815ae664a78ae3fa1b839 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8802b34a1eb2f006b7a5c0643051ca1d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0fa74865cdf48f4022c7b233dbed017a = $(`<div id="html_0fa74865cdf48f4022c7b233dbed017a" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 53.98891808680282<br><b>merchant_category:</b> dining<br><b>transaction_date:</b> 2025-09-28 18:47:31.967944412</div>`)[0];
+                popup_8802b34a1eb2f006b7a5c0643051ca1d.setContent(html_0fa74865cdf48f4022c7b233dbed017a);
+            
+        
+
+        marker_98abde334f60ac98ca224dd981f872c5.bindPopup(popup_8802b34a1eb2f006b7a5c0643051ca1d)
+        ;
+
+        
+    
+    
+                marker_98abde334f60ac98ca224dd981f872c5.setIcon(icon_295ef7d9f74815ae664a78ae3fa1b839);
+            
+    
+            var marker_ff7de55120c717a6f8c4f05154c71a48 = L.marker(
+                [23.322194100163454, -95.76230293487768],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_41e68791b061de4b7bfa269bf55cd9da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f6ffd4cf17990b0218356a0ea17975f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1597a9f527439f8675435f57f8bd67e5 = $(`<div id="html_1597a9f527439f8675435f57f8bd67e5" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 3.5550562860604296<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2025-04-17 15:01:34.452192836</div>`)[0];
+                popup_f6ffd4cf17990b0218356a0ea17975f2.setContent(html_1597a9f527439f8675435f57f8bd67e5);
+            
+        
+
+        marker_ff7de55120c717a6f8c4f05154c71a48.bindPopup(popup_f6ffd4cf17990b0218356a0ea17975f2)
+        ;
+
+        
+    
+    
+                marker_ff7de55120c717a6f8c4f05154c71a48.setIcon(icon_41e68791b061de4b7bfa269bf55cd9da);
+            
+    
+            var marker_38ce045789de977c2fd4a2d0ca5295af = L.marker(
+                [41.86929599838893, -53.46021272632469],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_86b98f2159d114cd8ad424c8f6b1de58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7c62471e1e0d47241ce81778cc67f35c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7583d2e34b3a11af118d6c5c4a9a87f5 = $(`<div id="html_7583d2e34b3a11af118d6c5c4a9a87f5" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 1134.4297104116793<br><b>merchant_category:</b> retail<br><b>transaction_date:</b> 2025-05-13 19:10:51.787926410</div>`)[0];
+                popup_7c62471e1e0d47241ce81778cc67f35c.setContent(html_7583d2e34b3a11af118d6c5c4a9a87f5);
+            
+        
+
+        marker_38ce045789de977c2fd4a2d0ca5295af.bindPopup(popup_7c62471e1e0d47241ce81778cc67f35c)
+        ;
+
+        
+    
+    
+                marker_38ce045789de977c2fd4a2d0ca5295af.setIcon(icon_86b98f2159d114cd8ad424c8f6b1de58);
+            
+    
+            var marker_ff058833a11fbb1108e3e2ef91d12bcb = L.marker(
+                [41.37654813385295, -102.29096640036002],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_38dfd8afffa261b05946257a5a70baf2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db8fcd4e2137e429fcf7f1b93a66392b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c68fe3000ee95557689fefe5c080bb79 = $(`<div id="html_c68fe3000ee95557689fefe5c080bb79" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 5.886449692944095<br><b>merchant_category:</b> entertainment<br><b>transaction_date:</b> 2024-12-21 22:10:26.945442162</div>`)[0];
+                popup_db8fcd4e2137e429fcf7f1b93a66392b.setContent(html_c68fe3000ee95557689fefe5c080bb79);
+            
+        
+
+        marker_ff058833a11fbb1108e3e2ef91d12bcb.bindPopup(popup_db8fcd4e2137e429fcf7f1b93a66392b)
+        ;
+
+        
+    
+    
+                marker_ff058833a11fbb1108e3e2ef91d12bcb.setIcon(icon_38dfd8afffa261b05946257a5a70baf2);
+            
+    
+            var marker_f366d01ae670a71f7241c690d800fc1e = L.marker(
+                [35.62902953063109, -85.94465490443602],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_65485e41a94b96daacfb49462283e3ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3507a3dbd9ada3115808cad4bfc33ca2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_228fbf2f81008720edde985d45508ded = $(`<div id="html_228fbf2f81008720edde985d45508ded" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 235.87870019892665<br><b>merchant_category:</b> utilities<br><b>transaction_date:</b> 2024-11-04 23:31:31.751922810</div>`)[0];
+                popup_3507a3dbd9ada3115808cad4bfc33ca2.setContent(html_228fbf2f81008720edde985d45508ded);
+            
+        
+
+        marker_f366d01ae670a71f7241c690d800fc1e.bindPopup(popup_3507a3dbd9ada3115808cad4bfc33ca2)
+        ;
+
+        
+    
+    
+                marker_f366d01ae670a71f7241c690d800fc1e.setIcon(icon_65485e41a94b96daacfb49462283e3ff);
+            
+    
+            var marker_ad0b58f81a00e16677d46ea197931721 = L.marker(
+                [44.19106999077497, -79.82958209464222],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_d9397669c3b1d6f1f2a9d98ba265db98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3687d08913577ff82ce017445e27bd1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d240bc12c8148f5573ef36d1ca1aa2ae = $(`<div id="html_d240bc12c8148f5573ef36d1ca1aa2ae" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 33.398359436323624<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2024-11-06 05:18:44.875235141</div>`)[0];
+                popup_f3687d08913577ff82ce017445e27bd1.setContent(html_d240bc12c8148f5573ef36d1ca1aa2ae);
+            
+        
+
+        marker_ad0b58f81a00e16677d46ea197931721.bindPopup(popup_f3687d08913577ff82ce017445e27bd1)
+        ;
+
+        
+    
+    
+                marker_ad0b58f81a00e16677d46ea197931721.setIcon(icon_d9397669c3b1d6f1f2a9d98ba265db98);
+            
+    
+            var marker_63ac1d9f9c99a46cc263100ca0d021b4 = L.marker(
+                [44.814013671600414, -101.4010871432771],
+                {
+}
+            ).addTo(map_2ae041b5252c0522c4a7d223cfa0e92f);
+        
+    
+            var icon_b256c1f8c24484e8af98bf80bad34ad8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f52b424d168de2610e43d4389a5cc0d6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f948b72fe67627875fbca2cda81c60ae = $(`<div id="html_f948b72fe67627875fbca2cda81c60ae" style="width: 100.0%; height: 100.0%;"><b>amount:</b> 31.447617029338193<br><b>merchant_category:</b> travel<br><b>transaction_date:</b> 2025-07-14 10:53:34.884236040</div>`)[0];
+                popup_f52b424d168de2610e43d4389a5cc0d6.setContent(html_f948b72fe67627875fbca2cda81c60ae);
+            
+        
+
+        marker_63ac1d9f9c99a46cc263100ca0d021b4.bindPopup(popup_f52b424d168de2610e43d4389a5cc0d6)
+        ;
+
+        
+    
+    
+                marker_63ac1d9f9c99a46cc263100ca0d021b4.setIcon(icon_b256c1f8c24484e8af98bf80bad34ad8);
+            
+</script>
+</html>

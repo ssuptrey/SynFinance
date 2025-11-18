@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Executive Summary Report - SynFinance{% endblock %}
+
+{% block header_title %}Executive Summary Report{% endblock %}
+
+{% block content %}
+
+<section id="executive-summary">
+    <h2>Executive Summary</h2>
+    
+    <div class="metrics-grid">
+        <div class="metric-card info">
+            <div class="metric-label">Total Transactions</div>
+            <div class="metric-value">{{ metrics.total_transactions|default(0)|number_format }}</div>
+            <div class="metric-description">Generated transactions</div>
+        </div>
+
+        <div class="metric-card success">
+            <div class="metric-label">Total Volume</div>
+            <div class="metric-value">₹{{ metrics.total_amount|default(0)|number_format(2) }}</div>
+            <div class="metric-description">Transaction volume</div>
+        </div>
+
+        <div class="metric-card warning">
+            <div class="metric-label">Fraud Rate</div>
+            <div class="metric-value">{{ metrics.fraud_rate|default(0)|percentage }}</div>
+            <div class="metric-description">{{ metrics.fraud_count|default(0) }} fraudulent transactions</div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-label">Average Transaction</div>
+            <div class="metric-value">₹{{ metrics.avg_amount|default(0)|number_format(2) }}</div>
+            <div class="metric-description">Mean transaction value</div>
+        </div>
+    </div>
+
+    <p class="lead">
+        This report provides an executive-level overview of the generated synthetic transaction dataset, 
+        including key performance indicators, fraud detection metrics, and business insights.
+    </p>
+</section>
+
+<section id="key-findings">
+    <h2>Key Findings</h2>
+    
+    {% if findings %}
+        <div class="findings-list">
+            {% for finding in findings %}
+                <div class="alert alert-{{ finding.severity|default('info') }}">
+                    <h4>{{ finding.title }}</h4>
+                    <p>{{ finding.description }}</p>
+                    {% if finding.impact %}
+                        <p><strong>Business Impact:</strong> {{ finding.impact }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No significant findings identified.</p>
+    {% endif %}
+</section>
+
+<section id="distribution-overview">
+    <h2>Transaction Distribution</h2>
+    
+    {% if charts.distribution %}
+        <div class="chart-container">
+            <div class="chart-title">Transaction Amount Distribution</div>
+            <img src="data:image/png;base64,{{ charts.distribution }}" alt="Distribution Chart">
+        </div>
+    {% endif %}
+
+    {% if charts.category_breakdown %}
+        <div class="chart-container">
+            <div class="chart-title">Category Breakdown</div>
+            <img src="data:image/png;base64,{{ charts.category_breakdown }}" alt="Category Chart">
+        </div>
+    {% endif %}
+</section>
+
+<section id="fraud-summary">
+    <h2>Fraud Detection Summary</h2>
+    
+    <div class="metrics-grid">
+        <div class="metric-card warning">
+            <div class="metric-label">Fraud Patterns</div>
+            <div class="metric-value">{{ metrics.fraud_patterns|default(0) }}</div>
+            <div class="metric-description">Distinct fraud types detected</div>
+        </div>
+
+        <div class="metric-card danger">
+            <div class="metric-label">High Confidence</div>
+            <div class="metric-value">{{ metrics.high_confidence_fraud|default(0) }}</div>
+            <div class="metric-description">Confidence > 0.8</div>
+        </div>
+
+        <div class="metric-card info">
+            <div class="metric-label">Avg Confidence</div>
+            <div class="metric-value">{{ metrics.avg_fraud_confidence|default(0)|percentage }}</div>
+            <div class="metric-description">Detection confidence</div>
+        </div>
+    </div>
+
+    {% if charts.fraud_patterns %}
+        <div class="chart-container">
+            <div class="chart-title">Fraud Pattern Distribution</div>
+            <img src="data:image/png;base64,{{ charts.fraud_patterns }}" alt="Fraud Patterns Chart">
+        </div>
+    {% endif %}
+</section>
+
+<section id="recommendations">
+    <h2>Recommendations</h2>
+    
+    {% if recommendations %}
+        <ol>
+            {% for recommendation in recommendations %}
+                <li><strong>{{ recommendation.title }}:</strong> {{ recommendation.description }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>No specific recommendations at this time.</p>
+    {% endif %}
+</section>
+
+<section id="data-quality">
+    <h2>Data Quality Metrics</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Completeness</td>
+                <td>{{ metrics.completeness|default(0)|percentage }}</td>
+                <td>{% set comp = metrics.completeness|default(0) %}{% if comp >= 0.95 %}✅ Excellent{% elif comp >= 0.80 %}⚠️ Good{% else %}❌ Poor{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Field Variance</td>
+                <td>{{ metrics.field_variance|default(0)|percentage }}</td>
+                <td>{% set variance = metrics.field_variance|default(0) %}{% if variance >= 0.80 %}✅ Excellent{% elif variance >= 0.60 %}⚠️ Good{% else %}❌ Poor{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Unique Customers</td>
+                <td>{{ metrics.unique_customers|default(0)|number_format }}</td>
+                <td>✅ Valid</td>
+            </tr>
+            <tr>
+                <td>Date Range</td>
+                <td>{{ metrics.date_range|default('N/A') }}</td>
+                <td>✅ Valid</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}

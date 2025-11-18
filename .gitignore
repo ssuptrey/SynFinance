@@ -35,8 +35,8 @@ ENV/
 *.swo
 *~
 
-# Streamlit
-.streamlit/
+# Streamlit (exclude secrets but keep config)
+.streamlit/secrets.toml
 
 # Generated files
 *.csv
