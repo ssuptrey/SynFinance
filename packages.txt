@@ -1,3 +1,0 @@
-# System packages required for Streamlit Cloud deployment
-# Add any system dependencies here (one per line)
-# Example: libgl1-mesa-glx (for opencv)
